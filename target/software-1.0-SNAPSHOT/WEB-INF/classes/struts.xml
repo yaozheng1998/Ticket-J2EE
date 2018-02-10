@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!--对于Struts2.5以上的版本就可以用url+!+方法访问Action某个方法-->
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <constant name="struts.devMode" value="false"/>
+
+    <include file="struts-default.xml"/>
+
+    <package name="struts2" namespace="/" extends="struts-default">
+
+
+
+    </package>
+
+</struts>
