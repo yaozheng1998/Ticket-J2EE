@@ -18,3 +18,8 @@
     </package>
 
 </struts>
+<!--点击链接，在struts文件中寻找name为**的Action，根据action的class去application.xml中找到id的bean，
+找到bean后，根据class去指定目录下找到对应的action，然后再执行操作，将结果返回到struts中，struts根据返回结果result显示相应的页面。-->
+
+
+<!--web-inf是不能让用户直接访问到的，所以添加了action-->
