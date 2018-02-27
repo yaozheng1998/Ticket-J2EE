@@ -31,7 +31,7 @@
                     <li class="active"><a href="main.action">首页</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>
+                    <%--<li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>--%>
                     <li><a href="#">场馆注册</a></li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
     <div class="modal-body">
         <form action="" method="post" onsubmit="return toLogin()">
             <div class="form-group">
-                <input type="name" id="name" name="name" class="form-control" placeholder="请输入会员名或邮箱">
+                <input type="name" id="name" name="name" class="form-control" placeholder="请输入会员名或邮箱/场馆注册码/经理码">
             </div>
             <div class="form-group">
                 <input type="password" id="password" name="password" class="form-control" placeholder="请输入密码">
