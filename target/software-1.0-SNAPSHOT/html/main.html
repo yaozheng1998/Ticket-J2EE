@@ -24,8 +24,8 @@
                     <li class="active"><a href="main.action">首页</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>
-                    <li><a href="#">场馆版</a></li>
+                    <!--<li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>-->
+                    <li><a href="#">场馆注册</a></li>
                 </ul>
             </div>
         </div>
@@ -36,7 +36,7 @@
     <div class="modal-body">
         <form action="" method="post" onsubmit="return toLogin()">
             <div class="form-group">
-                <input type="name" id="name" name="name" class="form-control" placeholder="请输入会员名或邮箱">
+                <input type="name" id="name" name="name" class="form-control" placeholder="请输入会员名或邮箱/场馆注册码/经理码">
             </div>
             <div class="form-group">
                 <input type="password" id="password" name="password" class="form-control" placeholder="请输入密码">
@@ -50,44 +50,6 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
-<div class="modal fade" tabindex="-1" role="dialog" id="vip-register" style="margin-top: 10%">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style="align-items: center;padding-left: 3%">注册新会员</h4>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post" onsubmit="return toRegister()">
-                    <div class="form-group">
-                        <input type="text" name="vipName" id="vipName" class="form-control" placeholder="请输入会员名">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="passwd" id="pwd" class="form-control" placeholder="请输入密码">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="confirmpwd" id="cpwd" class="form-control" placeholder="请再次输入密码">
-                    </div>
-                    <div class="form-group">
-                        <input type="number" name="bandCardId" id="bankCardId" class="form-control"
-                               placeholder="请输入银行卡号">
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <a data-toggle="modal" data-target="#login" data-dismiss="modal"
-                               class="text-center">已经是会员了</a>
-                        </div>
-                        <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
     </div>
 </div>
 </body>

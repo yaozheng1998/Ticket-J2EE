@@ -41,7 +41,7 @@
 <div class="col-md-4 row" style="margin-top:15%;margin-left:10%;background-color: rgba(0,0,0,0.4);">
     <h4 class="modal-title" style="align-items: center;padding-left: 35%;padding-top: 6%;color: whitesmoke">欢迎登录</h4>
     <div class="modal-body">
-        <form action="" method="post" onsubmit="return toLogin()">
+        <form action="login" method="post" onsubmit="return toLogin()">
             <div class="form-group">
                 <input type="name" id="name" name="name" class="form-control" placeholder="请输入会员名或邮箱/场馆注册码/经理码">
             </div>
@@ -62,4 +62,5 @@
 </body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/login.js"></script>
 </html>
