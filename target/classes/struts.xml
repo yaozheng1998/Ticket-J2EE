@@ -16,9 +16,10 @@
             <result name="main">/jsp/main.jsp</result>
         </action>
 
-        <action name="vipBasicInfo" class="action.VIPBasicInfoAction">
+        <action name="vipBasicInfo" class="action.VIPBasicInfoAction" method="showBasicInfo">
             <result>/jsp/vipBasicInfo.jsp</result>
         </action>
+
         <action name="login" class="action.LoginAction">
             <result name="relogin">/jsp/main.jsp</result>
             <result name="vipLogin" type="chain">vipBasicInfo</result>

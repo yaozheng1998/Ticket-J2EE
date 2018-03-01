@@ -4,6 +4,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
+  <welcome-file-list>
+    <welcome-file>jsp/main.jsp</welcome-file>
+  </welcome-file-list>
+
   <!--配置struts的核心过滤器-->
   <filter>
     <filter-name>struts2</filter-name>

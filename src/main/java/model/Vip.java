@@ -24,7 +24,12 @@ public class Vip implements Serializable {
     private double vipPoint;
     private double vipSubMoney;
     private String calcelDate;
+    private String vipLevel;
 
+    public String getVipId(){return vipId;}
+    public void setVipId(String vipId){
+        this.vipId=vipId;
+    }
     public String getVipName(){
         return vipName;
     }
@@ -86,6 +91,14 @@ public class Vip implements Serializable {
     }
     public void setCalcelDate(String calcelDate){
         this.calcelDate=calcelDate;
+    }
+
+    public String getVipLevel() {
+        return vipLevel;
+    }
+
+    public void setVipLevel(String vipLevel) {
+        this.vipLevel = vipLevel;
     }
 
 }

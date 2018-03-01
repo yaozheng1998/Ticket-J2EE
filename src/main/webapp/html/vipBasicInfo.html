@@ -43,8 +43,7 @@
 
 <div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 780px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
-        <li role="presentation" class="active"><a href="#"><h5 style="padding-left: 15px">基本资料</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">会员信息</h5></a></li>
+        <li role="presentation" class="active"><a href="#"><h5 style="padding-left: 15px">会员信息</h5></a></li>
         <li role="presentation"><a href=""><h5 style="padding-left: 15px">我的订单</h5></a></li>
         <li role="presentation"><a href=""><h5 style="padding-left: 15px">购买统计</h5></a></li>
         <li role="presentation"><a href=""><h5 style="padding-left: 15px">注销会员</h5></a></li>
@@ -52,7 +51,63 @@
 </div>
 
 <fieldset style="position:absolute;top:100px;left:200px;width: 900px;height: 620px">
-    <legend>基本资料</legend>
+    <legend>会员信息</legend>
+    <a href="#" onclick="EditInfo()"
+       style="color: #1ab7ea; float: right; margin-right: 10px;"><b>修改资料</b></a>
+
+    <form action="modifyVip" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="f-vipId" class="col-sm-3 control-label">会员编号:</label>
+            <div class="col-sm-4">
+                <label class="form-control" id="f-vipId" style="border: none">V000001</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-vipName" class="col-sm-3 control-label">会员名:</label>
+                <div class="col-sm-4">
+                    <span id="f-vipName" class="form-control" style="border: none">YZ</span>
+                    <input id="name_input" name="vipName" value="<%=vip.getVipName()%>"
+                           style="position: absolute; left: 20px;margin-top: -30px; width: 250px; visibility: hidden;">
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-vipMailbox" class="col-sm-3 control-label">邮箱:</label>
+            <div class="col-sm-4">
+                <label class="form-control" id="f-vipMailbox" style="border: none">1150681747@qq.com</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-vipBankcard" class="col-sm-3 control-label">银行卡号:</label>
+            <div class="col-sm-4">
+                <span id="f-vipBankcard" class="form-control" style="border: none">622372383883</span>
+                <input id="bankCard_input" name="bankCardId" value="<%=vip.getBankCardId()%>"
+                       style="position: absolute; left: 20px;margin-top: -30px; width: 250px; visibility: hidden;">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-vipGrade" class="col-sm-3 control-label">会员等级:</label>
+            <div class="col-sm-4">
+                <label class="form-control" id="f-vipGrade" style="border: none">皇冠会员</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-vipPoint" class="col-sm-3 control-label">会员积分:</label>
+            <div class="col-sm-4">
+                <label class="form-control" id="f-vipPoint" style="border: none">15000</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button style="margin-left: 16%" type="button" class="btn btn-danger">注销会员</button>
+        </div>
+        <button type="submit" id="submit_btn" style="margin-left: 45%;margin-top: -58px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
+
+    </form>
 </fieldset>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
