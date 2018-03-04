@@ -70,7 +70,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/software-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Ticket/web/Web" />
+      <element id="javaee-facet-resources" facet="Training/web/Web" />
     </root>
   </artifact>
 </component>
