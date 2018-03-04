@@ -12,7 +12,7 @@
     <title>Ticket</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-image: url(../img/ticket.jpg);background-size: cover">
+<body style="background-image: url(../img/training.jpg);background-size: cover">
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Ticket</a>
+                <a class="navbar-brand">Training</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -32,7 +32,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <%--<li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>--%>
-                    <li><a href="#">场馆注册</a></li>
+                    <li><a href="#">机构注册</a></li>
                 </ul>
             </div>
         </div>
