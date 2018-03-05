@@ -36,10 +36,10 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="main.action">首页</a></li>
-                <li><a href="">门票购买</a></li>
+                <li><a href="">课程购买</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">场馆注册</a></li>
+                <li><a href="#">机构注册</a></li>
             </ul>
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
@@ -53,7 +53,7 @@
 <div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 780px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
         <li role="presentation" class="active"><a href="#"><h5 style="padding-left: 15px">会员信息</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">我的订单</h5></a></li>
+        <li role="presentation"><a href=""><h5 style="padding-left: 15px">我的课程</h5></a></li>
         <li role="presentation"><a href=""><h5 style="padding-left: 15px">购买统计</h5></a></li>
     </ul>
 </div>
@@ -122,7 +122,7 @@
         <div class="form-group">
             <button style="margin-left: 16%" type="button" class="btn btn-danger">注销会员</button>
         </div>
-        <button type="submit" id="save" style="margin-left: 45%;margin-top: -58px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
+        <button type="submit" id="save" style="margin-left: 45%;margin-top: -45px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
 
     </form>
 </fieldset>

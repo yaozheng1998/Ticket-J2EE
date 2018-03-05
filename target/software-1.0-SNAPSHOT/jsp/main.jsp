@@ -9,10 +9,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Ticket</title>
+    <title>Training</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-image: url(../img/ticket.jpg);background-size: cover">
+<body style="background-image: url(../img/training.jpg);background-size: cover">
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Ticket</a>
+                <a class="navbar-brand">Training</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -32,13 +32,13 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <%--<li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>--%>
-                    <li><a href="#">场馆注册</a></li>
+                    <li><a href="#">机构注册</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-<div class="col-md-4 row" style="margin-top:15%;margin-left:10%;background-color: rgba(0,0,0,0.4);">
+<div class="col-md-4 row" style="margin-top:15%;margin-left:50%;background-color: rgba(0,0,0,0.4);">
     <h4 class="modal-title" style="align-items: center;padding-left: 35%;padding-top: 6%;color: whitesmoke">欢迎登录</h4>
     <div class="modal-body">
         <form action="login" method="post" onsubmit="return toLogin()">
@@ -50,7 +50,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <a data-toggle="modal" data-target="#vip-register" data-dismiss="modal" class="text-center">注册成为新会员</a>
+                    <a href="showRegister.action">注册成为新会员</a>
                 </div>
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>

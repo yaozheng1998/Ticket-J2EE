@@ -25,6 +25,16 @@ public class Vip implements Serializable {
     private double vipSubMoney;
     private String calcelDate;
     private String vipLevel;
+    private String code;
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getVipId(){return vipId;}
     public void setVipId(String vipId){

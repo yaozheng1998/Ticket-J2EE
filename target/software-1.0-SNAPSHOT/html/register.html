@@ -5,7 +5,7 @@
     <title>Register</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-image: url(../img/ticket.jpg);background-size: cover">
+<body style="background-image: url(../img/training.jpg);background-size: cover">
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -31,7 +31,7 @@
         </div>
     </nav>
 </div>
-<div class="col-md-4 row" style="margin-top:15%;margin-left:10%;background-color: rgba(0,0,0,0.4);">
+<div class="col-md-4 row" style="margin-top:15%;margin-left:50%;background-color: rgba(0,0,0,0.4);">
     <h4 class="modal-title" style="align-items: center;padding-left: 35%;padding-top: 6%;color: whitesmoke">注册会员</h4>
     <div class="modal-body">
         <form action="" method="post" onsubmit="return toRegister()">
@@ -50,6 +50,15 @@
             <div class="form-group">
                 <input type="email" id="mailbox" name="mailbox" class="form-control" placeholder="输入电子邮箱以验证">
             </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <input type="number" id="validate" name="validate" placeholder="验证码">
+                </div>
+                <div class="col-xs-2">
+                    <button style="margin-left: -40px;" type="button" class="btn btn-sm">点按以发送验证码</button>
+                </div>
+            </div>
+            <br>
             <div class="row">
                 <div class="col-xs-8">
                     <a data-toggle="modal" data-target="" data-dismiss="modal" class="text-center">已有账号，去登录吧~</a>

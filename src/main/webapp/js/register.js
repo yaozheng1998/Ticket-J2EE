@@ -1,0 +1,3 @@
+function toRegister(){
+    return true;
+}
