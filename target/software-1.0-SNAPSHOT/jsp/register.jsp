@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -57,15 +58,15 @@
             <div class="form-group">
                 <input type="email" id="r_mailbox" name="r_mailbox" class="form-control" placeholder="输入电子邮箱以验证">
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <input type="number" id="r_validate" name="r_validate" placeholder="验证码">
-                </div>
-                <div class="col-xs-6">
-                    <a href="send_valid.action">点按以发送验证码</a>
-                    <%--<button id="valid_btn" style="margin-left: -40px;" type="button" class="btn btn-sm" onclick="">点按以发送验证码</button>--%>
-                </div>
-            </div>
+            <%--<div class="row">--%>
+                <%--<div class="col-xs-6">--%>
+                    <%--<input type="number" id="r_validate" name="r_validate" placeholder="验证码">--%>
+                <%--</div>--%>
+                <%--<div class="col-xs-6">--%>
+                    <%--<a href="send_valid.action">点按以发送验证码</a>--%>
+                    <%--&lt;%&ndash;<button id="valid_btn" style="margin-left: -40px;" type="button" class="btn btn-sm" onclick="">点按以发送验证码</button>&ndash;%&gt;--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <br>
             <div class="row">
                 <div class="col-xs-8">

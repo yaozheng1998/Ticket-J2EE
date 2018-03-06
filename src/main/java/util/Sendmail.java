@@ -29,7 +29,7 @@ public class Sendmail {
         //产生4位验证码
         Random r = new Random();
         StringBuffer captcha1 = new StringBuffer();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             captcha1.append(r.nextInt(9)+"");
         }
         String captcha = new String(captcha1);

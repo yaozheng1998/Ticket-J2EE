@@ -1,6 +1,8 @@
 package service.impl;
 
+import dao.BankcardDao;
 import dao.VipDao;
+import model.Bankcard;
 import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import service.VipService;
 public class VipServiceImpl implements VipService{
     @Autowired
     private VipDao vipDao;
+    @Autowired
+    private BankcardDao bankcardDao;
 
 
     public boolean isExist(String vipId) {
@@ -23,6 +27,11 @@ public class VipServiceImpl implements VipService{
     public void registerVip(Vip vip) {
         vipDao.save(vip);
         //这里还要添加银行卡信息
+        String bankCardId=vip.getVip_bankCardId();
+        Bankcard bankcard=new Bankcard();
+        bankcard.setBankCardId(bankCardId);
+        bankcard.setBalance(10000);
+        bankcardDao.save(bankcard);
     }
 
     public String getVipId() {

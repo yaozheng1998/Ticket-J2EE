@@ -26,20 +26,23 @@
         </action>
 
         <action name="showRegister" class="action.RegisterAction">
-            <result name="register">/jsp/register.jsp</result>
+            <result name="showregister">/jsp/register.jsp</result>
+        </action>
+        <action name="register" class="action.RegisterAction" method="register_submit">
+            <result name="register_done">/jsp/main.jsp</result>
         </action>
 
-        <action name="register" class="action.RegisterAction" method="compare">
-            <result name="register_success">vipBasicInfo</result>
-            <result name="register_error">/html/error.html</result>
-        </action>
+        <!--<action name="register" class="action.RegisterAction" method="compare">-->
+            <!--<result name="register_success">vipBasicInfo</result>-->
+            <!--<result name="register_error">/html/error.html</result>-->
+        <!--</action>-->
 
-        <action name="send_valid" class="action.RegisterAction" method="sendValidate">
-            <result name="sent">
-                /html/success_sent.html
-                <!--/jsp/register.jsp-->
-            </result>
-        </action>
+        <!--<action name="send_valid" class="action.RegisterAction" method="sendValidate">-->
+            <!--<result name="sent">-->
+                <!--/html/success_sent.html-->
+                <!--&lt;!&ndash;/jsp/register.jsp&ndash;&gt;-->
+            <!--</result>-->
+        <!--</action>-->
     </package>
 
 </struts>

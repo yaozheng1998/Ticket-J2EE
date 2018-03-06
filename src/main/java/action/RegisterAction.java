@@ -14,11 +14,34 @@ import util.VipLevelEnum;
 @Controller
 public class RegisterAction extends BaseAction{
     @Autowired
-    VipService vipService;
+    private VipService vipService;
 
+    //直接注册，然后点击邮件链接以完成验证
     @Override
     public String execute(){
-        return "register";
+        return "showregister";
+    }
+
+    public String register_submit(){
+        String rname=request.getParameter("r_name");
+        String rpassword=request.getParameter("r_password");
+        String rmail=request.getParameter("r_mailbox");
+        String rbank=request.getParameter("r_bankcardId");
+        String captha= Sendmail.send(rmail);
+
+        Vip vip=new Vip();
+        vip.setVipId(vipService.getVipId());
+        vip.setVipName(rname);
+        vip.setMailbox(rmail);
+        vip.setVipPassword(rpassword);
+        vip.setVip_bankCardId(rbank);
+        vip.setConsumeMoney(0);
+        vip.setVipPoint(0);
+        vip.setVipLevel(VipLevelEnum.BRONZE.toString());
+        vip.setCode(captha);
+
+        vipService.registerVip(vip);
+        return "register_done";
     }
 
 
