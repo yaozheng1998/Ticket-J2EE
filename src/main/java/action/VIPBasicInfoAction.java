@@ -16,7 +16,7 @@ public class VIPBasicInfoAction extends BaseAction{
 
     public String showBasicInfo(){
         String vipId=String.valueOf(request.getSession().getAttribute("id"));
-        Vip vip=vipService.findVipById(vipId);
+        Vip vip=vipService.findVipByName(vipId);
         request.setAttribute("vip",vip);
         return SUCCESS;
     }

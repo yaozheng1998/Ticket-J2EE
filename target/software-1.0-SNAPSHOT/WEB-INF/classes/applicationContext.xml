@@ -48,7 +48,7 @@
     <property name="packagesToScan" value="model" />
     <property name="hibernateProperties">
       <props>
-        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
         <prop key="hibernate.show_sql">true</prop>
         <prop key="hibernate.hbm2ddl.auto">update</prop>
         <prop key="hibernate.connection.autocommit">true</prop>
@@ -58,7 +58,7 @@
 
   <bean id="transactionManager"
         class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-    <property name="sessionFactory" ref="sessionFactory" />
+      <property name="sessionFactory" ref="sessionFactory" />
   </bean>
 
   <!--       定义AutoWired自动注入bean          -->
@@ -80,9 +80,7 @@
     <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
   </aop:config>
 
-  <!--配置任务-->
-  <!--<task:scheduled-tasks>-->
-    <!--<task:scheduled ref="" method="" cron="22 22 22 * * ?"/>-->
-  <!--</task:scheduled-tasks>-->
+    <!--支持事务注解-->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
 </beans>

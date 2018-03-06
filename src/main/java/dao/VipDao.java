@@ -14,17 +14,11 @@ public interface VipDao {
     public void save(Vip vip);
 
     /**
-     * 验证该会员编号是否已经存在
-     * @param vipId
+     * 验证该会员名是否已经存在
+     * @param vipName
      * @return
      */
-    public boolean checkExisted(String vipId);
-
-    /**
-     * 获取可用的会员编号
-     * @return
-     */
-    public String getId();
+    public boolean checkExisted(String vipName);
 
     /**
      * 修改会员信息
@@ -33,17 +27,17 @@ public interface VipDao {
     public void update(Vip vip);
 
     /**
-     * 根据会员编号查找会员
-     * @param vipId
+     * 根据会员名查找会员
+     * @param vipName
      * @return
      */
-    public Vip find(String vipId);
+    public Vip find(String vipName);
 
     /**
      * 验证会员密码是否正确
-     * @param vipId
+     * @param vipName
      * @param password
      * @return
      */
-    public boolean checkPassword(String vipId, String password);
+    public boolean checkPassword(String vipName, String password);
 }

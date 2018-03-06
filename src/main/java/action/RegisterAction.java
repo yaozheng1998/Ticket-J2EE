@@ -7,6 +7,10 @@ import service.VipService;
 import util.Sendmail;
 import util.VipLevelEnum;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
 /**
  * @Author YZ
  * @Date 2018/3/5
@@ -27,10 +31,16 @@ public class RegisterAction extends BaseAction{
         String rpassword=request.getParameter("r_password");
         String rmail=request.getParameter("r_mailbox");
         String rbank=request.getParameter("r_bankcardId");
-        String captha= Sendmail.send(rmail);
+
+        //产生10位验证码
+        Random r = new Random();
+        StringBuffer captcha1 = new StringBuffer();
+        for (int i = 0; i < 10; i++) {
+            captcha1.append(r.nextInt(9)+"");
+        }
+        String captcha = new String(captcha1);
 
         Vip vip=new Vip();
-        vip.setVipId(vipService.getVipId());
         vip.setVipName(rname);
         vip.setMailbox(rmail);
         vip.setVipPassword(rpassword);
@@ -38,52 +48,25 @@ public class RegisterAction extends BaseAction{
         vip.setConsumeMoney(0);
         vip.setVipPoint(0);
         vip.setVipLevel(VipLevelEnum.BRONZE.toString());
-        vip.setCode(captha);
+        vip.setBalance(10000);
+        vip.setCode(captcha);
 
         vipService.registerVip(vip);
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+
+        StringBuffer sb=new StringBuffer("<div style=\"padding:24px 20px;\">您好，"+rmail+"<br/><br/>Training是一款\"课程购买\"产品<br/><br/>请点击下面链接激活账号，链接只能使用一次，请尽快激活！</br>");
+        sb.append("<a href=\"http://localhost:8880/emailcheck.action?op=activate&id=");
+        sb.append(rname);
+        sb.append("&token=");
+        sb.append(captcha);
+        sb.append("\">http://localhost:8880/emailcheck.action?op=activate&id=");
+        sb.append(rname);
+        sb.append("&token=");
+        sb.append(captcha);
+        sb.append("</a>"+"<br/>如果以上链接无法点击，请把上面网页地址复制到浏览器地址栏中打开<br/>"+sdf.format(new Date())+ "</div></div>" );
+
+        Sendmail.send(rmail,sb.toString());
         return "register_done";
-    }
-
-
-    /**
-     * 发送验证码后与所填写验证码相比较
-     * @return
-     */
-    public String sendValidate(){
-        String rname=request.getParameter("r_name");
-        String rpassword=request.getParameter("r_password");
-        String rmail=request.getParameter("r_mailbox");
-        System.out.println(rname);
-        System.out.println(rmail);
-//        String rvalid=request.getParameter("r_validate");
-        String rbank=request.getParameter("r_bankcardId");
-        String captha= Sendmail.send(rmail);
-
-        Vip vip=new Vip();
-        vip.setVipId(vipService.getVipId());
-        vip.setVipName(rname);
-        vip.setMailbox(rmail);
-        vip.setVipPassword(rpassword);
-        vip.setVip_bankCardId(rbank);
-        vip.setConsumeMoney(0);
-        vip.setVipPoint(0);
-        vip.setVipLevel(VipLevelEnum.BRONZE.toString());
-        vip.setCode(captha);
-
-        request.getSession().setAttribute("id",vip.getVipId());
-        return "sent";
-    }
-
-    public String compare(){
-        String rvalid=request.getParameter("r_validate");
-        String correct_code=(String)request.getSession().getAttribute("id");
-
-        if(rvalid.equals(correct_code)){
-            return "register_success";
-        }else{
-            request.getSession().setAttribute("id",null);
-            return "register_error";//验证码错误
-        }
-
     }
 }

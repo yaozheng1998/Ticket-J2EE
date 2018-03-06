@@ -19,34 +19,38 @@ public class VipDaoImpl implements VipDao {
     private BaseDao baseDao;
 
     public void save(Vip vip) {
-        baseDao.save(vip);
+        try{
+            baseDao.save(vip);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public boolean checkExisted(String vipId) {
-        if(this.find(vipId)!=null){
+    public boolean checkExisted(String vipName) {
+        if(this.find(vipName)!=null){
             return true;
         }
         return false;
     }
 
-    public String getId() {
-        long currentId=baseDao.getTotalCount(Vip.class);
-        DecimalFormat df=new DecimalFormat("000000");
-        String newId="V"+df.format(currentId+1);
-        return newId;
-    }
+//    public String getId() {
+//        long currentId=baseDao.getTotalCount(Vip.class);
+//        DecimalFormat df=new DecimalFormat("000000");
+//        String newId="V"+df.format(currentId+1);
+//        return newId;
+//    }
 
     public void update(Vip vip) {
         baseDao.update(vip);
     }
 
-    public Vip find(String vipId) {
-        Vip vip=(Vip)baseDao.load(Vip.class,vipId);
+    public Vip find(String vipName) {
+        Vip vip=(Vip)baseDao.load(Vip.class,vipName);
         return vip;
     }
 
-    public boolean checkPassword(String vipId, String password) {
-        Vip vip=this.find(vipId);
+    public boolean checkPassword(String vipName, String password) {
+        Vip vip=this.find(vipName);
         if(vip.getVipPassword().equals(password)){
             return true;
         }

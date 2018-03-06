@@ -8,11 +8,16 @@ import model.Vip;
  */
 public interface VipService {
     /**
-     * 验证该会员编号是否存在
-     * @param vipId
+     * 判断该帐号是否激活
      * @return
      */
-    public boolean isExist(String vipId);
+    public boolean whetherActive(String vipName);
+    /**
+     * 验证该会员编号是否存在
+     * @param vipName
+     * @return
+     */
+    public boolean isExist(String vipName);
 
     /**
      * 注册会员
@@ -21,18 +26,12 @@ public interface VipService {
     public void registerVip(Vip vip);
 
     /**
-     * 获取可用的会员编号
-     * @return
-     */
-    public String getVipId();
-
-    /**
      * 验证会员密码输入是否正确
-     * @param vipId
+     * @param vipName
      * @param password
      * @return
      */
-    public boolean checkPassword(String vipId, String password);
+    public boolean checkPassword(String vipName, String password);
 
     /**
      * 修改会员信息
@@ -42,15 +41,21 @@ public interface VipService {
 
     /**
      * 根据会员编号查找会员
-     * @param vipId
+     * @param vipName
      * @return
      */
-    public Vip findVipById(String vipId);
+    public Vip findVipByName(String vipName);
 
     /**
      * 会员主动取消会员资格，删除会员卡，但不删除数据
-     * @param vipId
+     * @param vipName
      * @return
      */
-    public boolean cancelVip(String vipId);
+    public boolean cancelVip(String vipName);
+
+    /**
+     * 激活
+     * @param name
+     */
+    public void setActive(String name);
 }

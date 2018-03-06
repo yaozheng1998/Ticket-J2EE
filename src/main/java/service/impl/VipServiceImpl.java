@@ -1,45 +1,48 @@
 package service.impl;
 
-import dao.BankcardDao;
 import dao.VipDao;
-import model.Bankcard;
 import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import service.VipService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @Author YZ
  * @Date 2018/2/25
  */
 @Service
+@Transactional
 public class VipServiceImpl implements VipService{
     @Autowired
     private VipDao vipDao;
-    @Autowired
-    private BankcardDao bankcardDao;
 
+    public boolean whetherActive(String vipName) {
+        if(findVipByName(vipName).getActivateDate()==null){
+            return false;
+        }
+        return true;
+    }
 
-    public boolean isExist(String vipId) {
-        return vipDao.checkExisted(vipId);
+    public boolean isExist(String vipName) {
+        return vipDao.checkExisted(vipName);
     }
 
     public void registerVip(Vip vip) {
-        vipDao.save(vip);
         //这里还要添加银行卡信息
-        String bankCardId=vip.getVip_bankCardId();
-        Bankcard bankcard=new Bankcard();
-        bankcard.setBankCardId(bankCardId);
-        bankcard.setBalance(10000);
-        bankcardDao.save(bankcard);
+//        String bankCardId=vip.getVip_bankCardId();
+//        Bankcard bankcard=new Bankcard();
+//        bankcard.setBankCardId(bankCardId);
+//        bankcard.setBalance(10000);
+//        bankcardDao.save(bankcard);
+        vipDao.save(vip);
     }
 
-    public String getVipId() {
-        return vipDao.getId();
-    }
-
-    public boolean checkPassword(String vipId, String password) {
-        return vipDao.checkPassword(vipId,password);
+    public boolean checkPassword(String vipName, String password) {
+        return vipDao.checkPassword(vipName,password);
     }
 
     public void updateVip(Vip vip) {
@@ -47,13 +50,20 @@ public class VipServiceImpl implements VipService{
         //更新银行卡信息
     }
 
-    public Vip findVipById(String vipId) {
-        return vipDao.find(vipId);
+    public Vip findVipByName(String vipName) {
+        return vipDao.find(vipName);
     }
 
-    public boolean cancelVip(String vipId) {
-        Vip vip=vipDao.find(vipId);
+    public boolean cancelVip(String vipName) {
+        Vip vip=vipDao.find(vipName);
         //需要设置状态ENUM为Cancel
         return false;
+    }
+
+    public void setActive(String name) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Vip vip=findVipByName(name);
+        vip.setActivateDate(sdf.format(new Date()));
+        vipDao.update(vip);
     }
 }

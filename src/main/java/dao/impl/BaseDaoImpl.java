@@ -4,6 +4,7 @@ import dao.BaseDao;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -59,25 +60,36 @@ public class BaseDaoImpl implements BaseDao{
     }
 
     public void save(Object obj) {
-        Session session=getNewSession();
-        session.save(obj);
-        session.flush();
-        session.clear();
-        session.close();
+        try{
+            Session session=getNewSession();
+            Transaction transaction=session.beginTransaction();
+            session.save(obj);
+            session.flush();
+            transaction.commit();
+            session.clear();
+            session.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void update(Object obj) {
         Session session=getNewSession();
+        Transaction transaction=session.beginTransaction();
         session.update(obj);
         session.flush();
+        transaction.commit();
         session.clear();
         session.close();
     }
 
     public void delete(Object obj) {
         Session session=getNewSession();
+        Transaction transaction=session.beginTransaction();
         session.delete(obj);
         session.flush();
+        transaction.commit();
         session.clear();
         session.close();
     }

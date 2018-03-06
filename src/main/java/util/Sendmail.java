@@ -12,7 +12,7 @@ import java.util.Random;
  * @Date 2018/3/5
  */
 public class Sendmail {
-    public static String send(String email){
+    public static void send(String email,String content){
         Properties p=new Properties();
         p.put("mail.smtp.host","smtp.smail.nju.edu.cn");
         p.put("mail.smtp.auth","true");
@@ -26,29 +26,22 @@ public class Sendmail {
         Session sendMailSession = Session.getDefaultInstance(p,authenticator);
         Message mailMessage = new MimeMessage(sendMailSession);
 
-        //产生4位验证码
-        Random r = new Random();
-        StringBuffer captcha1 = new StringBuffer();
-        for (int i = 0; i < 10; i++) {
-            captcha1.append(r.nextInt(9)+"");
-        }
-        String captcha = new String(captcha1);
-
         try {
             Address from = new InternetAddress("151150072@smail.nju.edu.cn");
             //设置发出方
             mailMessage.setFrom(from);
             Address to = new InternetAddress(email);//设置接收人员
             mailMessage.setRecipient(Message.RecipientType.TO, to);
-            mailMessage.setSubject("Training College ---验证码---");//设置邮件标题
-            mailMessage.setText(captcha); //设置邮件内容
+            mailMessage.setSubject("Training College ---验证---");//设置邮件标题
+//            mailMessage.setText(captcha); //设置邮件内容
+            mailMessage.setContent(content,"text/html;charset=utf-8");
             // 发送邮件
             Transport.send(mailMessage);
-            return captcha;
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return null;
+
     }
 }

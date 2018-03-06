@@ -13,12 +13,21 @@ import java.io.Serializable;
 @Table(name="vip")
 public class Vip implements Serializable {
     @Id
-    private String vipId;
-
     private String vipName;
+
     private String mailbox;
     private String vipPassword;
     private String vip_bankCardId;
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     private String activateDate;
     private double consumeMoney;
     private double vipPoint;
@@ -36,10 +45,6 @@ public class Vip implements Serializable {
         this.code = code;
     }
 
-    public String getVipId(){return vipId;}
-    public void setVipId(String vipId){
-        this.vipId=vipId;
-    }
     public String getVipName(){
         return vipName;
     }

@@ -37,12 +37,11 @@
             <!--<result name="register_error">/html/error.html</result>-->
         <!--</action>-->
 
-        <!--<action name="send_valid" class="action.RegisterAction" method="sendValidate">-->
-            <!--<result name="sent">-->
-                <!--/html/success_sent.html-->
-                <!--&lt;!&ndash;/jsp/register.jsp&ndash;&gt;-->
-            <!--</result>-->
-        <!--</action>-->
+        <action name="emailcheck" class="action.CheckMailAction">
+            <result name="succ">
+                /html/success_sent.html
+            </result>
+        </action>
     </package>
 
 </struts>

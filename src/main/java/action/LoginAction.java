@@ -21,26 +21,31 @@ public class LoginAction extends BaseAction{
         String name=request.getParameter("name");
         String password=request.getParameter("password");
         char first=name.charAt(0);
-        switch(first){
-            case 'V':
-                Vip vip=vipService.findVipById(name);
-                if(vip==null){
-                    System.out.println("用户名错误");
-                    return "relogin";
-                }else{
-                    if(vipService.checkPassword(name,password)){
+        if(first=='8'){
+            //institution
+            return "relogin";
+        }else {
+            Vip vip = vipService.findVipByName(name);
+            if (vip == null) {
+                System.out.println("用户名错误");
+                return "relogin";
+            } else {
+                if (vipService.whetherActive(name)) {
+                    if (vipService.checkPassword(name, password)) {
                         System.out.println("会员信息准确");
-                        HttpSession session=request.getSession(true);
-                        session.setAttribute("type",vip);
-                        session.setAttribute("id",name);
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("type", vip);
+                        session.setAttribute("id", name);
                         return "vipLogin";
-                    }else{
+                    } else {
                         System.out.println("密码错误");
                         return "relogin";
                     }
+                } else {
+                    System.out.println("请前去邮箱验证");
+                    return "relogin";
                 }
-            default:
-                return "relogin";
+            }
         }
     }
 }
