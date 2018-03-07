@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="util.CourseVO" %><%--
+<%@ page import="util.CourseVO" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/7
@@ -100,6 +101,7 @@
 
 <div class="row" style="padding-left: 13%;margin-bottom: 20px;">
     <%
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         List<CourseVO> courseList = (ArrayList<CourseVO>) request.getAttribute("allCourse");
         for (int i = 0; i < courseList.size(); i++) {
             CourseVO courseVO = courseList.get(i);
@@ -114,9 +116,9 @@
                     <b><%=courseVO.getInsLoc()%></b>
                 </div>
                 <div class="row" style="padding-left: 30px;">
-                    <b><%=courseVO.getStartTime()%></b>
+                    <b><%=sdf.format(courseVO.getStartTime())%></b>
                     <b>至</b>
-                    <b><%=courseVO.getEndTime()%></b>
+                    <b><%=sdf.format(courseVO.getEndTime())%></b>
                 </div>
                 <div class="row" style="padding-left: 30px;padding-bottom: 9px;">
                     <b><%=courseVO.getSubject()%></b>
