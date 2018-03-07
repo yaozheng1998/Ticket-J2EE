@@ -33,4 +33,8 @@ public class InstitutionDaoImpl implements InstitutionDao {
         List<String> list = baseDao.querySQL(sql);
         return list;
     }
+
+    public Institution getInsById(int insId) {
+        return (Institution) baseDao.load(Institution.class,insId);
+    }
 }

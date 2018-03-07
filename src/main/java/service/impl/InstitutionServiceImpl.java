@@ -1,6 +1,7 @@
 package service.impl;
 
 import dao.InstitutionDao;
+import model.Course;
 import model.Institution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,9 @@ public class InstitutionServiceImpl implements InstitutionService{
 
     public List<String> getAllLocation() {
         return institutionDao.getAllLocation();
+    }
+
+    public Institution getInsById(int insId) {
+        return institutionDao.getInsById(insId);
     }
 }

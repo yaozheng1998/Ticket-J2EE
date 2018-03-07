@@ -42,6 +42,10 @@
                 /html/success_sent.html
             </result>
         </action>
+
+        <action name="showCourse" class="action.CourseAction" method="getCourses">
+            <result name="show_course">/jsp/course.jsp</result>
+        </action>
     </package>
 
 </struts>

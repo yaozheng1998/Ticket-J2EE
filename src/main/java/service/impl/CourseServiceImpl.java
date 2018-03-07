@@ -34,4 +34,12 @@ public class CourseServiceImpl implements CourseService{
     public List<Course> getCourseBySubject(List<String> subs) {
         return courseDao.getCourseBySubject(subs);
     }
+
+    public List<Course> getCourseByILS(String ins, String loc, String sub){
+        return courseDao.getCourseByILS(ins, loc, sub);
+    }
+
+    public List<String> getAllSubjects() {
+        return courseDao.getAllSubjects();
+    }
 }

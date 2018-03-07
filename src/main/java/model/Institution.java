@@ -14,6 +14,16 @@ public class Institution {
     @Id
     private int ins_id;
 
+    private String ins_name;
+
+    public String getIns_name() {
+        return ins_name;
+    }
+
+    public void setIns_name(String ins_name) {
+        this.ins_name = ins_name;
+    }
+
     private String password;
     private String location;
     private int classrooms;

@@ -21,6 +21,10 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
+
+<%
+    Vip vip=(Vip) request.getAttribute("vip");
+%>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -36,7 +40,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="main.action">首页</a></li>
-                <li><a href="">课程购买</a></li>
+                <li><a href="showCourse.action">课程购买</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">机构注册</a></li>
@@ -44,7 +48,7 @@
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
                 <label>欢迎您, </label>
-                <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">YZ</p>
+                <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px"><%=vip.getVipName()%></p>
             </div>
         </div>
     </div>
@@ -58,9 +62,7 @@
     </ul>
 </div>
 
-<%
-    Vip vip=(Vip) request.getAttribute("vip");
-%>
+
 
 <fieldset style="position:absolute;top:100px;left:200px;width: 900px;height: 620px">
     <legend>会员信息</legend>
@@ -68,12 +70,12 @@
        style="color: #1ab7ea; float: right; margin-right: 10px;"><b>修改资料</b></a>
 
     <form action="modifyVip" method="post" class="form-horizontal">
-        <div class="form-group">
-            <label for="f-vipId" class="col-sm-3 control-label">会员编号:</label>
-            <div class="col-sm-4">
-                <label class="form-control" id="f-vipId" style="border: none"><%=vip.getVipId()%></label>
-            </div>
-        </div>
+        <%--<div class="form-group">--%>
+            <%--<label for="f-vipId" class="col-sm-3 control-label">会员编号:</label>--%>
+            <%--<div class="col-sm-4">--%>
+                <%--<label class="form-control" id="f-vipId" style="border: none"><%=vip.getVipId()%></label>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 
         <div class="form-group">
             <label for="f-vipName" class="col-sm-3 control-label">会员名:</label>

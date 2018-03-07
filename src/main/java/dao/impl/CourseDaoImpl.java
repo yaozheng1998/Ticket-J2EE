@@ -37,4 +37,21 @@ public class CourseDaoImpl implements CourseDao{
     public List<Course> getCourseBySubject(List<String> subs) {
         return null;
     }
+
+    /**
+     * 根据选择的筛选条件，选择对应的课程；机构，地点，学科每样至多选择一个
+     * @param ins
+     * @param loc
+     * @param sub
+     * @return
+     */
+    public List<Course> getCourseByILS(String ins,String loc,String sub){
+        return null;
+    }
+
+    public List<String> getAllSubjects() {
+        String sql = "select distinct type from `course`";
+        List<String> list = baseDao.querySQL(sql);
+        return list;
+    }
 }

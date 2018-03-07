@@ -26,4 +26,11 @@ public interface InstitutionDao {
      * @return
      */
     public List<String> getAllLocation();
+
+    /**
+     * 根据机构id获得机构的信息
+     * @param insId
+     * @return
+     */
+    public Institution getInsById(int insId);
 }
