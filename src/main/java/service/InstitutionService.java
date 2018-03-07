@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.Institution;
 
@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * @Author YZ
- * @Date 2018/3/4
+ * @Date 2018/3/7
  */
-public interface InstitutionDao {
+public interface InstitutionService {
     /**
      * 获取所有机构信息
      * @return

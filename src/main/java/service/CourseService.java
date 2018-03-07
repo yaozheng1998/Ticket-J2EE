@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.Course;
 
@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * @Author YZ
- * @Date 2018/3/4
+ * @Date 2018/3/7
  */
-public interface CourseDao {
+public interface CourseService {
     /**
      * 获得所有课程，机构名分类，地点分类，学科分类
      * @return

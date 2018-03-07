@@ -1,6 +1,8 @@
 package action;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import service.InstitutionService;
 
 /**
  * @Author YZ
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 public class MainAction extends BaseAction{
     @Override
     public String execute(){
+
         return "main";
     }
 }
