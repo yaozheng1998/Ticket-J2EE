@@ -1,10 +1,14 @@
 package action;
 
+import model.Classroom;
 import model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import service.ClassService;
 import service.CourseService;
 import service.InstitutionService;
+import service.TeacherService;
+import util.ClassroomVO;
 import util.CourseVO;
 
 import java.util.ArrayList;
@@ -19,8 +23,27 @@ public class CourseAction extends BaseAction {
     @Autowired
     private CourseService courseService;
     @Autowired
+    private ClassService classService;
+    @Autowired
+    private TeacherService teacherService;
+    @Autowired
     private InstitutionService institutionService;
 
+    //courseId需要前端传进来
+    private int courseId;
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    /**
+     * 获得课程展示页面的信息
+     * @return
+     */
     public String getCourses(){
         List<Course> courseList=courseService.getAllCourse();
         List<CourseVO> courseVOS=this.getVOFromCo(courseList);
@@ -34,6 +57,12 @@ public class CourseAction extends BaseAction {
         request.setAttribute("allSub",subList);
         return "show_course";
     }
+
+    /**
+     * 为了获得ins name等信息
+     * @param list
+     * @return
+     */
     public List<CourseVO> getVOFromCo(List<Course> list){
         List<CourseVO> courseVOS=new ArrayList<CourseVO>();
         for(Course course:list){
@@ -49,6 +78,31 @@ public class CourseAction extends BaseAction {
             courseVOS.add(newVO);
         }
         return courseVOS;
+    }
+
+    /**
+     * 展示某个课程的分班信息
+     */
+    public String getClassFromOneCourse(){
+        List<Classroom> classroomList=classService.getClassOfOneCourse(courseId);
+        List<ClassroomVO> classroomVOS=this.getVOFromCl(classroomList);
+        request.setAttribute("allClass",classroomVOS);
+        return "show_class";
+    }
+
+    public List<ClassroomVO> getVOFromCl(List<Classroom> list){
+        List<ClassroomVO> classroomVOS=new ArrayList<ClassroomVO>();
+        for(Classroom classroom:list){
+            ClassroomVO newVO=new ClassroomVO();
+            newVO.setClassId(classroom.getClass_id());
+            newVO.setAllNum(classroom.getAll_num());
+            newVO.setName(classroom.getClass_name());
+            newVO.setPrice(classroom.getPrice());
+            newVO.setTeacherName(teacherService.getTeacherById(classroom.getTeacher_id()).getName());
+            newVO.setTeacherRank(teacherService.getTeacherById(classroom.getTeacher_id()).getRank());
+            classroomVOS.add(newVO);
+        }
+        return classroomVOS;
     }
 
 

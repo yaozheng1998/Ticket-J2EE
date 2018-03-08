@@ -6,6 +6,7 @@ import model.Classroom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,23 @@ public class ClassDaoImpl implements ClassDao {
 
     public List<Classroom> getClassOfOneCourse(int course_id) {
         String sql="select * from `class` where course_id="+course_id;
-        return baseDao.querySQL(sql);
+        List<Object[]> classrooms=baseDao.querySQL(sql);
+        return this.getClassrooms(classrooms);
+    }
+
+    private List<Classroom> getClassrooms(List<Object[]> objects){
+        List<Classroom> classroomList=new ArrayList<Classroom>();
+        for(Object[] object:objects){
+            Classroom classroom=new Classroom();
+            classroom.setClass_id((Integer)object[0]);
+            classroom.setClass_name(String.valueOf(object[1]));
+            classroom.setCourse_id((Integer)object[2]);
+            classroom.setTeacher_id((Integer)object[3]);
+            classroom.setPrice((Double)object[4]);
+            classroom.setAll_num((Integer)object[5]);
+            classroom.setNow_num((Integer)object[6]);
+            classroomList.add(classroom);
+        }
+        return classroomList;
     }
 }

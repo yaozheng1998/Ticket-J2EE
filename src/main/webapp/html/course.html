@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/smallseashell.css" rel="stylesheet">
+    <link href="../css/classes.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -100,60 +101,74 @@
                     <b>¥3000</b>
                     <b>3课时/周</b>
                 </div>
-                <p style="padding-left: 90px;"><a href="#" class="btn btn-primary" role="button">购买</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4" style="width: 305px;">
-        <div class="thumbnail" style="width: 305px;">
-            <img src="../img/2.jpg" style="width: 300px;">
-            <div class="caption">
-                <h3>小站教育</h3>
-                <p>托福</p>
-                <p><a href="#" class="btn btn-primary" role="button">购买</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4" style="width: 305px;">
-        <div class="thumbnail" style="width: 305px;">
-            <img src="../img/3.jpg" style="width: 300px;">
-            <div class="caption">
-                <h3>小站教育</h3>
-                <p>托福</p>
-                <p><a href="#" class="btn btn-primary" role="button">购买</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4" style="width: 305px;">
-        <div class="thumbnail" style="width: 305px;">
-            <img src="../img/3.jpg" style="width: 300px;">
-            <div class="caption">
-                <h3>小站教育</h3>
-                <p>托福</p>
-                <p><a href="#" class="btn btn-primary" role="button">购买</a></p>
+                <p style="padding-left: 90px;"><button data-toggle="modal" data-target="#classModal" class="btn btn-primary" type="button">购买</button></p>
             </div>
         </div>
     </div>
 </div>
-<!--<table style="position:relative;left:10%;top:-20px;">-->
-    <!--<tr>-->
-        <!--<td style="padding: 50px">-->
-            <!--<img style="height: 150px;width: 200px">-->
-        <!--</td>-->
-        <!--<td style="padding-bottom: 30px;padding-left: 10px;padding-top: 40px;">-->
-            <!--<p style="width: 100px;height: 30px">小站教育</p>-->
-            <!--<p style="width: 100px;height: 30px">托福</p>-->
-            <!--<p style="width: 100px;height: 30px">上海</p>-->
-        <!--</td>-->
-        <!--<td style="padding:50px;">-->
-            <!--<form action="searchRoom" method="post">-->
-                <!--<button type="submit" class="btn btn-default btn-primary">购买</button>-->
-            <!--</form>-->
-        <!--</td>-->
-    <!--</tr>-->
-<!--</table>-->
+
+<div id="classModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">课程购买</h4>
+            </div>
+            <div class="modal-body" style="height: 700px;">
+                <div class="tab-wrapper">
+                    <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-1" checked>
+                    <label for="tab-radio-1" class="tab-handler tab-handler-1">选班级</label>
+                    <div class="tab-content tab-content-1">
+                        <div class="col-sm-6 col-md-4" style="width: 220px;">
+                            <div class="thumbnail" style="width: 220px;">
+                                <div class="caption">
+                                    <div class="row" style="padding-left: 13px;">
+                                        <h3>雅思七分班</h3>
+                                        <b>10人班</b>
+                                    </div>
+                                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
+                                        <b>¥2000</b>
+                                        <b>大花老师</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4" style="width: 220px;">
+                            <div class="thumbnail" style="width: 220px;">
+                                <div class="caption">
+                                    <div class="row" style="padding-left: 13px;">
+                                        <h3>雅思八分班</h3>
+                                        <b>5人班</b>
+                                    </div>
+                                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
+                                        <b>¥8000</b>
+                                        <b>okk老师</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
+                    <label for="tab-radio-2" class="tab-handler tab-handler-2">不选班级</label>
+                    <div class="tab-content tab-content-2">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">付款</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </body>
-<script src="../js/jquery-1.7.2.min.js"></script>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script src="../js/smallseashell.js"></script>
 </html>

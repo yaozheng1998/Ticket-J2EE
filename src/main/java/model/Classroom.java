@@ -14,9 +14,19 @@ public class Classroom {
     @Id
     private int class_id;
 
+    private String class_name;
+
+    public String getClass_name() {
+        return class_name;
+    }
+
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
+    }
+
     private int course_id;
     private int teacher_id;
-    private int price;
+    private double price;
     private int all_num;
     private int now_num;
 
@@ -27,8 +37,8 @@ public class Classroom {
     public void setCourse_id(int course_id){this.course_id=course_id;}
     public int getTeacher_id(){return teacher_id;}
     public void setTeacher_id(int teacher_id){this.teacher_id=teacher_id;}
-    public int getPrice(){return price;}
-    public void setPrice(int price){this.price=price;}
+    public double getPrice(){return price;}
+    public void setPrice(double price){this.price=price;}
     public int getAll_num(){return all_num;}
     public void setAll_num(int all_num){this.all_num=all_num;}
     public int getNow_num(){return now_num;}

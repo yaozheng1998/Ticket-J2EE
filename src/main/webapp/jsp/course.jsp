@@ -1,7 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="util.CourseVO" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="util.ClassroomVO" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/7
@@ -125,7 +126,62 @@
                     <b>¥ <%=courseVO.getBasicPrice()%>起</b>
                     <b><%=courseVO.getTimes()%>课时/周</b>
                 </div>
-                <p style="padding-left: 90px;"><a href="#" class="btn btn-primary" role="button">购买</a></p>
+                <p style="padding-left: 90px;"><button id='<%=courseVO.getCourseId()%>' data-toggle="modal" data-target="#classModal" class="btn btn-primary" type="button" onclick="showTheClass(this)">购买</button></p>
+
+
+                <div id="classModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">课程购买</h4>
+                            </div>
+                            <div class="modal-body" style="height: 700px;">
+                                <div class="tab-wrapper">
+                                    <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-1" checked>
+                                    <label for="tab-radio-1" class="tab-handler tab-handler-1">选班级</label>
+                                    <div class="tab-content tab-content-1">
+                                        <%List<ClassroomVO> classroomVOS=(ArrayList<ClassroomVO>)request.getAttribute("allClass");
+                                            if(classroomVOS!=null){
+                                                for(int j=0;j<classroomVOS.size();j++){
+                                                    ClassroomVO vo=classroomVOS.get(j);
+                                        %>
+                                        <div class="col-sm-6 col-md-4" style="width: 220px;">
+                                            <div class="thumbnail" style="width: 220px;">
+                                                <div class="caption">
+                                                    <div class="row" style="padding-left: 13px;">
+                                                        <h3><%=vo.getName()%></h3>
+                                                        <b><%=vo.getAllNum()%>人班</b>
+                                                    </div>
+                                                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
+                                                        <b>¥<%=vo.getPrice()%></b>
+                                                        <b><%=vo.getTeacherRank()%>讲师 <%=vo.getTeacherName()%></b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%
+                                                }
+                                            }
+                                        %>
+                                    </div>
+
+                                    <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
+                                    <label for="tab-radio-2" class="tab-handler tab-handler-2">不选班级</label>
+                                    <div class="tab-content tab-content-2">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">付款</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -161,6 +217,23 @@
     <%--%>--%>
 <%--</table>--%>
 </body>
-<script src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/smallseashell.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var course_id;
+    function showTheClass(obj){
+        course_id=obj.getAttribute("id");
+        $.ajax({
+            type:"post",
+            url:"showClass",
+            async:false,
+            data:{
+                courseId:course_id,
+            },
+            success:function(data){
+//                location.reload();
+            }
+        });
+    }
+</script>
 </html>

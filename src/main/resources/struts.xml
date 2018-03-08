@@ -46,6 +46,12 @@
         <action name="showCourse" class="action.CourseAction" method="getCourses">
             <result name="show_course">/jsp/course.jsp</result>
         </action>
+        <action name="showClass" class="action.CourseAction" method="getClassFromOneCourse">
+            <result name="show_class">/jsp/course.jsp</result>
+        </action>
+
+
+
     </package>
 
 </struts>
