@@ -38,13 +38,6 @@ public class CourseDaoImpl implements CourseDao{
         return null;
     }
 
-    /**
-     * 根据选择的筛选条件，选择对应的课程；机构，地点，学科每样至多选择一个
-     * @param ins
-     * @param loc
-     * @param sub
-     * @return
-     */
     public List<Course> getCourseByILS(String ins,String loc,String sub){
         return null;
     }
@@ -53,5 +46,9 @@ public class CourseDaoImpl implements CourseDao{
         String sql = "select distinct type from `course`";
         List<String> list = baseDao.querySQL(sql);
         return list;
+    }
+
+    public Course getCourseById(int id) {
+        return (Course)baseDao.load(Course.class,id);
     }
 }

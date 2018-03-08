@@ -32,4 +32,11 @@ public interface CourseDao {
      * @return
      */
     public List<String> getAllSubjects();
+
+    /**
+     * 根据课程编号获得所有课程信息
+     * @param id
+     * @return
+     */
+    public Course getCourseById(int id);
 }
