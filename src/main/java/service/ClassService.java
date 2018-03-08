@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.Classroom;
 
@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * @Author YZ
- * @Date 2018/3/4
+ * @Date 2018/3/8
  */
-public interface ClassDao {
+public interface ClassService {
     /**
      * 获得某个课程下的所有班级
      * @return

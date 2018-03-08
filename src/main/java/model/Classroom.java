@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="class")
-public class Class {
+public class Classroom {
     @Id
     private int class_id;
 

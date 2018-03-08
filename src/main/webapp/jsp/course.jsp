@@ -122,7 +122,7 @@
                 </div>
                 <div class="row" style="padding-left: 30px;padding-bottom: 9px;">
                     <b><%=courseVO.getSubject()%></b>
-                    <b>¥ <%=courseVO.getBasicPrice()%></b>
+                    <b>¥ <%=courseVO.getBasicPrice()%>起</b>
                     <b><%=courseVO.getTimes()%>课时/周</b>
                 </div>
                 <p style="padding-left: 90px;"><a href="#" class="btn btn-primary" role="button">购买</a></p>
