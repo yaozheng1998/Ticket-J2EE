@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.Order;
 
@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * @Author YZ
- * @Date 2018/3/4
+ * @Date 2018/3/9
  */
-public interface OrderDao {
+public interface OrderService {
     /**
      * 根据用户名获得我的订单信息
      * @param name

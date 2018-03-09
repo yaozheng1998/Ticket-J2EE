@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/classes.css" rel="stylesheet">
+    <link href="../css/table.css" rel="stylesheet">
+    <link href="../css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -43,63 +45,67 @@
     <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-1" checked>
     <label for="tab-radio-1" class="tab-handler tab-handler-1">选班级</label>
     <div class="tab-content tab-content-1">
-        <div class="col-sm-6 col-md-4" style="width: 220px;">
-            <div class="thumbnail" style="width: 220px;">
-                <div class="caption">
-                    <div class="row" style="padding-left: 13px;">
-                        <h3>小站托福</h3>
-                        <b>10人班</b>
+        <div style="width: 90%;height: 200px;">
+            <div class="col-sm-6 col-md-4" style="width: 220px;">
+                <div class="thumbnail" style="width: 220px;">
+                    <div class="caption">
+                        <div class="row" style="padding-left: 13px;">
+                            <h3>小站托福</h3>
+                            <b>10人班</b>
+                        </div>
+                        <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
+                            <b>¥9000</b>
+                            <b>金牌讲师 大花</b>
+                        </div>
                     </div>
-                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
-                        <b>¥9000</b>
-                        <b>金牌讲师 大花</b>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4" style="width: 220px;">
+                <div class="thumbnail" style="width: 220px;">
+                    <div class="caption">
+                        <div class="row" style="padding-left: 13px;">
+                            <h3>小站托福</h3>
+                            <b>10人班</b>
+                        </div>
+                        <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
+                            <b>¥9000</b>
+                            <b>金牌讲师 大花</b>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-4" style="width: 220px;">
-            <div class="thumbnail" style="width: 220px;">
-                <div class="caption">
-                    <div class="row" style="padding-left: 13px;">
-                        <h3>小站托福</h3>
-                        <b>10人班</b>
-                    </div>
-                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
-                        <b>¥9000</b>
-                        <b>金牌讲师 大花</b>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4" style="width: 220px;">
-            <div class="thumbnail" style="width: 220px;">
-                <div class="caption">
-                    <div class="row" style="padding-left: 13px;">
-                        <h3>小站托福</h3>
-                        <b>10人班</b>
-                    </div>
-                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
-                        <b>¥9000</b>
-                        <b>金牌讲师 大花</b>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4" style="width: 220px;">
-            <div class="thumbnail" style="width: 220px;">
-                <div class="caption">
-                    <div class="row" style="padding-left: 13px;">
-                        <h3>小站托福</h3>
-                        <b>10人班</b>
-                    </div>
-                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
-                        <b>¥9000</b>
-                        <b>金牌讲师 大花</b>
-                    </div>
-                </div>
-            </div>
+
+        <div class="write_form">
+            <button class="btn btn-primary" style="margin-left: 15px;" onclick="append();"> + 新增学生</button>
+            <table id="addStudent" class="table table-bordered" style="width: 900px;border-width: 1;margin-top: 10px;text-align: center">
+                <thead>
+                    <th>学生姓名</th>
+                    <th>选择班级</th>
+                    <th>联系方式</th>
+                    <th></th>
+                </thead>
+                <tbody id="three_stu">
+                    <tr>
+                        <td><input placeholder="请填写学生姓名" value=""></td>
+                        <td>
+                            <select class="selectpicker">
+                                <option value="1">雅思7分班</option>
+                                <option value="2">雅思8分班</option>
+                            </select>
+                        </td>
+                        <td><input placeholder="请填写联系方式" value=""></td>
+                        <td><button class="btn minus_btn" onclick="del()">
+                            <!--<span class="glyphicon glyphicon-minus"></span>-->
+                            删除
+                        </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+
     <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
     <label for="tab-radio-2" class="tab-handler tab-handler-2">不选班级</label>
     <div class="tab-content tab-content-2">
@@ -110,28 +116,15 @@
 </body>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.js"></script>
+<script type="text/javascript">
+    function append(){
+        var newLine='<tr><td><input placeholder="请填写学生姓名" value=""></td> <td> <select style="width: 219px;height: 34px;background: transparent"> <option value="1">雅思7分班</option> <option value="2">雅思8分班</option> </select> </td> <td><input placeholder="请填写联系方式" value=""></td> <td><button class="btn minus_btn"> 删除 </button> </td> </tr>';
+        //可能java中class是关键词？class用不了
+        $("#three_stu").append(newLine);
+    }
+    function del(){
+        $(":checked").fadeOut("show");
+    }
+</script>
 </html>
-
-<!--<%List<ClassroomVO> classroomVOS=(ArrayList<ClassroomVO>)request.getAttribute("allClass");-->
-    <!--if(classroomVOS!=null){-->
-    <!--for(int j=0;j<classroomVOS.size();j++){-->
-    <!--ClassroomVO vo=classroomVOS.get(j);-->
-    <!--%>-->
-    <!--<div class="col-sm-6 col-md-4" style="width: 220px;">-->
-        <!--<div class="thumbnail" style="width: 220px;">-->
-            <!--<div class="caption">-->
-                <!--<div class="row" style="padding-left: 13px;">-->
-                    <!--<h3><%=vo.getName()%></h3>-->
-                    <!--<b><%=vo.getAllNum()%>人班</b>-->
-                <!--</div>-->
-                <!--<div class="row" style="padding-left: 13px;padding-bottom: 9px;">-->
-                    <!--<b>¥<%=vo.getPrice()%></b>-->
-                    <!--<b><%=vo.getTeacherRank()%>讲师 <%=vo.getTeacherName()%></b>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<%-->
-    <!--}-->
-    <!--}-->
-    <!--%>-->

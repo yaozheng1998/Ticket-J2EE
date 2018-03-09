@@ -1,0 +1,13 @@
+th,tr{
+    text-align: center;
+}
+.minus_btn{
+    width:60px;
+    border-color: rgb(249,93,78);
+    background-color: transparent;
+    color: rgb(249,93,78);
+}
+.minus_btn:hover,.minus_btn:checked{
+    background-color: rgb(249,93,78);
+    color: whitesmoke;
+}

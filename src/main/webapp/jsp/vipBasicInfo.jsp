@@ -39,8 +39,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="vipBasicInfo.action">首页</a></li>
-                <li><a href="showCourse.action">课程购买</a></li>
+                <li><a href="showCourse.action">首页</a></li>
+                <li><a href="vipBasicInfo.action">个人信息</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">机构注册</a></li>
