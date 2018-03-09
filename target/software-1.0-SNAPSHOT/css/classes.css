@@ -40,6 +40,8 @@
 /*}*/
 
 .tab-wrapper{
+    margin-top: 100px;
+    margin-left: 15%;
     position: relative;
     width: 265px;
     height: 40px;
@@ -76,7 +78,7 @@
     position: absolute;
     top: 60px;
     left: 0;
-    width: 500px;
+    width: 980px;
     height:600px;
     padding: 30px;
     color: #999;

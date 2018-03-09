@@ -35,11 +35,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="margin-left: -50px">Training</a>
+            <a href="vipBasicInfo.action" class="navbar-brand" style="margin-left: -50px">Training</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="main.action">首页</a></li>
+                <li><a href="vipBasicInfo.action">首页</a></li>
                 <li><a href="showCourse.action">课程购买</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

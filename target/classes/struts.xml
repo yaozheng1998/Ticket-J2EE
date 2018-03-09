@@ -47,7 +47,7 @@
             <result name="show_course">/jsp/course.jsp</result>
         </action>
         <action name="showClass" class="action.CourseAction" method="getClassFromOneCourse">
-            <result name="show_class">/jsp/course.jsp</result>
+            <result name="show_class">/jsp/class.jsp</result>
         </action>
 
 

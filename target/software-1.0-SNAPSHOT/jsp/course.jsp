@@ -34,12 +34,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="margin-left: -50px">Training</a>
+            <a href="vipBasicInfo.action" class="navbar-brand" style="margin-left: -50px">Training</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="main.action">首页</a></li>
-                <li><a href="">课程购买</a></li>
+                <li><a href="vipBasicInfo.action">首页</a></li>
+                <li><a href="showCourse.action">课程购买</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">机构注册</a></li>
@@ -47,7 +47,7 @@
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
                 <label>欢迎您, </label>
-                <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">YZ</p>
+                <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px"><%=session.getAttribute("id")%></p>
             </div>
         </div>
     </div>
@@ -126,62 +126,7 @@
                     <b>¥ <%=courseVO.getBasicPrice()%>起</b>
                     <b><%=courseVO.getTimes()%>课时/周</b>
                 </div>
-                <p style="padding-left: 90px;"><button id='<%=courseVO.getCourseId()%>' data-toggle="modal" data-target="#classModal" class="btn btn-primary" type="button" onclick="showTheClass(this)">购买</button></p>
-
-
-                <div id="classModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">课程购买</h4>
-                            </div>
-                            <div class="modal-body" style="height: 700px;">
-                                <div class="tab-wrapper">
-                                    <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-1" checked>
-                                    <label for="tab-radio-1" class="tab-handler tab-handler-1">选班级</label>
-                                    <div class="tab-content tab-content-1">
-                                        <%List<ClassroomVO> classroomVOS=(ArrayList<ClassroomVO>)request.getAttribute("allClass");
-                                            if(classroomVOS!=null){
-                                                for(int j=0;j<classroomVOS.size();j++){
-                                                    ClassroomVO vo=classroomVOS.get(j);
-                                        %>
-                                        <div class="col-sm-6 col-md-4" style="width: 220px;">
-                                            <div class="thumbnail" style="width: 220px;">
-                                                <div class="caption">
-                                                    <div class="row" style="padding-left: 13px;">
-                                                        <h3><%=vo.getName()%></h3>
-                                                        <b><%=vo.getAllNum()%>人班</b>
-                                                    </div>
-                                                    <div class="row" style="padding-left: 13px;padding-bottom: 9px;">
-                                                        <b>¥<%=vo.getPrice()%></b>
-                                                        <b><%=vo.getTeacherRank()%>讲师 <%=vo.getTeacherName()%></b>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <%
-                                                }
-                                            }
-                                        %>
-                                    </div>
-
-                                    <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
-                                    <label for="tab-radio-2" class="tab-handler tab-handler-2">不选班级</label>
-                                    <div class="tab-content tab-content-2">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">付款</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <p style="padding-left: 90px;"><button id='<%=courseVO.getCourseId()%>' class="btn btn-primary" type="button" onclick="showTheClass(this)">购买</button></p>
             </div>
         </div>
     </div>
@@ -218,6 +163,7 @@
 <%--</table>--%>
 </body>
 <script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script src="../js/smallseashell.js"></script>
 <script type="text/javascript" charset="utf-8">
     var course_id;
@@ -232,7 +178,8 @@
             },
             success:function(data){
 //                location.reload();
-            }
+                window.location.href="/jsp/class.jsp";
+            },
         });
     }
 </script>

@@ -11,6 +11,7 @@ import service.TeacherService;
 import util.ClassroomVO;
 import util.CourseVO;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +87,9 @@ public class CourseAction extends BaseAction {
     public String getClassFromOneCourse(){
         List<Classroom> classroomList=classService.getClassOfOneCourse(courseId);
         List<ClassroomVO> classroomVOS=this.getVOFromCl(classroomList);
-        request.setAttribute("allClass",classroomVOS);
+//        System.out.println("logic"+classroomVOS.size());
+        HttpSession session = request.getSession(true);
+        session.setAttribute("allClass",classroomVOS);
         return "show_class";
     }
 
