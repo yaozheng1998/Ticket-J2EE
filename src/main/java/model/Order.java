@@ -18,7 +18,7 @@ public class Order {
     private int ins_id;
     private String order_time;
     private float money;
-    private int pay_type;
+    private String pay_type;
     private String refund_time;
     private float refund_money;
 
@@ -39,12 +39,12 @@ public class Order {
         this.refund_time = refund_time;
     }
 
-    public int getPay_type() {
+    public String getPay_type() {
 
         return pay_type;
     }
 
-    public void setPay_type(int pay_type) {
+    public void setPay_type(String pay_type) {
         this.pay_type = pay_type;
     }
 

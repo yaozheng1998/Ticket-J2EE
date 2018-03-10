@@ -22,4 +22,8 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> getOrdersFromVIPName(String name) {
         return orderDao.getOrdersFromVIPName(name);
     }
+
+    public Order getInfoByOrderId(int orderId) {
+        return orderDao.getInfoByOrderId(orderId);
+    }
 }

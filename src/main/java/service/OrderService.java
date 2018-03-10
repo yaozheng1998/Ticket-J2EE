@@ -15,4 +15,11 @@ public interface OrderService {
      * @return
      */
     public List<Order> getOrdersFromVIPName(String name);
+
+    /**
+     * 根据订单编号获得信息
+     * @param orderId
+     * @return
+     */
+    public Order getInfoByOrderId(int orderId);
 }

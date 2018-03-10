@@ -21,4 +21,8 @@ public class OrderDaoImpl implements OrderDao {
     public List<Order> getOrdersFromVIPName(String name) {
         return null;
     }
+
+    public Order getInfoByOrderId(int orderId) {
+        return (Order)baseDao.load(Order.class,orderId);
+    }
 }

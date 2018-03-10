@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.OrderClass;
 import util.OrderClassVO;
@@ -7,9 +7,9 @@ import java.util.List;
 
 /**
  * @Author YZ
- * @Date 2018/3/4
+ * @Date 2018/3/10
  */
-public interface OrderClassDao {
+public interface OrderClassService {
     /**
      * 根据用户名得到名下所有课程对应班级；直接显示班级
      * @param name
@@ -23,5 +23,4 @@ public interface OrderClassDao {
      * @return
      */
     public List<OrderClass> getClassByState(String name,String state);
-
 }

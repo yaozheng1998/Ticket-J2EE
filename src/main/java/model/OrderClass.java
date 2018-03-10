@@ -19,13 +19,22 @@ public class OrderClass {
     private int class_id;
     private String real_name;
     private String phone;
-    private float grade;
+    private double grade;
+    private String state;
 
-    public float getGrade() {
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(float grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 

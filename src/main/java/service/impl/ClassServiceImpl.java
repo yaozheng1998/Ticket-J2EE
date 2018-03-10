@@ -22,4 +22,8 @@ public class ClassServiceImpl implements ClassService {
     public List<Classroom> getClassOfOneCourse(int course_id) {
         return classDao.getClassOfOneCourse(course_id);
     }
+
+    public Classroom getInfoByClassId(int class_id) {
+        return classDao.getInfoByClassId(class_id);
+    }
 }

@@ -24,6 +24,10 @@ public class ClassDaoImpl implements ClassDao {
         return this.getClassrooms(classrooms);
     }
 
+    public Classroom getInfoByClassId(int class_id) {
+        return (Classroom)baseDao.load(Classroom.class,class_id);
+    }
+
     private List<Classroom> getClassrooms(List<Object[]> objects){
         List<Classroom> classroomList=new ArrayList<Classroom>();
         for(Object[] object:objects){

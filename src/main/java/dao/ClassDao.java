@@ -14,4 +14,11 @@ public interface ClassDao {
      * @return
      */
     public List<Classroom> getClassOfOneCourse(int course_id);
+
+    /**
+     * 根据class id获得信息
+     * @param class_id
+     * @return
+     */
+    public Classroom getInfoByClassId(int class_id);
 }
