@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="vipBasicInfo.action" class="navbar-brand" style="margin-left: -50px">Training</a>
+            <a href="showCourse.action" class="navbar-brand" style="margin-left: -50px">Training</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">

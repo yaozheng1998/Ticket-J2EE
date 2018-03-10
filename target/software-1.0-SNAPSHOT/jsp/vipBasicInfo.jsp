@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="vipBasicInfo.action" class="navbar-brand" style="margin-left: -50px">Training</a>
+            <a href="showCourse.action" class="navbar-brand" style="margin-left: -50px">Training</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -106,8 +106,9 @@
             <label for="f-vipGrade" class="col-sm-3 control-label">会员等级:</label>
             <div class="col-sm-4">
                 <label class="form-control" id="f-vipGrade" style="border: none">
-                    <%if(vip.getVipLevel().equals("CROWN"))%>
-                    皇冠会员
+                    <%--<%if(vip.getVipLevel().equals("CROWN"))%>--%>
+                    <%--皇冠会员--%>
+                        <%=vip.getVipLevel()%>会员
                 </label>
             </div>
         </div>
