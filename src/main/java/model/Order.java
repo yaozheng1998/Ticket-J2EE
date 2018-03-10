@@ -9,35 +9,16 @@ import javax.persistence.Table;
  * @Date 2018/3/4
  */
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
     @Id
     private int order_id;
 
-    private String vip_id;
+    private String vip_name;
     private int ins_id;
     private String order_time;
     private float money;
     private String pay_type;
-    private String refund_time;
-    private float refund_money;
-
-    public float getRefund_money() {
-        return refund_money;
-    }
-
-    public void setRefund_money(float refund_money) {
-        this.refund_money = refund_money;
-    }
-
-    public String getRefund_time() {
-
-        return refund_time;
-    }
-
-    public void setRefund_time(String refund_time) {
-        this.refund_time = refund_time;
-    }
 
     public String getPay_type() {
 
@@ -75,13 +56,12 @@ public class Order {
         this.ins_id = ins_id;
     }
 
-    public String getVip_id() {
-
-        return vip_id;
+    public String getVip_name() {
+        return vip_name;
     }
 
-    public void setVip_id(String vip_id) {
-        this.vip_id = vip_id;
+    public void setVip_name(String vip_name) {
+        this.vip_name = vip_name;
     }
 
     public int getOrder_id() {

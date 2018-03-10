@@ -39,4 +39,11 @@ public interface CourseDao {
      * @return
      */
     public Course getCourseById(int id);
+
+    /**
+     * 根据课程编号获得课程信息
+     * @param courseId
+     * @return
+     */
+    public Course getInfoByCourseId(int courseId);
 }

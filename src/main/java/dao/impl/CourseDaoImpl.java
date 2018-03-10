@@ -51,4 +51,8 @@ public class CourseDaoImpl implements CourseDao{
     public Course getCourseById(int id) {
         return (Course)baseDao.load(Course.class,id);
     }
+
+    public Course getInfoByCourseId(int courseId) {
+        return (Course)baseDao.load(Course.class,courseId);
+    }
 }

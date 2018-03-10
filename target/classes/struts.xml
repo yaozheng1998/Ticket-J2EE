@@ -50,6 +50,10 @@
             <result name="show_class">/jsp/class.jsp</result>
         </action>
 
+        <action name="showMyClasses" class="action.VIPClassAction">
+            <result name="show_my_classes">/jsp/vipOrder.jsp</result>
+        </action>
+
 
 
     </package>

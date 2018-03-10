@@ -15,12 +15,38 @@ public class OrderClass {
     @Id
     private int orderclass_id;
 
-    private int order_id;
+    public int getItorder_id() {
+        return itorder_id;
+    }
+
+    public void setItorder_id(int itorder_id) {
+        this.itorder_id = itorder_id;
+    }
+
+    private int itorder_id;
     private int class_id;
     private String real_name;
     private String phone;
     private double grade;
     private String state;
+    private String refund_time;
+    private double refund_money;
+
+    public String getRefund_time() {
+        return refund_time;
+    }
+
+    public double getRefund_money() {
+        return refund_money;
+    }
+
+    public void setRefund_money(double refund_money) {
+        this.refund_money = refund_money;
+    }
+
+    public void setRefund_time(String refund_time) {
+        this.refund_time = refund_time;
+    }
 
     public String getState() {
         return state;
@@ -63,15 +89,6 @@ public class OrderClass {
 
     public void setClass_id(int class_id) {
         this.class_id = class_id;
-    }
-
-    public int getOrder_id() {
-
-        return order_id;
-    }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
     }
 
     public int getOrderclass_id() {

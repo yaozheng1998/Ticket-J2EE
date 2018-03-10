@@ -32,4 +32,11 @@ public interface CourseService {
      * @return
      */
     public List<String> getAllSubjects();
+
+    /**
+     * 根据课程编号获得课程信息
+     * @param courseId
+     * @return
+     */
+    public Course getInfoByCourseId(int courseId);
 }

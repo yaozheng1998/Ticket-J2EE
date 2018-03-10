@@ -1,5 +1,10 @@
 package util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @Author YZ
  * @Date 2018/3/10
@@ -10,12 +15,54 @@ public class OrderClassVO {
     String pay_type;
     String ins_name;
     String class_name;
+    String begin_time;
+    String end_time;
     String teacher_name;
     double price;
     String student_name;
     String phone;
     double grade;
     String state;
+    String refund_time;
+    double refund_money;
+
+    public double getRefund_money() {
+        return refund_money;
+    }
+
+    public void setRefund_money(double refund_money) {
+        this.refund_money = refund_money;
+    }
+
+    public Date getRefund_time() throws ParseException {
+        if(refund_time!=null) {
+            return sdf.parse(refund_time);
+        }else{
+            return null;
+        }
+    }
+
+    public void setRefund_time(String refund_time) {
+        this.refund_time = refund_time;
+    }
+
+    DateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+
+    public Date getBegin_time() throws ParseException {
+        return sdf.parse(begin_time);
+    }
+
+    public void setBegin_time(String begin_time) {
+        this.begin_time = begin_time;
+    }
+
+    public Date getEnd_time() throws ParseException {
+        return sdf.parse(end_time);
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
 
     public String getState() {
         return state;
@@ -88,9 +135,9 @@ public class OrderClassVO {
         this.pay_type = pay_type;
     }
 
-    public String getOrder_time() {
+    public Date getOrder_time() throws ParseException {
 
-        return order_time;
+        return sdf.parse(order_time);
     }
 
     public void setOrder_time(String order_time) {
