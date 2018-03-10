@@ -21,4 +21,10 @@ public interface ClassService {
      * @return
      */
     public Classroom getInfoByClassId(int class_id);
+
+    /**
+     * 新增一个班级
+     * @param classroom
+     */
+    public void save(Classroom classroom);
 }

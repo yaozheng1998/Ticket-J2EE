@@ -34,12 +34,17 @@ public class OrderClassVO {
         this.refund_money = refund_money;
     }
 
-    public Date getRefund_time() throws ParseException {
-        if(refund_time!=null) {
-            return sdf.parse(refund_time);
-        }else{
-            return null;
-        }
+//    public Date getRefund_time() throws ParseException {
+//        if(refund_time!=null&&refund_time.length()!=0) {
+//            return sdf.parse(refund_time);
+//        }else{
+//            return null;
+//        }
+//    }
+
+
+    public String getRefund_time() {
+        return refund_time;
     }
 
     public void setRefund_time(String refund_time) {

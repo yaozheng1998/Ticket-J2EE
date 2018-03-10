@@ -23,4 +23,10 @@ public interface OrderClassService {
      * @return
      */
     public List<OrderClass> getClassByState(String name,String state);
+
+    /**
+     * 新增一条学生信息
+     * @param orderClass
+     */
+    public void save(OrderClass orderClass);
 }

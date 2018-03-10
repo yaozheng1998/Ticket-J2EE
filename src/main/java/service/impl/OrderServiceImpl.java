@@ -26,4 +26,8 @@ public class OrderServiceImpl implements OrderService{
     public Order getInfoByOrderId(int orderId) {
         return orderDao.getInfoByOrderId(orderId);
     }
+
+    public void save(Order order) {
+        orderDao.save(order);
+    }
 }

@@ -27,4 +27,8 @@ public class OrderClassServiceImpl implements OrderClassService {
     public List<OrderClass> getClassByState(String name, String state) {
         return orderClassDao.getClassByState(name,state);
     }
+
+    public void save(OrderClass orderClass) {
+        orderClassDao.save(orderClass);
+    }
 }

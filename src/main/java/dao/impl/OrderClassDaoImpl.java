@@ -20,15 +20,19 @@ public class OrderClassDaoImpl implements OrderClassDao {
     private BaseDao baseDao;
 
     public List<OrderClass> getClassFromVIPName(String name) {
-        String sql="select oc.orderclass_id,oc.itorder_id,oc.class_id,oc.real_name,oc.phone,oc.grade,oc.state from `order_classes` oc,`orders` o where o.order_id=oc.itorder_id and o.vip_name="+name;
+        String sql="select oc.orderclass_id,oc.itorder_id,oc.class_id,oc.real_name,oc.phone,oc.grade,oc.state,oc.refund_time,oc.refund_money from `order_classes` oc,`orders` o where o.order_id=oc.itorder_id and o.vip_name="+name;
         List<Object[]> classes=baseDao.querySQL(sql);
         return this.getOrderClasses(classes);
     }
 
     public List<OrderClass> getClassByState(String name,String state) {
-        String sql="select oc.orderclass_id,oc.itorder_id,oc.class_id,oc.real_name,oc.phone,oc.grade,oc.state from `order_classes` oc,`orders` o where o.order_id=oc.itorder_id and o.vip_name="+name+" and oc.state="+state;
+        String sql="select oc.orderclass_id,oc.itorder_id,oc.class_id,oc.real_name,oc.phone,oc.grade,oc.state,oc.refund_time,oc.refund_money from `order_classes` oc,`orders` o where o.order_id=oc.itorder_id and o.vip_name="+name+" and oc.state="+state;
         List<Object[]> classes=baseDao.querySQL(sql);
         return this.getOrderClasses(classes);
+    }
+
+    public void save(OrderClass orderClass) {
+        baseDao.save(orderClass);
     }
 
     private List<OrderClass> getOrderClasses(List<Object[]> objects){

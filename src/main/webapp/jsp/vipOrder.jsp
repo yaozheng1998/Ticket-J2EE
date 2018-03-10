@@ -1,6 +1,7 @@
 <%@ page import="util.OrderClassVO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.DateFormat" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/10
@@ -69,8 +70,16 @@
             <%
                 List<OrderClassVO> list=(List<OrderClassVO>)request.getAttribute("myClasses");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
             %>
             <div class="write_form">
+                <%
+                    if(list.size()==0){
+                %>
+                <b>您还没有订单！</b>
+                <%
+                }else{
+                %>
                 <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
                     <th>订单号</th>
@@ -123,6 +132,9 @@
                     %>
                     </tbody>
                 </table>
+                <%
+                    }
+                %>
             </div>
         </div>
 
@@ -133,6 +145,13 @@
                 List<OrderClassVO> todolist=(List<OrderClassVO>)request.getAttribute("todoClass");
             %>
             <div class="write_form">
+                <%
+                    if(todolist.size()==0){
+                %>
+                <b>没有符合条件的订单！</b>
+                <%
+                }else{
+                %>
                 <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
                     <th>订单号</th>
@@ -176,6 +195,9 @@
                     %>
                     </tbody>
                 </table>
+                <%
+                    }
+                %>
             </div>
         </div>
 
@@ -186,6 +208,13 @@
                 List<OrderClassVO> goinglist=(List<OrderClassVO>)request.getAttribute("goingClass");
             %>
             <div class="write_form">
+                <%
+                    if(goinglist.size()==0){
+                %>
+                <b>没有符合条件的订单！</b>
+                <%
+                }else{
+                %>
                 <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
                     <th>订单号</th>
@@ -229,6 +258,7 @@
                     %>
                     </tbody>
                 </table>
+                <%}%>
             </div>
         </div>
 
@@ -236,9 +266,16 @@
         <label for="tab-radio-4" class="tab-handler tab-handler-4">已结束</label>
         <div class="tab-content tab-content-4">
             <%
-                List<OrderClassVO> refundlist=(List<OrderClassVO>)request.getAttribute("refundClass");
+                List<OrderClassVO> endlist=(List<OrderClassVO>)request.getAttribute("endClass");
             %>
             <div class="write_form">
+                <%
+                    if(endlist.size()==0){
+                %>
+                <b>没有符合条件的订单！</b>
+                <%
+                }else{
+                %>
                 <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
                     <th>订单号</th>
@@ -257,8 +294,8 @@
 
                     <tbody>
                     <%
-                        for(int i=0;i<refundlist.size();i++){
-                            OrderClassVO vo=refundlist.get(i);
+                        for(int i=0;i<endlist.size();i++){
+                            OrderClassVO vo=endlist.get(i);
                     %>
                     <tr>
                         <td><%=vo.getOrder_id()%></td>
@@ -279,6 +316,9 @@
                     %>
                     </tbody>
                 </table>
+                <%
+                    }
+                %>
             </div>
         </div>
 
@@ -286,9 +326,16 @@
         <label for="tab-radio-5" class="tab-handler tab-handler-5">已退订</label>
         <div class="tab-content tab-content-5">
             <%
-                List<OrderClassVO> endlist=(List<OrderClassVO>)request.getAttribute("endClass");
+                List<OrderClassVO> refundlist=(List<OrderClassVO>)request.getAttribute("refundClass");
             %>
             <div class="write_form">
+                <%
+                if(refundlist.size()==0){
+                %>
+                    <b>没有符合条件的订单！</b>
+                <%
+                }else{
+                %>
                 <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
                     <th>订单号</th>
@@ -307,7 +354,7 @@
                     <tbody>
                     <%
                         for(int i=0;i<endlist.size();i++){
-                            OrderClassVO vo=endlist.get(i);
+                            OrderClassVO vo=refundlist.get(i);
                     %>
                     <tr>
                         <td><%=vo.getOrder_id()%></td>
@@ -319,13 +366,13 @@
                         <td><%=vo.getStudent_name()%></td>
                         <td><%=vo.getPhone()%></td>
                         <%
-                            if(vo.getRefund_time()==null){
+                            if(vo.getRefund_time()==null||(vo.getRefund_time().length()==0)){
                         %>
                         <td></td>
                         <%
                             }else{
                         %>
-                        <td><%=vo.getRefund_time()%></td>
+                        <td><%=sdf.format(df.parse(vo.getRefund_time()))%></td>
                         <%
                             }
                         %>
@@ -336,7 +383,11 @@
                         }
                     %>
                     </tbody>
+
                 </table>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>

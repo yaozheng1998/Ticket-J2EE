@@ -22,4 +22,10 @@ public interface OrderService {
      * @return
      */
     public Order getInfoByOrderId(int orderId);
+
+    /**
+     * 新增一条订单
+     * @param order
+     */
+    public void save(Order order);
 }

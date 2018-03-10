@@ -26,4 +26,8 @@ public class ClassServiceImpl implements ClassService {
     public Classroom getInfoByClassId(int class_id) {
         return classDao.getInfoByClassId(class_id);
     }
+
+    public void save(Classroom classroom) {
+        classDao.save(classroom);
+    }
 }

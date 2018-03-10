@@ -25,4 +25,8 @@ public class OrderDaoImpl implements OrderDao {
     public Order getInfoByOrderId(int orderId) {
         return (Order)baseDao.load(Order.class,orderId);
     }
+
+    public void save(Order order) {
+        baseDao.save(order);
+    }
 }
