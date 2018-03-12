@@ -70,7 +70,7 @@
     <a href="#" onclick="modify()"
        style="color: #1ab7ea; float: right; margin-right: 10px;"><b>修改资料</b></a>
 
-    <form action="modifyVip" method="post" class="form-horizontal">
+    <form action="modifyVIP" method="post" class="form-horizontal">
         <%--<div class="form-group">--%>
             <%--<label for="f-vipId" class="col-sm-3 control-label">会员编号:</label>--%>
             <%--<div class="col-sm-4">--%>
@@ -121,7 +121,15 @@
                     <%=vip.getVipPoint()%>
                 </label>
             </div>
+            <button type="button" class="btn btn-info btn-sm" onclick="convert()">兑换优惠券</button>
         </div>
+
+            <div class="form-group">
+                <label for="f-vipSub" class="col-sm-3 control-label">优惠券 :</label>
+                <div class="col-sm-4">
+                    <label class="form-control" id="f-vipSub" style="border: none"><%=vip.getVipSubMoney()%></label>
+                </div>
+            </div>
 
         <div class="form-group">
             <button id="cancel_vip" style="margin-left: 16%" type="button" class="btn btn-danger">注销会员</button>
@@ -135,11 +143,22 @@
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script>
     function modify(){
-        document.getElementById("f-vipName").style.visibility = "hidden";
+//        document.getElementById("f-vipName").style.visibility = "hidden";
         document.getElementById("f-vipBankcard").style.visibility = "hidden";
-        document.getElementById("name_input").style.visibility = "";
+//        document.getElementById("name_input").style.visibility = "";
         document.getElementById("bankCard_input").style.visibility = "";
         document.getElementById("save").style.visibility = "";
+    }
+    function convert() {
+        $.ajax({
+            type:"post",
+            url:"converttheVIP",
+            async:false,
+            success:function(){
+                swal("恭喜您","优惠券10元","success");
+                location.reload();
+            },
+        });
     }
     document.getElementById("cancel_vip").onclick=function(){
         swal({
@@ -153,10 +172,11 @@
         }, function() {
             $.ajax({
                 type:"post",
-                url : "cancelVIP",
+                url : "canceltheVIP",
                 async : false,
                 success : function() {
-                    swal("删除", "已注销！", "success")
+                    swal("删除", "已注销！", "success");
+                    window.location.href="/jsp/main.jsp";
                 },
             });
 

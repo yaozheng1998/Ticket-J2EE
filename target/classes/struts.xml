@@ -19,8 +19,15 @@
         <action name="vipBasicInfo" class="action.VIPBasicInfoAction" method="showBasicInfo">
             <result>/jsp/vipBasicInfo.jsp</result>
         </action>
-        <action name="cancelVIP" class="action.VIPBasicInfoAction" method="cancelVIP">
+        <action name="canceltheVIP" class="action.VIPBasicInfoAction" method="cancelVIP">
             <result name="cancel">/jsp/main.jsp</result>
+        </action>
+        <action name="converttheVIP" class="action.VIPBasicInfoAction" method="convertVIP">
+            <result name="convert">/jsp/vipBasicInfo.jsp</result>
+            <result name="fail">/html/error.html</result>
+        </action>
+        <action name="modifyVIP" class="action.VIPBasicInfoAction" method="modifyVIP">
+            <result name="modify">/jsp/vipBasicInfo.jsp</result>
         </action>
 
         <action name="login" class="action.LoginAction">

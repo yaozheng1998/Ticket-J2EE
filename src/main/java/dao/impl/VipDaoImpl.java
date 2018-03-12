@@ -41,6 +41,7 @@ public class VipDaoImpl implements VipDao {
 //    }
 
     public void update(Vip vip) {
+
         baseDao.update(vip);
     }
 
@@ -60,7 +61,19 @@ public class VipDaoImpl implements VipDao {
     public void cancelVIP(String vipName) {
         Vip vip=this.find(vipName);
         vip.setCancelDate("CANCEL");
-        baseDao.save(vip);
+        baseDao.update(vip);
+    }
+
+    public boolean convert(String vipName) {
+        Vip vip=this.find(vipName);
+        if(vip.getVipPoint()>=100) {
+            vip.setVipPoint(vip.getVipPoint() - 100);
+            vip.setVipSubMoney(vip.getVipSubMoney() + 10);
+            baseDao.update(vip);
+            return true;
+        }
+        else
+            return false;
     }
 
 }

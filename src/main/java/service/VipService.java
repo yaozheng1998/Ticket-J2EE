@@ -64,4 +64,16 @@ public interface VipService {
      * @param vipName
      */
     public void cancelVIP(String vipName);
+
+    /**
+     * 兑换优惠券10元
+     * @param vipName
+     */
+    public boolean convert(String vipName);
+
+    /**
+     * 修改会员信息
+     * @param vip
+     */
+    public void update(Vip vip);
 }

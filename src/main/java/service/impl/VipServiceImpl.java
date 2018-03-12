@@ -70,4 +70,17 @@ public class VipServiceImpl implements VipService{
     public void cancelVIP(String vipName) {
         vipDao.cancelVIP(vipName);
     }
+
+    public boolean convert(String vipName) {
+        if(vipDao.convert(vipName)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void update(Vip vip) {
+        vipDao.update(vip);
+    }
 }

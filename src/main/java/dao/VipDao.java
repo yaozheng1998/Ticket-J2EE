@@ -46,4 +46,10 @@ public interface VipDao {
      * @param vipName
      */
     public void cancelVIP(String vipName);
+
+    /**
+     * 兑换优惠券10元
+     * @param vipName
+     */
+    public boolean convert(String vipName);
 }

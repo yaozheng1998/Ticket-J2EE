@@ -26,4 +26,26 @@ public class VIPBasicInfoAction extends BaseAction{
         vipService.cancelVIP(vipId);
         return "cancel";
     }
+
+    public String convertVIP(){
+        String vipId=String.valueOf(request.getSession().getAttribute("id"));
+        if(vipService.convert(vipId)){
+//            System.out.println("zxxx");
+            Vip vip=vipService.findVipByName(vipId);
+            request.setAttribute("vip",vip);
+            return "convert";
+        }else{
+            return "fail";
+        }
+    }
+
+    public String modifyVIP(){
+        String vipId=String.valueOf(request.getSession().getAttribute("id"));
+        String newBankcard=request.getParameter("bankCardId");
+        Vip vip=vipService.findVipByName(vipId);
+        vip.setVip_bankCardId(newBankcard);
+        vipService.update(vip);
+        request.setAttribute("vip",vip);
+        return "modify";
+    }
 }
