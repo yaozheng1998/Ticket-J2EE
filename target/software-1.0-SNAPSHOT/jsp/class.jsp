@@ -4,7 +4,8 @@
 <%@ page import="util.CourseVO" %>
 <%@ page import="model.Vip" %>
 <%@ page import="util.GetDiscount" %>
-<%@ page import="service.ClassService" %><%--
+<%@ page import="service.ClassService" %>
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/8
@@ -28,6 +29,7 @@
 </head>
 <%
     Vip vip=(Vip) session.getAttribute("vipInfo");
+    HashMap map=new HashMap();
 %>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -65,8 +67,10 @@
         <div style="width: 90%;height: 200px;">
             <%List<ClassroomVO> classroomVOS=(ArrayList<ClassroomVO>)session.getAttribute("allClass");
                 if(classroomVOS!=null){
+//                    HashMap map=new HashMap();
                     for(int j=0;j<classroomVOS.size();j++){
                         ClassroomVO vo=classroomVOS.get(j);
+                        map.put(vo.getName(),vo.getPrice());
             %>
             <div class="col-sm-6 col-md-4" style="width: 220px;">
                 <div class="thumbnail" style="width: 220px;">
@@ -108,7 +112,7 @@
                                     for(int k=0;k<classroomVOS.size();k++){
                                         ClassroomVO vo=classroomVOS.get(k);
                             %>
-                            <option><%=vo.getName()%></option>
+                            <option><%=vo.getName()+'-'+vo.getPrice()%></option>
                             <%
                                 }
                                 }
@@ -125,9 +129,9 @@
             </table>
         </div>
         <div id="payDiv" style="margin-top: 20px;">
-            <input type="checkbox"><b> <%=vip.getVipLevel()%>会员，享受7折优惠</b>
+            <input id="wdis" type="checkbox"><b> <%=vip.getVipLevel()%>会员，享受7折优惠</b>
             <br/>
-            <input type="checkbox"><b> <%=vip.getVipSubMoney()%>元抵用券</b>
+            <input id="wsub" type="checkbox"><b> <%=vip.getVipSubMoney()%>元抵用券</b>
             <br/>
             <br/>
             <div style="margin-left: 78%;">
@@ -170,7 +174,7 @@
             <br/>
             <br/>
             <div style="margin-left: 78%;">
-                <h4>合计： 8799 元</h4>
+                <h4 id="">合计： 8799 元</h4>
                 <button class="btn btn-primary">确认支付</button>
             </div>
 
@@ -205,9 +209,8 @@
         var classnames=new Array();
         <%
         for(int p=0;p<classroomVOS.size();p++){%>
-            classnames[<%=p%>]="<%=classroomVOS.get(p).getName()%>";
+            classnames[<%=p%>]="<%=classroomVOS.get(p).getName()%>"+'-'+"<%=classroomVOS.get(p).getPrice()%>";
             newLine+="<option>"+classnames[<%=p%>]+"</option>";
-
         <%}
         %>
         newLine+='</select> </td> <td><input id="t'+num+'" placeholder="请填写联系方式" ></td> <td><button id="b'+num+'" class="btn minus_btn"> 删除 </button> </td> </tr>';
@@ -230,19 +233,30 @@
     var sum;
     function choosePay(){
         //order增加，并且orderclass增加
-        sum=9000;
+        sum=0;
         for(var g=1;g<=num;g++){
+            sum=sum+document.getElementById("s"+g).value.split('-')[1];
             $.ajax({
                 type:"post",
                 url:"../orderCourse",
                 async:false,
                 data:{
                     student_name:document.getElementById("n"+g).value,
-                    class_name:document.getElementById("s"+g).value,
+                    class_name:document.getElementById("s"+g).value.split('-')[0],
                     phone:document.getElementById("t"+g).value,
                 },
             });
         }
+
+        if(document.getElementById("wdis").checked){
+            sum=sum*<%=GetDiscount.getdis(vip.getVipLevel())%>/10;
+        }
+        if(document.getElementById("wsub").checked){
+            sum=sum-<%=vip.getVipSubMoney()%>;
+        }
+        document.getElementById("sum_money").innerHTML=sum;
+
+//        console.log(.value);
         /**
          * 先把班级学生信息装进数据库，如果支付"线上"，否则"待支付"
          */
@@ -250,7 +264,7 @@
                 //确认支付 不确认则待支付订单；确认后正常
                 swal({
                     title: "支付",
-                    text: "确认支付",
+                    text: "¥"+ sum,
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -287,7 +301,7 @@
                 })
 
         //界面跳转
-        window.setTimeout("window.location='../showCourse.action'",2000);
+        window.setTimeout("window.location='../showCourse.action'",8000);
 //        window.location.href="/jsp/course.jsp";
     }
 </script>

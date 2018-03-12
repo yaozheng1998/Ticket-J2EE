@@ -2,6 +2,7 @@ package action;
 
 import model.Order;
 import model.OrderClass;
+import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import service.ClassService;
@@ -32,7 +33,7 @@ public class OrderAction extends BaseAction{
     private String phone;
     private double money;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
     int order_id;
 
     public int getOrder_id() {
@@ -109,6 +110,15 @@ public class OrderAction extends BaseAction{
         order.setMoney(money);
         order.setPay_type(pay_type);
         orderService.save(order);
+        
+        //bankcard
+        Vip vip=vipService.findVipByName(vip_name);
+        if(vip.getBalance()<money){
+            return "fail";
+        }
+        vip.setBalance(vip.getBalance()-money);
+        vipService.update(vip);
+
         return "order_success";
     }
 
