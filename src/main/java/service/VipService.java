@@ -46,16 +46,22 @@ public interface VipService {
      */
     public Vip findVipByName(String vipName);
 
-    /**
-     * 会员主动取消会员资格，删除会员卡，但不删除数据
-     * @param vipName
-     * @return
-     */
-    public boolean cancelVip(String vipName);
+//    /**
+//     * 会员主动取消会员资格，删除会员卡，但不删除数据
+//     * @param vipName
+//     * @return
+//     */
+//    public boolean cancelVip(String vipName);
 
     /**
      * 激活
      * @param name
      */
     public void setActive(String name);
+
+    /**
+     * 注销会员
+     * @param vipName
+     */
+    public void cancelVIP(String vipName);
 }

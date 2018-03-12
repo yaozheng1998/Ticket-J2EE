@@ -32,10 +32,18 @@ public class Vip implements Serializable {
     private double consumeMoney;
     private double vipPoint;
     private double vipSubMoney;
-    private String calcelDate;
+    private String cancelDate;
     private String vipLevel;
     private String code;
 
+
+    public String getCancelDate() {
+        return cancelDate;
+    }
+
+    public void setCancelDate(String cancelDate) {
+        this.cancelDate = cancelDate;
+    }
 
     public String getCode() {
         return code;
@@ -99,13 +107,6 @@ public class Vip implements Serializable {
     }
     public void setVipSubMoney(double vipSubMoney){
         this.vipSubMoney=vipSubMoney;
-    }
-
-    public String getCalcelDate(){
-        return calcelDate;
-    }
-    public void setCalcelDate(String calcelDate){
-        this.calcelDate=calcelDate;
     }
 
     public String getVipLevel() {

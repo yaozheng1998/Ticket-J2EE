@@ -40,4 +40,10 @@ public interface VipDao {
      * @return
      */
     public boolean checkPassword(String vipName, String password);
+
+    /**
+     * 注销会员
+     * @param vipName
+     */
+    public void cancelVIP(String vipName);
 }

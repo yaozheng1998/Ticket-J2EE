@@ -54,16 +54,20 @@ public class VipServiceImpl implements VipService{
         return vipDao.find(vipName);
     }
 
-    public boolean cancelVip(String vipName) {
-        Vip vip=vipDao.find(vipName);
-        //需要设置状态ENUM为Cancel
-        return false;
-    }
+//    public boolean cancelVip(String vipName) {
+//        Vip vip=vipDao.find(vipName);
+//        //需要设置状态ENUM为Cancel
+//        return false;
+//    }
 
     public void setActive(String name) {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Vip vip=findVipByName(name);
         vip.setActivateDate(sdf.format(new Date()));
         vipDao.update(vip);
+    }
+
+    public void cancelVIP(String vipName) {
+        vipDao.cancelVIP(vipName);
     }
 }

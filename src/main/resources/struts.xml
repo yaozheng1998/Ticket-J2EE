@@ -19,6 +19,9 @@
         <action name="vipBasicInfo" class="action.VIPBasicInfoAction" method="showBasicInfo">
             <result>/jsp/vipBasicInfo.jsp</result>
         </action>
+        <action name="cancelVIP" class="action.VIPBasicInfoAction" method="cancelVIP">
+            <result name="cancel">/jsp/main.jsp</result>
+        </action>
 
         <action name="login" class="action.LoginAction">
             <result name="relogin">/jsp/main.jsp</result>

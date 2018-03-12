@@ -29,7 +29,10 @@ public class LoginAction extends BaseAction{
             if (vip == null) {
                 System.out.println("用户名错误");
                 return "relogin";
-            } else {
+            } if(vip.getCancelDate()!=null&&vip.getCancelDate().equals("CANCEL")){
+                System.out.println("此会员已注销！");
+                return "relogin";
+            } else{
                 if (vipService.whetherActive(name)) {
                     if (vipService.checkPassword(name, password)) {
                         System.out.println("会员信息准确");

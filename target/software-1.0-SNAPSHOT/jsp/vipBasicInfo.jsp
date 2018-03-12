@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -123,7 +124,7 @@
         </div>
 
         <div class="form-group">
-            <button style="margin-left: 16%" type="button" class="btn btn-danger">注销会员</button>
+            <button id="cancel_vip" style="margin-left: 16%" type="button" class="btn btn-danger">注销会员</button>
         </div>
         <button type="submit" id="save" style="margin-left: 45%;margin-top: -45px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
 
@@ -131,6 +132,7 @@
 </fieldset>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script>
     function modify(){
         document.getElementById("f-vipName").style.visibility = "hidden";
@@ -139,6 +141,28 @@
         document.getElementById("bankCard_input").style.visibility = "";
         document.getElementById("save").style.visibility = "";
     }
+    document.getElementById("cancel_vip").onclick=function(){
+        swal({
+            title: "确定注销？",
+            text: "您将无法恢复此会员！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            closeOnConfirm: false
+        }, function() {
+            $.ajax({
+                type:"post",
+                url : "cancelVIP",
+                async : false,
+                success : function() {
+                    swal("删除", "已注销！", "success")
+                },
+            });
+
+
+        })
+    };
 </script>
 </body>
 </html>

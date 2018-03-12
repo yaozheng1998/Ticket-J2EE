@@ -20,4 +20,10 @@ public class VIPBasicInfoAction extends BaseAction{
         request.setAttribute("vip",vip);
         return SUCCESS;
     }
+
+    public String cancelVIP(){
+        String vipId=String.valueOf(request.getSession().getAttribute("id"));
+        vipService.cancelVIP(vipId);
+        return "cancel";
+    }
 }

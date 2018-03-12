@@ -56,4 +56,11 @@ public class VipDaoImpl implements VipDao {
         }
         return false;
     }
+
+    public void cancelVIP(String vipName) {
+        Vip vip=this.find(vipName);
+        vip.setCancelDate("CANCEL");
+        baseDao.save(vip);
+    }
+
 }

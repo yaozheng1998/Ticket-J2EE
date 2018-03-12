@@ -23,7 +23,6 @@
     <link href="../css/table.css" rel="stylesheet">
     <link href="../css/bootstrap-select.min.css" rel="stylesheet">
 </head>
-<%! int i=1;%>
 <%
     Vip vip=(Vip) session.getAttribute("vipInfo");
 %>
@@ -97,7 +96,7 @@
                 </thead>
                 <tbody id="three_stu">
 
-                <tr id=<%=i%>>
+                <tr>
                     <td><input placeholder="请填写学生姓名" value=""></td>
                     <td>
                         <select class="selectpicker">
@@ -180,16 +179,16 @@
 <script src="../js/bootstrap-select.js"></script>
 <script type="text/javascript">
     function append(){
-        <%
-        i++;
-        System.out.println(i);
-        if(i>=4){
-        %>
-        alert("选择班级每单限3学员！");
-        <%
-        }else{
-        %>
-        var newLine='<tr id=<%=i%>><td><input placeholder="请填写学生姓名" value=""></td> <td> <select id="pp" style="width: 219px;height: 34px;background: transparent">';
+        <%--<%--%>
+        <%--i++;--%>
+        <%--System.out.println(i);--%>
+        <%--if(i>=4){--%>
+        <%--%>--%>
+        <%--alert("选择班级每单限3学员！");--%>
+        <%--<%--%>
+        <%--}else{--%>
+        <%--%>--%>
+        var newLine='<tr><td><input placeholder="请填写学生姓名" value=""></td> <td> <select id="pp" style="width: 219px;height: 34px;background: transparent">';
         //可能java中class是关键词？class用不了
         var classnames=new Array();
         <%
@@ -201,9 +200,8 @@
         %>
         newLine+='</select> </td> <td><input placeholder="请填写联系方式" value=""></td> <td><button class="btn minus_btn"> 删除 </button> </td> </tr>';
         $("#three_stu").append(newLine);
-        <%
-        }
-        %>
+//        }
+//        %>
     }
     function append_nine(){
         var newLine='<tr><td><input placeholder="请填写学生姓名" value=""></td> <td><input placeholder="请填写联系方式" value=""></td> <td><button class="btn minus_btn"> 删除 </button> </td> </tr>';
