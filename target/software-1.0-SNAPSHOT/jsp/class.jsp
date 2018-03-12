@@ -179,7 +179,11 @@
 </div>
 
 </body>
-<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<%--<script src="../js/jquery-3.3.1.min.js"></script>--%>
+<script
+        type="text/javascript"
+        src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-select.js"></script>
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
@@ -227,14 +231,22 @@
     function choosePay(){
         //order增加，并且orderclass增加
         sum=9000;
-        $.ajax({
-            type:"post",
-            url:"../addOneOrder",
-            async:false,
-            data:{
-                money:sum,
-            },
-            success:function(){
+        for(var g=1;g<=num;g++){
+            $.ajax({
+                type:"post",
+                url:"../orderCourse",
+                async:false,
+                data:{
+                    student_name:document.getElementById("n"+g).value,
+                    class_name:document.getElementById("s"+g).value,
+                    phone:document.getElementById("t"+g).value,
+                },
+            });
+        }
+        /**
+         * 先把班级学生信息装进数据库，如果支付"线上"，否则"待支付"
+         */
+
                 //确认支付 不确认则待支付订单；确认后正常
                 swal({
                     title: "支付",
@@ -248,27 +260,35 @@
                     closeOnCancel: false
                 }, function(isConfirm) {
                     if (isConfirm) {
-                        for(var g=1;g<=num;g++){
-
-                            $.ajax({
-                                type:"post",
-                                url:"orderCourse",
-                                async:false,
-                                data:{
-                                    student_name:document.getElementById("n"+g).value,
-                                    class_name:document.getElementById("s"+g).value,
-                                    phone:document.getElementById("t"+g).value,
-                                },
-                            });
-                        }
-                        swal("支付!", "支付成功！", "success")
+                        $.ajax({
+                            type:"post",
+                            url:"../addOneOrder",
+                            async:true,
+                            data:{
+                                money:sum,
+                            },
+                            success:function() {
+                                swal("支付!", "支付成功！", "success")
+                            }
+                        });
                     } else{
-                        swal("取消", "订单将在15分钟后失效，请尽快支付！", "error")
+                        $.ajax({
+                            type:"post",
+                            url:"../addOnetopayOrder",
+                            async:true,
+                            data:{
+                                money:sum,
+                            },
+                            success:function() {
+                                swal("取消", "订单将在15分钟后失效，请尽快支付！", "error")
+                            }
+                        });
                     }
                 })
-                //15分钟支付
-            },
-        });
+
+        //界面跳转
+        window.setTimeout("window.location='../showCourse.action'",2000);
+//        window.location.href="/jsp/course.jsp";
     }
 </script>
 </html>

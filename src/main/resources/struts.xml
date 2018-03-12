@@ -53,7 +53,7 @@
             </result>
         </action>
 
-        <action name="showCourse" class="action.CourseAction" method="getCourses">
+        <action name="showCourse" class="action.CourseAction">
             <result name="show_course">/jsp/course.jsp</result>
         </action>
         <action name="showClass" class="action.CourseAction" method="getClassFromOneCourse">
@@ -68,7 +68,10 @@
             <result name="pay_success">/jsp/class.jsp</result>
         </action>
         <action name="addOneOrder" class="action.OrderAction" method="addOrder">
-            <!--<result>/jsp/course.jsp</result>-->
+            <result name="order_success">/jsp/class.jsp</result>
+        </action>
+        <action name="addOnetopayOrder" class="action.OrderAction" method="addtopayOrder">
+            <result name="topayorder_success">/jsp/class.jsp</result>
         </action>
 
     </package>

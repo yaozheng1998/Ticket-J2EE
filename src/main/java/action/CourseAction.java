@@ -45,7 +45,7 @@ public class CourseAction extends BaseAction {
      * 获得课程展示页面的信息
      * @return
      */
-    public String getCourses(){
+    public String execute(){
         List<Course> courseList=courseService.getAllCourse();
         List<CourseVO> courseVOS=this.getVOFromCo(courseList);
 
@@ -90,6 +90,7 @@ public class CourseAction extends BaseAction {
 //        System.out.println("logic"+classroomVOS.size());
         HttpSession session = request.getSession(true);
         session.setAttribute("allClass",classroomVOS);
+//        System.out.println("ins--------"+courseService.getInfoByCourseId(courseId).getInstitution_id());
         session.setAttribute("ins",courseService.getInfoByCourseId(courseId).getInstitution_id());
         return "show_class";
     }

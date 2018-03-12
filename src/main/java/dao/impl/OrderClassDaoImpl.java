@@ -32,11 +32,13 @@ public class OrderClassDaoImpl implements OrderClassDao {
     }
 
     public void save(OrderClass orderClass) {
+        System.out.println(orderClass.getItorder_id()+"dsfghc");
         baseDao.save(orderClass);
     }
 
     public long getNextId() {
         long current=baseDao.getTotalCount(OrderClass.class);
+//        System.out.print("逻辑层的"+current);
         return current+1;
     }
 
