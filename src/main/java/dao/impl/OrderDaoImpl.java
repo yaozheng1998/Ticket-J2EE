@@ -29,4 +29,10 @@ public class OrderDaoImpl implements OrderDao {
     public void save(Order order) {
         baseDao.save(order);
     }
+
+    public long getNextNum() {
+        long current=baseDao.getTotalCount(Order.class);
+//        System.out.print(current);
+        return current+1;
+    }
 }

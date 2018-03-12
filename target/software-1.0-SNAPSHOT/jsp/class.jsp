@@ -2,7 +2,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="util.CourseVO" %>
-<%@ page import="model.Vip" %><%--
+<%@ page import="model.Vip" %>
+<%@ page import="util.GetDiscount" %>
+<%@ page import="service.ClassService" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/8
@@ -21,6 +23,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <link href="../css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <%
@@ -96,24 +99,24 @@
                 </thead>
                 <tbody id="three_stu">
 
-                <tr>
-                    <td><input placeholder="请填写学生姓名" value=""></td>
+                <tr id="r1">
+                    <td><input id="n1" placeholder="请填写学生姓名"></td>
                     <td>
-                        <select class="selectpicker">
+                        <select id="s1"class="selectpicker">
                             <%
                                 if(classroomVOS!=null){
                                     for(int k=0;k<classroomVOS.size();k++){
                                         ClassroomVO vo=classroomVOS.get(k);
                             %>
-                            <option value=<%=k+1%>><%=vo.getName()%></option>
+                            <option><%=vo.getName()%></option>
                             <%
                                 }
                                 }
                             %>
                         </select>
                     </td>
-                    <td><input placeholder="请填写联系方式" value=""></td>
-                    <td><button class="btn minus_btn" onclick="del()">
+                    <td><input id="t1" placeholder="请填写联系方式"></td>
+                    <td><button id="b1" class="btn minus_btn" onclick="del()">
                         删除
                     </button>
                     </td>
@@ -128,8 +131,10 @@
             <br/>
             <br/>
             <div style="margin-left: 78%;">
-                <h4>合计： 8799 元</h4>
-                <button class="btn btn-primary" onclick="choosePay()">确认支付</button>
+                <h4 id="sum_money">
+                    <%--合计： 8799 元--%>
+                </h4>
+                <button class="btn btn-primary" onclick="choosePay()">购买</button>
             </div>
 
         </div>
@@ -147,7 +152,7 @@
                 <th></th>
                 </thead>
                 <tbody id="nine_stu">
-                <tr id="rr">
+                <tr id="rr1">
                     <td><input placeholder="请填写学生姓名" value=""></td>
                     <td><input placeholder="请填写联系方式" value=""></td>
                     <td><button class="btn minus_btn" onclick="del_nine()">
@@ -159,7 +164,7 @@
             </table>
         </div>
         <div id="payDiv2" style="margin-top: 20px;">
-            <input type="checkbox"><b> <%=vip.getVipLevel()%>会员，享受7折优惠</b>
+            <input type="checkbox"><b> <%=vip.getVipLevel()%>会员，享受<%=GetDiscount.getdis(vip.getVipLevel())%>折优惠</b>
             <br/>
             <input type="checkbox"><b> <%=vip.getVipLevel()%> 元抵用券</b>
             <br/>
@@ -174,10 +179,12 @@
 </div>
 
 </body>
-<script src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-select.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script type="text/javascript">
+    var num=1;
     function append(){
         <%--<%--%>
         <%--i++;--%>
@@ -188,7 +195,8 @@
         <%--<%--%>
         <%--}else{--%>
         <%--%>--%>
-        var newLine='<tr><td><input placeholder="请填写学生姓名" value=""></td> <td> <select id="pp" style="width: 219px;height: 34px;background: transparent">';
+        num=num+1;
+        var newLine='<tr id="r'+num+'"><td><input id="n'+num+'" placeholder="请填写学生姓名"></td> <td> <select id="s'+num+'" style="width: 219px;height: 34px;background: transparent">';
         //可能java中class是关键词？class用不了
         var classnames=new Array();
         <%
@@ -198,7 +206,7 @@
 
         <%}
         %>
-        newLine+='</select> </td> <td><input placeholder="请填写联系方式" value=""></td> <td><button class="btn minus_btn"> 删除 </button> </td> </tr>';
+        newLine+='</select> </td> <td><input id="t'+num+'" placeholder="请填写联系方式" ></td> <td><button id="b'+num+'" class="btn minus_btn"> 删除 </button> </td> </tr>';
         $("#three_stu").append(newLine);
 //        }
 //        %>
@@ -215,8 +223,52 @@
     function del_nine(){
         document.getElementById("addNineStudent").deleteRow(document.getElementById("rr").rowIndex);
     }
+    var sum;
     function choosePay(){
         //order增加，并且orderclass增加
+        sum=9000;
+        $.ajax({
+            type:"post",
+            url:"../addOneOrder",
+            async:false,
+            data:{
+                money:sum,
+            },
+            success:function(){
+                //确认支付 不确认则待支付订单；确认后正常
+                swal({
+                    title: "支付",
+                    text: "确认支付",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "立即支付",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        for(var g=1;g<=num;g++){
+
+                            $.ajax({
+                                type:"post",
+                                url:"orderCourse",
+                                async:false,
+                                data:{
+                                    student_name:document.getElementById("n"+g).value,
+                                    class_name:document.getElementById("s"+g).value,
+                                    phone:document.getElementById("t"+g).value,
+                                },
+                            });
+                        }
+                        swal("支付!", "支付成功！", "success")
+                    } else{
+                        swal("取消", "订单将在15分钟后失效，请尽快支付！", "error")
+                    }
+                })
+                //15分钟支付
+            },
+        });
     }
 </script>
 </html>

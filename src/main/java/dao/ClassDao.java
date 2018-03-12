@@ -27,4 +27,18 @@ public interface ClassDao {
      * @param classroom
      */
     public void save(Classroom classroom);
+
+    /**
+     * 根据班级名获得班级id
+     * @param name
+     * @return
+     */
+    public int getIdFromName(String name);
+
+    /**
+     * 根据班级名获得价格
+     * @param name
+     * @return
+     */
+    public double getMoneyFromName(String name);
 }

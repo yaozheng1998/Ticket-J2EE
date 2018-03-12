@@ -35,6 +35,11 @@ public class OrderClassDaoImpl implements OrderClassDao {
         baseDao.save(orderClass);
     }
 
+    public long getNextId() {
+        long current=baseDao.getTotalCount(OrderClass.class);
+        return current+1;
+    }
+
     private List<OrderClass> getOrderClasses(List<Object[]> objects){
         List<OrderClass> orderClassList=new ArrayList<OrderClass>();
         for(Object[] object:objects){

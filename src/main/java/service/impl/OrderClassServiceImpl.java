@@ -31,4 +31,8 @@ public class OrderClassServiceImpl implements OrderClassService {
     public void save(OrderClass orderClass) {
         orderClassDao.save(orderClass);
     }
+
+    public long getNextId() {
+        return orderClassDao.getNextId();
+    }
 }

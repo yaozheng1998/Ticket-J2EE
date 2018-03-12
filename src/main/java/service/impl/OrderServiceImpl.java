@@ -30,4 +30,8 @@ public class OrderServiceImpl implements OrderService{
     public void save(Order order) {
         orderDao.save(order);
     }
+
+    public long getNextNum() {
+        return orderDao.getNextNum();
+    }
 }

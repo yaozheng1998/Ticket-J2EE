@@ -17,7 +17,7 @@ public class Order {
     private String vip_name;
     private int ins_id;
     private String order_time;
-    private float money;
+    private double money;
     private String pay_type;
 
     public String getPay_type() {
@@ -29,12 +29,12 @@ public class Order {
         this.pay_type = pay_type;
     }
 
-    public float getMoney() {
+    public double getMoney() {
 
         return money;
     }
 
-    public void setMoney(float money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 

@@ -27,4 +27,11 @@ public interface ClassService {
      * @param classroom
      */
     public void save(Classroom classroom);
+
+    /**
+     * 根据班级名获得班级id
+     * @param name
+     * @return
+     */
+    public int getIdFromName(String name);
 }

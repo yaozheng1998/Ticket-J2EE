@@ -29,4 +29,10 @@ public interface OrderClassService {
      * @param orderClass
      */
     public void save(OrderClass orderClass);
+
+    /**
+     * 得到下一个可用的oc编号
+     * @return
+     */
+    public long getNextId();
 }

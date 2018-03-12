@@ -32,6 +32,18 @@ public class ClassDaoImpl implements ClassDao {
         baseDao.save(classroom);
     }
 
+    public int getIdFromName(String name) {
+        String sql="select class_id from `class` where class_name="+name;
+        int id=(Integer)baseDao.querySQL(sql).get(0);
+        return id;
+    }
+
+    public double getMoneyFromName(String name) {
+        String sql="select price from `class` where class_name="+name;
+        double money=(Integer)baseDao.querySQL(sql).get(0);
+        return money;
+    }
+
     private List<Classroom> getClassrooms(List<Object[]> objects){
         List<Classroom> classroomList=new ArrayList<Classroom>();
         for(Object[] object:objects){

@@ -28,4 +28,10 @@ public interface OrderService {
      * @param order
      */
     public void save(Order order);
+
+    /**
+     * 获得下一个订单编号
+     * @return
+     */
+    public long getNextNum();
 }

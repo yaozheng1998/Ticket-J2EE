@@ -65,7 +65,7 @@
   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
 
   <!--扫描有注解的文件 base-package包路径-->
-  <context:component-scan base-package="model,dao,service,action"/>
+  <context:component-scan base-package="model,dao,service,action,util"/>
 
   <!--声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
   <tx:advice id="txAdvice" transaction-manager="transactionManager">

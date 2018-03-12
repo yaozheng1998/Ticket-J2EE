@@ -30,4 +30,8 @@ public class ClassServiceImpl implements ClassService {
     public void save(Classroom classroom) {
         classDao.save(classroom);
     }
+
+    public int getIdFromName(String name) {
+        return classDao.getIdFromName(name);
+    }
 }

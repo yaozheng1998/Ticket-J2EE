@@ -64,7 +64,12 @@
             <result name="show_my_classes">/jsp/vipOrder.jsp</result>
         </action>
 
-
+        <action name="orderCourse" class="action.OrderAction" method="pay">
+            <result name="pay_success">/jsp/class.jsp</result>
+        </action>
+        <action name="addOneOrder" class="action.OrderAction" method="addOrder">
+            <!--<result>/jsp/course.jsp</result>-->
+        </action>
 
     </package>
 

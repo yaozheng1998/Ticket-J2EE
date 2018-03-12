@@ -90,6 +90,7 @@ public class CourseAction extends BaseAction {
 //        System.out.println("logic"+classroomVOS.size());
         HttpSession session = request.getSession(true);
         session.setAttribute("allClass",classroomVOS);
+        session.setAttribute("ins",courseService.getInfoByCourseId(courseId).getInstitution_id());
         return "show_class";
     }
 
