@@ -17,6 +17,15 @@ public class Teacher {
     private int ins_id;
     private String name;
     private String rank;
+    private String subject;
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public String getRank() {
         return rank;

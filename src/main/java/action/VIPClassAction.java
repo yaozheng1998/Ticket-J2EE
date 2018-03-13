@@ -76,6 +76,10 @@ public class VIPClassAction extends BaseAction{
         List<OrderClassVO> endVOS=this.getVOFromMC(end);
         request.setAttribute("endClass",endVOS);
 
+        List<OrderClass> divide=orderClassService.getClassByState("'"+(String)session.getAttribute("id")+"'","'待分配'");
+        List<OrderClassVO> divideVOS=this.getVOFromMC(divide);
+        request.setAttribute("divideClass",divideVOS);
+
         return "show_my_classes";
     }
 

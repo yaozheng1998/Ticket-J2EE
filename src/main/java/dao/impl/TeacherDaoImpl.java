@@ -18,4 +18,16 @@ public class TeacherDaoImpl implements TeacherDao {
     public Teacher getTeacherById(int id) {
         return (Teacher)baseDao.load(Teacher.class,id);
     }
+
+    public void addTeacher(Teacher teacher) {
+        try{
+            baseDao.save(teacher);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public long getNextId() {
+        return baseDao.getTotalCount(Teacher.class)+200;
+    }
 }

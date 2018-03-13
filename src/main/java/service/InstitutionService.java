@@ -33,4 +33,43 @@ public interface InstitutionService {
      * @return
      */
     public Institution getInsById(int insId);
+
+    /**
+     * 新增机构，还未审核
+     * @param institution
+     */
+    public void addIns(Institution institution);
+
+    /**
+     * 系统自动分配可登录ID
+     * @return
+     */
+    public long getNextId();
+
+    /**
+     * 判断机构是否已经通过审核
+     * @return
+     */
+    public boolean whetherAct(int insId);
+
+    /**
+     * 通过机构Id获得机构的所有信息
+     * @param insId
+     * @return
+     */
+    public Institution getInfoById(int insId);
+
+    /**
+     * 登录时检查密码是否正确
+     * @param id
+     * @param password
+     * @return
+     */
+    public boolean checkPass(int id,String password);
+
+    /**
+     * 修改机构信息
+     * @param institution
+     */
+    public void update(Institution institution);
 }

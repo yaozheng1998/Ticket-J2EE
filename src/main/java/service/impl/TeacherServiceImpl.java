@@ -20,4 +20,12 @@ public class TeacherServiceImpl implements TeacherService{
     public Teacher getTeacherById(int id) {
         return teacherDao.getTeacherById(id);
     }
+
+    public void addTeacher(Teacher teacher) {
+        teacherDao.addTeacher(teacher);
+    }
+
+    public long getNextId() {
+        return teacherDao.getNextId();
+    }
 }

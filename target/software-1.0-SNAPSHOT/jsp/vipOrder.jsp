@@ -353,7 +353,7 @@
 
                     <tbody>
                     <%
-                        for(int i=0;i<endlist.size();i++){
+                        for(int i=0;i<refundlist.size();i++){
                             OrderClassVO vo=refundlist.get(i);
                     %>
                     <tr>
@@ -390,6 +390,64 @@
                 %>
             </div>
         </div>
+
+        <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-6">
+        <label for="tab-radio-6" class="tab-handler tab-handler-6">待分配</label>
+        <div class="tab-content tab-content-6">
+            <%
+                List<OrderClassVO> todividelist=(List<OrderClassVO>)request.getAttribute("divideClass");
+            %>
+            <div class="write_form">
+                <%
+                    if(todividelist.size()==0){
+                %>
+                <b>没有符合条件的订单！</b>
+                <%
+                }else{
+                %>
+                <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
+                    <thead>
+                    <th>订单号</th>
+                    <th>下单时间</th>
+                    <th>付款方式</th>
+                    <th>机构名</th>
+                    <th>学生名</th>
+                    <th>联系方式</th>
+                    <th>订单状态</th>
+                    <th></th>
+                    </thead>
+
+                    <tbody>
+                    <%
+                        for(int i=0;i<todividelist.size();i++){
+                            OrderClassVO vo=todividelist.get(i);
+                    %>
+                    <tr>
+                        <td><%=vo.getOrder_id()%></td>
+                        <td><%=sdf.format(vo.getOrder_time())%></td>
+                        <td><%=vo.getPay_type()%></td>
+                        <td><%=vo.getIns_name()%></td>
+                        <td><%=vo.getStudent_name()%></td>
+                        <td><%=vo.getPhone()%></td>
+                        <td><%=vo.getState()%></td>
+                        <td>
+                            <button class="btn minus_btn" onclick="">
+                                退订
+                            </button>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                    </tbody>
+
+                </table>
+                <%
+                    }
+                %>
+            </div>
+        </div>
+
     </div>
 </fieldset>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>

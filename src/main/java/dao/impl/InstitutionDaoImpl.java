@@ -37,4 +37,37 @@ public class InstitutionDaoImpl implements InstitutionDao {
     public Institution getInsById(int insId) {
         return (Institution) baseDao.load(Institution.class,insId);
     }
+
+    public void addIns(Institution institution) {
+        try{
+            baseDao.save(institution);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public long getNextId() {
+        return baseDao.getTotalCount(Institution.class)+8000001;
+    }
+
+    public boolean whetherAct(int insId) {
+        Institution institution=getInfoById(insId);
+        if(institution.getState().equals("待审核")){
+            return false;
+        }
+        return true;
+    }
+
+    public Institution getInfoById(int insId) {
+        return (Institution)baseDao.load(Institution.class,insId);
+    }
+
+    public boolean checkPass(int id, String password) {
+        Institution institution=getInfoById(id);
+        if(institution.getPassword().equals(password)){
+            return true;
+        }
+        return false;
+    }
 }

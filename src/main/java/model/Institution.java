@@ -27,13 +27,13 @@ public class Institution {
     private String password;
     private String location;
     private int classrooms;
-    private int state;
+    private String state;
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 

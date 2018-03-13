@@ -50,7 +50,7 @@
                 <li><a href="../vipBasicInfo.action">个人信息</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">机构注册</a></li>
+                <li><a href="../jsp/insRegister.jsp">机构注册</a></li>
             </ul>
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
@@ -88,6 +88,15 @@
             </div>
             <%
                     }
+                }else{
+            %>
+            <p>当前课程还未开设班级！</p>
+            <%
+                }
+            %>
+            <%if(classroomVOS!=null){%>
+            <input type="hidden" id="random_class" value=<%=classroomVOS.get(0).getName()%>>
+            <%
                 }
             %>
         </div>
@@ -147,6 +156,10 @@
     <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
     <label for="tab-radio-2" class="tab-handler tab-handler-2">不选班级</label>
     <div class="tab-content tab-content-2">
+        <b>基本价格：<%=session.getAttribute("basicPrice")%></b>
+        <input id="bpp" type="hidden" value=<%=session.getAttribute("basicPrice")%>>
+        <p>注：支付后将随机安排班级，可能需要补充差价。请慎重选择！</p>
+        <br/>
         <div class="write_form">
             <button class="btn btn-primary" style="margin-left: 15px;" onclick="append_nine();"> + 新增学生</button>
             <table id="addNineStudent" class="table table-bordered" style="width: 900px;border-width: 1;margin-top: 10px;text-align: center">
@@ -157,8 +170,8 @@
                 </thead>
                 <tbody id="nine_stu">
                 <tr id="rr1">
-                    <td><input placeholder="请填写学生姓名" value=""></td>
-                    <td><input placeholder="请填写联系方式" value=""></td>
+                    <td><input id="nn1" placeholder="请填写学生姓名"></td>
+                    <td><input id="tt1" placeholder="请填写联系方式"></td>
                     <td><button class="btn minus_btn" onclick="del_nine()">
                         删除
                     </button>
@@ -168,14 +181,14 @@
             </table>
         </div>
         <div id="payDiv2" style="margin-top: 20px;">
-            <input type="checkbox"><b> <%=vip.getVipLevel()%>会员，享受<%=GetDiscount.getdis(vip.getVipLevel())%>折优惠</b>
+            <input id="ndis"type="checkbox"><b> <%=vip.getVipLevel()%>会员，享受<%=GetDiscount.getdis(vip.getVipLevel())%>折优惠</b>
             <br/>
-            <input type="checkbox"><b> <%=vip.getVipLevel()%> 元抵用券</b>
+            <input id="nsub" type="checkbox"><b> <%=vip.getVipSubMoney()%> 元抵用券</b>
             <br/>
             <br/>
             <div style="margin-left: 78%;">
-                <h4 id="">合计： 8799 元</h4>
-                <button class="btn btn-primary">确认支付</button>
+                <h4 id="sumMoney"></h4>
+                <button class="btn btn-primary" onclick="notChoosePay()">确认支付</button>
             </div>
 
         </div>
@@ -193,6 +206,7 @@
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script type="text/javascript">
     var num=1;
+    var nnum=1;
     function append(){
         <%--<%--%>
         <%--i++;--%>
@@ -219,7 +233,8 @@
 //        %>
     }
     function append_nine(){
-        var newLine='<tr><td><input placeholder="请填写学生姓名" value=""></td> <td><input placeholder="请填写联系方式" value=""></td> <td><button class="btn minus_btn"> 删除 </button> </td> </tr>';
+        nnum=nnum+1;
+        var newLine='<tr id="rr'+nnum+'"><td><input id="nn'+nnum+'" placeholder="请填写学生姓名"></td> <td><input id="tt'+nnum+'" placeholder="请填写联系方式"></td> <td><button class="btn minus_btn"> 删除 </button> </td> </tr>';
         //可能java中class是关键词？class用不了
         $("#nine_stu").append(newLine);
     }
@@ -303,6 +318,70 @@
         //界面跳转
         window.setTimeout("window.location='../showCourse.action'",8000);
 //        window.location.href="/jsp/course.jsp";
+    }
+
+    function notChoosePay(){
+        var ssum=document.getElementById("bpp").value*nnum;
+        for(var e=1;e<=nnum;e++){
+            $.ajax({
+                type:"post",
+                url:"../notChooseOrder",
+                async:false,
+                data:{
+                    student_name:document.getElementById("nn"+e).value,
+                    class_name:document.getElementById("random_class").value,
+                    phone:document.getElementById("tt"+e).value,
+                },
+            });
+        }
+        if(document.getElementById("ndis").checked){
+            ssum=ssum*<%=GetDiscount.getdis(vip.getVipLevel())%>/10;
+        }
+        if(document.getElementById("nsub").checked){
+            ssum=ssum-<%=vip.getVipSubMoney()%>;
+        }
+        document.getElementById("sumMoney").innerHTML=ssum;
+
+        swal({
+            title: "支付",
+            text: "¥"+ ssum,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "立即支付",
+            cancelButtonText: "取消",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type:"post",
+                    url:"../addOneOrder",
+                    async:true,
+                    data:{
+                        money:ssum,
+                    },
+                    success:function() {
+                        swal("支付!", "支付成功！", "success")
+                    }
+                });
+            } else{
+                $.ajax({
+                    type:"post",
+                    url:"../addOnetopayOrder",
+                    async:true,
+                    data:{
+                        money:ssum,
+                    },
+                    success:function() {
+                        swal("取消", "订单将在15分钟后失效，请尽快支付！", "error")
+                    }
+                });
+            }
+        })
+
+        //界面跳转
+        window.setTimeout("window.location='../showCourse.action'",8000);
     }
 </script>
 </html>

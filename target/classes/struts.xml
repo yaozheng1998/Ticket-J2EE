@@ -33,6 +33,7 @@
         <action name="login" class="action.LoginAction">
             <result name="relogin">/jsp/main.jsp</result>
             <result name="vipLogin" type="chain">showCourse</result>
+            <result name="insLogin" type="chain">showInsBasicInfo</result>
         </action>
 
         <action name="showRegister" class="action.RegisterAction">
@@ -67,6 +68,9 @@
         <action name="orderCourse" class="action.OrderAction" method="pay">
             <result name="pay_success">/jsp/class.jsp</result>
         </action>
+        <action name="notChooseOrder" class="action.OrderAction" method="notChooseAddIntoClass">
+            <result name="add_success">/jsp/class.jsp</result>
+        </action>
         <action name="addOneOrder" class="action.OrderAction" method="addOrder">
             <result name="order_success">/jsp/class.jsp</result>
         </action>
@@ -74,6 +78,20 @@
             <result name="topayorder_success">/jsp/class.jsp</result>
         </action>
 
+        <action name="addIns" class="action.InstitutionAction" method="addIns">
+            <result name="addIns_success">addTeacher</result>
+        </action>
+        <action name="addTeacher" class="action.InstitutionAction" method="addTeachersIntoDB">
+            <result name="addTeacher_success">/jsp/addIns.jsp</result>
+        </action>
+
+        <!--机构版-->
+        <action name="showInsBasicInfo" class="action.InstitutionAction" method="showBasicInfo">
+            <result name="basicinfo">/jsp/insBasicInfo.jsp</result>
+        </action>
+        <action name="modifyIns" class="action.InstitutionAction" method="modifyIns">
+            <result name="modifyIns_success">showInsBasicInfo</result>
+        </action>
     </package>
 
 </struts>

@@ -87,12 +87,29 @@ public class OrderAction extends BaseAction{
         OrderClass orderClass=new OrderClass();
         orderClass.setOrderclass_id(oc_id);
         orderClass.setItorder_id((int)orderService.getNextNum()-1);
-        orderClass.setClass_id(classService.getIdFromName(class_name));
+//        if(class_name==null||class_name.equals("")){
+//            orderClass.setClass_id(-1);
+//        }else {
+            orderClass.setClass_id(classService.getIdFromName(class_name));
+//        }
         orderClass.setReal_name(student_name);
         orderClass.setPhone(phone);
         orderClass.setState("待开班");
         orderClassService.save(orderClass);
         return "pay_success";
+    }
+
+    public String notChooseAddIntoClass(){
+        int oc_id=(int)orderClassService.getNextId();
+        OrderClass orderClass=new OrderClass();
+        orderClass.setOrderclass_id(oc_id);
+        orderClass.setItorder_id((int)orderService.getNextNum()-1);
+        orderClass.setClass_id(classService.getIdFromName(class_name));
+        orderClass.setReal_name(student_name);
+        orderClass.setPhone(phone);
+        orderClass.setState("待分配");
+        orderClassService.save(orderClass);
+        return "add_success";
     }
 
     //order
@@ -110,7 +127,7 @@ public class OrderAction extends BaseAction{
         order.setMoney(money);
         order.setPay_type(pay_type);
         orderService.save(order);
-        
+
         //bankcard
         Vip vip=vipService.findVipByName(vip_name);
         if(vip.getBalance()<money){

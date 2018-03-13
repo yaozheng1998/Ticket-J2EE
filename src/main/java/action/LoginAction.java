@@ -1,8 +1,10 @@
 package action;
 
+import model.Institution;
 import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import service.InstitutionService;
 import service.VipService;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpSession;
 public class LoginAction extends BaseAction{
     @Autowired
     private VipService vipService;
+    @Autowired
+    private InstitutionService institutionService;
 
     @Override
     public String execute(){
@@ -23,7 +27,20 @@ public class LoginAction extends BaseAction{
         char first=name.charAt(0);
         if(first=='8'){
             //institution
-            return "relogin";
+            int id=Integer.parseInt(name);
+            Institution institution=institutionService.getInsById(id);
+            if(institutionService.whetherAct(id)){
+                if(institutionService.checkPass(id,password)) {
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("insInfo", institution);
+                    session.setAttribute("ins_now", id);
+                    return "insLogin";
+                }else{
+                    return "relogin";
+                }
+            }else{
+                return "relogin";
+            }
         }else {
             Vip vip = vipService.findVipByName(name);
             if (vip == null) {

@@ -22,16 +22,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="margin-left: -50px">Ticket场馆版</a>
+            <a class="navbar-brand" style="margin-left: -50px">Training机构版</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="../jsp/main.jsp">首页</a></li>
-            </ul>
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="../jsp/main.jsp">首页</a></li>-->
+            <!--</ul>-->
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
                 <label>欢迎您, </label>
-                <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">鸟巢</p>
+                <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">xj</p>
             </div>
         </div>
     </div>
@@ -39,17 +39,67 @@
 
 <div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 780px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
-        <li role="presentation" class="active"><a href="#"><h5 style="padding-left: 15px">基本信息</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">场馆计划</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">票务登记</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">场馆统计</h5></a></li>
+        <li role="presentation" class="active"><a href="#"><h5 style="padding-left: 15px">机构信息</h5></a></li>
+        <li role="presentation"><a href=""><h5 style="padding-left: 15px">发布计划</h5></a></li>
+        <li role="presentation"><a href=""><h5 style="padding-left: 15px">学员登记</h5></a></li>
+        <li role="presentation"><a href=""><h5 style="padding-left: 15px">机构统计</h5></a></li>
     </ul>
 </div>
 
 <fieldset style="position:absolute;top:100px;left:200px;width: 900px;height: 620px">
     <legend>基本信息</legend>
+    <a href="#" onclick="modify()"
+       style="color: #1ab7ea; float: right; margin-right: 10px;"><b>修改信息</b></a>
+    <form action="modifyIns" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="f-insId" class="col-sm-3 control-label">机构编号:</label>
+            <div class="col-sm-4">
+                <span id="f-insId" class="form-control" style="border: none"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-insname" class="col-sm-3 control-label">机构名:</label>
+            <div class="col-sm-4">
+                <label class="form-control" id="f-insname" style="border: none"></label>
+                <input id="name_input" name="insName" value=""
+                       style="position: absolute; left: 20px;margin-top: -30px; width: 250px; visibility: hidden;">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-insloc" class="col-sm-3 control-label">机构地点:</label>
+            <div class="col-sm-4">
+                <span id="f-insloc" class="form-control" style="border: none"></span>
+                <input id="loc_input" name="insLocation" value=""
+                       style="position: absolute; left: 20px;margin-top: -30px; width: 250px; visibility: hidden;">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="f-num" class="col-sm-3 control-label">班级数目:</label>
+            <div class="col-sm-4">
+                <label class="form-control" id="f-num" style="border: none">
+                </label>
+                <input id="num_input" name="insNum" value=""
+                       style="position: absolute; left: 20px;margin-top: -30px; width: 250px; visibility: hidden;">
+            </div>
+        </div>
+        <button type="submit" id="save" style="margin-left: 45%;margin-top: 25px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
+    </form>
 </fieldset>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script>
+    function modify(){
+        document.getElementById("f-insname").style.visibility = "hidden";
+        document.getElementById("f-insloc").style.visibility = "hidden";
+        document.getElementById("f-num").style.visibility = "hidden";
+        document.getElementById("name_input").style.visibility = "";
+        document.getElementById("loc_input").style.visibility = "";
+        document.getElementById("num_input").style.visibility = "";
+        document.getElementById("save").style.visibility = "";
+    }
+</script>
 </body>
 </html>

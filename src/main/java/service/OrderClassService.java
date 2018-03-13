@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface OrderClassService {
     /**
-     * 根据用户名得到名下所有课程对应班级；直接显示班级
+     * 根据用户名得到名下所有课程对应班级；直接显示班级;【得到我的课程未分配班级的】；未支付的不显示
      * @param name
      * @return
      */

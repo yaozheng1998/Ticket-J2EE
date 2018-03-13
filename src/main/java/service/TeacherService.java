@@ -14,4 +14,16 @@ public interface TeacherService {
      */
     public Teacher getTeacherById(int id);
 
+    /**
+     * 新增教师
+     * @param teacher
+     */
+    public void addTeacher(Teacher teacher);
+
+    /**
+     * 得到下一个可用的教师编号
+     * @return
+     */
+    public long getNextId();
+
 }

@@ -36,4 +36,28 @@ public class InstitutionServiceImpl implements InstitutionService{
     public Institution getInsById(int insId) {
         return institutionDao.getInsById(insId);
     }
+
+    public void addIns(Institution institution) {
+        institutionDao.addIns(institution);
+    }
+
+    public long getNextId() {
+        return institutionDao.getNextId();
+    }
+
+    public boolean whetherAct(int insId) {
+        return institutionDao.whetherAct(insId);
+    }
+
+    public Institution getInfoById(int insId) {
+        return institutionDao.getInfoById(insId);
+    }
+
+    public boolean checkPass(int id, String password) {
+        return institutionDao.checkPass(id,password);
+    }
+
+    public void update(Institution institution) {
+
+    }
 }
