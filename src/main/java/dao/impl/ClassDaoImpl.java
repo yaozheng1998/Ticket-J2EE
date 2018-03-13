@@ -5,6 +5,7 @@ import dao.ClassDao;
 import model.Classroom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import util.CourseClassVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,30 @@ public class ClassDaoImpl implements ClassDao {
         return money;
     }
 
+    public List<CourseClassVO> getClassOfIns(int insId) {
+        String sql="select co.course_id,co.type,co.start_time,co.end_time,co.times,cl.class_name,t.name,cl.price,cl.all_num,cl.now_num from `class` cl,`course` co,`teacher` t where cl.course_id=co.course_id and cl.teacher_id=t.teacher_id and co.institution_id="+insId;
+        List<Object[]> list=baseDao.querySQL(sql);
+        return this.getCC(list);
+    }
+
+    private List<CourseClassVO> getCC(List<Object[]> objects){
+        List<CourseClassVO> courseClassVOList=new ArrayList<CourseClassVO>();
+        for(Object[] object:objects){
+            CourseClassVO vo=new CourseClassVO();
+            vo.setCourse_id((Integer)object[0]);
+            vo.setCourse_name(String.valueOf(object[1]));
+            vo.setStart_time(String.valueOf(object[2]));
+            vo.setEnd_time(String.valueOf(object[3]));
+            vo.setTimes((Integer)object[4]);
+            vo.setClass_name(String.valueOf(object[5]));
+            vo.setTeacher_name(String.valueOf(object[6]));
+            vo.setPrice((Double)object[7]);
+            vo.setAll_num((Integer)object[8]);
+            vo.setNow_num((Integer)object[9]);
+            courseClassVOList.add(vo);
+        }
+        return courseClassVOList;
+    }
     private List<Classroom> getClassrooms(List<Object[]> objects){
         List<Classroom> classroomList=new ArrayList<Classroom>();
         for(Object[] object:objects){

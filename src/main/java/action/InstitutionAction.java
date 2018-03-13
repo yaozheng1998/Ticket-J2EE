@@ -5,10 +5,14 @@ import model.Teacher;
 import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import service.ClassService;
 import service.InstitutionService;
 import service.TeacherService;
+import util.CourseClassVO;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author YZ
@@ -20,6 +24,8 @@ public class InstitutionAction extends BaseAction {
     private InstitutionService institutionService;
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private ClassService classService;
 
     String teacherName;
     String rank;
@@ -134,13 +140,26 @@ public class InstitutionAction extends BaseAction {
         String name=request.getParameter("insName");
         String loc=request.getParameter("insLocation");
         String num=request.getParameter("insNum");
-        Institution institution=institutionService.getInfoById((Integer) request.getSession().getAttribute("insId"));
+        Institution institution=institutionService.getInfoById((Integer) request.getSession().getAttribute("ins_now"));
         institution.setIns_name(name);
         institution.setLocation(loc);
         institution.setClassrooms(Integer.parseInt(num));
         institutionService.update(institution);
         return "modifyIns_success";
     }
+
+    /**
+     * 得到机构的所有class
+     * @return
+     */
+    public String showAllClasses(){
+        int insId=(Integer) request.getSession().getAttribute("ins_now");
+        List<CourseClassVO> courseClassVOList=classService.getClassOfIns(insId);
+        System.out.print(courseClassVOList.size()+"weghjhgfdqwwur");
+        request.setAttribute("insClasses",courseClassVOList);
+        return "showAllClass";
+    }
+
 }
 
 

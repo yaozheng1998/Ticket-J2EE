@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service.ClassService;
+import util.CourseClassVO;
 
 import java.util.List;
 
@@ -33,5 +34,9 @@ public class ClassServiceImpl implements ClassService {
 
     public int getIdFromName(String name) {
         return classDao.getIdFromName(name);
+    }
+
+    public List<CourseClassVO> getClassOfIns(int insId) {
+        return classDao.getClassOfIns(insId);
     }
 }

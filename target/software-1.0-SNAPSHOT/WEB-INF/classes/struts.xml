@@ -92,6 +92,9 @@
         <action name="modifyIns" class="action.InstitutionAction" method="modifyIns">
             <result name="modifyIns_success">showInsBasicInfo</result>
         </action>
+        <action name="showAllClasses" class="action.InstitutionAction" method="showAllClasses">
+            <result name="showAllClass">/jsp/insNewPlan.jsp</result>
+        </action>
     </package>
 
 </struts>

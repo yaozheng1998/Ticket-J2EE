@@ -1,6 +1,7 @@
 package dao;
 
 import model.Classroom;
+import util.CourseClassVO;
 
 import java.util.List;
 
@@ -41,4 +42,11 @@ public interface ClassDao {
      * @return
      */
     public double getMoneyFromName(String name);
+
+    /**
+     * 得到一个机构的所有班级
+     * @param insId
+     * @return
+     */
+    public List<CourseClassVO> getClassOfIns(int insId);
 }

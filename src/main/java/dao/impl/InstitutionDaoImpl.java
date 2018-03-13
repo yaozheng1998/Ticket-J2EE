@@ -2,10 +2,12 @@ package dao.impl;
 
 import dao.BaseDao;
 import dao.InstitutionDao;
+import model.Course;
 import model.Institution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,5 +71,27 @@ public class InstitutionDaoImpl implements InstitutionDao {
             return true;
         }
         return false;
+    }
+
+    public List<Course> getCoursesOfIns(int insId) {
+        String sql="select * from `course` where institution_id="+insId;
+        List<Object[]> courses=baseDao.querySQL(sql);
+        return null;
+    }
+
+    private List<Course> getCourseFromOb(List<Object[]> list){
+        List<Course> courseList=new ArrayList<Course>();
+        for(Object[] object:list){
+            Course course=new Course();
+            course.setCourse_id((Integer)object[0]);
+            course.setInstitution_id((Integer)object[1]);
+            course.setStart_time(String.valueOf(object[2]));
+            course.setEnd_time(String.valueOf(object[3]));
+            course.setBasic_price((Integer) object[4]);
+            course.setTimes((Integer)object[5]);
+            course.setType(String.valueOf(object[6]));
+            courseList.add(course);
+        }
+        return courseList;
     }
 }

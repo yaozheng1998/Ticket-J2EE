@@ -1,5 +1,6 @@
 package dao;
 
+import model.Course;
 import model.Institution;
 
 import java.util.List;
@@ -66,4 +67,11 @@ public interface InstitutionDao {
      * @return
      */
     public boolean checkPass(int id,String password);
+
+    /**
+     * 得到一个机构的所有课程信息，不是班级
+     * @param insId
+     * @return
+     */
+    public List<Course> getCoursesOfIns(int insId);
 }

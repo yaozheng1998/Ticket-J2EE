@@ -60,4 +60,8 @@ public class InstitutionServiceImpl implements InstitutionService{
     public void update(Institution institution) {
 
     }
+
+    public List<Course> getCoursesOfIns(int insId) {
+        return institutionDao.getCoursesOfIns(insId);
+    }
 }

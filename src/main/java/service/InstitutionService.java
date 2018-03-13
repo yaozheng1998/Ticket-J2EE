@@ -1,5 +1,6 @@
 package service;
 
+import model.Course;
 import model.Institution;
 
 import java.util.List;
@@ -72,4 +73,11 @@ public interface InstitutionService {
      * @param institution
      */
     public void update(Institution institution);
+
+    /**
+     * 得到一个机构的所有课程信息，不是班级
+     * @param insId
+     * @return
+     */
+    public List<Course> getCoursesOfIns(int insId);
 }
