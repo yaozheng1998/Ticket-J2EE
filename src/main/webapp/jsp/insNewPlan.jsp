@@ -71,7 +71,7 @@
             <%
                 }else{
                 %>
-        <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
+        <table class="table table-bordered" style="border-width: 1;margin-top: 10px;text-align: center">
             <thead>
             <th>课程名</th>
             <th>开课日期</th>

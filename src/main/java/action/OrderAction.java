@@ -139,6 +139,10 @@ public class OrderAction extends BaseAction{
         return "order_success";
     }
 
+    /**
+     * 下单未支付，设置15分钟的触发执行
+     * @return
+     */
     public String addtopayOrder(){
         order_id=(int)orderService.getNextNum();
         String vip_name=(String) request.getSession().getAttribute("id");

@@ -93,7 +93,7 @@
             <br>
             <div class="row">
                 <div class="col-xs-8">
-                    <a data-toggle="modal" data-target="" data-dismiss="modal" class="text-center">已有账号，去登录吧~</a>
+                    <a href="main.action" data-toggle="modal" data-target="" data-dismiss="modal" class="text-center">已有账号，去登录吧~</a>
                 </div>
                 <div class="col-xs-4">
                     <button type="button" class="btn btn-primary btn-block btn-flat" onclick="regis()">注册</button>

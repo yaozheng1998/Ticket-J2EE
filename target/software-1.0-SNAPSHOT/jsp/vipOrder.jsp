@@ -1,7 +1,8 @@
 <%@ page import="util.OrderClassVO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.text.DateFormat" %><%--
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="util.ToPayOrderVO" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/10
@@ -42,7 +43,7 @@
                 <li><a href="vipBasicInfo.action">个人信息</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">机构注册</a></li>
+                <li><a href="/jsp/insRegister.jsp">机构注册</a></li>
             </ul>
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
@@ -70,6 +71,7 @@
             <%
                 List<OrderClassVO> list=(List<OrderClassVO>)request.getAttribute("myClasses");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
             %>
             <div class="write_form">
@@ -441,6 +443,65 @@
                     %>
                     </tbody>
 
+                </table>
+                <%
+                    }
+                %>
+            </div>
+        </div>
+
+        <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-7">
+        <label for="tab-radio-7" class="tab-handler tab-handler-7">待支付</label>
+        <div class="tab-content tab-content-7">
+            <%
+                List<ToPayOrderVO> toPayOrderVOList= (List<ToPayOrderVO>) request.getAttribute("topay");
+
+            %>
+            <div class="write_form">
+                <%
+                    if(toPayOrderVOList.size()==0){
+                %>
+                <b>没有待支付的订单！</b>
+                <%
+                }else{
+                %>
+
+                <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
+                    <thead>
+                    <th>订单编号</th>
+                    <th>下单时间</th>
+                    <th>机构名</th>
+                    <th>机构地点</th>
+                    <th>价格</th>
+                    <th></th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    <%
+                        for(int i=0;i<toPayOrderVOList.size();i++){
+                            ToPayOrderVO vo=toPayOrderVOList.get(i);
+                    %>
+                    <tr>
+                        <td><%=vo.getOrder_id()%></td>
+                        <td><%=sdf2.format(vo.getOrder_time())%></td>
+                        <td><%=vo.getIns_name()%></td>
+                        <td><%=vo.getIns_location()%></td>
+                        <td><%=vo.getMoney()%></td>
+                        <td>
+                            <button class="btn blueminus_btn" onclick="">
+                                支付
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn minus_btn" onclick="">
+                                删除
+                            </button>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                    </tbody>
                 </table>
                 <%
                     }

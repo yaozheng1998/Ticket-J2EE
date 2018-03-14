@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service.OrderService;
+import util.ToPayOrderVO;
 
 import java.util.List;
 
@@ -33,5 +34,9 @@ public class OrderServiceImpl implements OrderService{
 
     public long getNextNum() {
         return orderDao.getNextNum();
+    }
+
+    public List<ToPayOrderVO> getToPayOrders(String name) {
+        return orderDao.getToPayOrders(name);
     }
 }

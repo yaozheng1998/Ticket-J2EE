@@ -1,6 +1,7 @@
 package dao;
 
 import model.Order;
+import util.ToPayOrderVO;
 
 import java.util.List;
 
@@ -34,4 +35,11 @@ public interface OrderDao {
      * @return
      */
     public long getNextNum();
+
+    /**
+     * 得到用户的所有待支付订单
+     * @param name
+     * @return
+     */
+    public List<ToPayOrderVO> getToPayOrders(String name);
 }

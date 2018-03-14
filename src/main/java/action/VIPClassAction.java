@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import service.*;
 import util.OrderClassVO;
+import util.ToPayOrderVO;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -79,6 +80,9 @@ public class VIPClassAction extends BaseAction{
         List<OrderClass> divide=orderClassService.getClassByState("'"+(String)session.getAttribute("id")+"'","'待分配'");
         List<OrderClassVO> divideVOS=this.getVOFromMC(divide);
         request.setAttribute("divideClass",divideVOS);
+
+        List<ToPayOrderVO> toPayOrderVOList=orderService.getToPayOrders("'"+(String)session.getAttribute("id")+"'");
+        request.setAttribute("topay",toPayOrderVOList);
 
         return "show_my_classes";
     }

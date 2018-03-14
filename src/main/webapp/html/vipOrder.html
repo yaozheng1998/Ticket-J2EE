@@ -305,6 +305,44 @@
                 </table>
             </div>
         </div>
+
+        <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-7">
+        <label for="tab-radio-7" class="tab-handler tab-handler-7">待支付</label>
+        <div class="tab-content tab-content-7">
+            <div class="write_form">
+                <b>没有待支付的订单！</b>
+                <table class="table table-bordered" style="margin-left:-50px;border-width: 1;margin-top: 10px;text-align: center">
+                    <thead>
+                    <th>订单编号</th>
+                    <th>下单时间</th>
+                    <th>机构名</th>
+                    <th>机构地点</th>
+                    <th>价格</th>
+                    <th></th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><%=vo.getOrder_id()%></td>
+                        <td><%=sdf.format(vo.getOrder_time())%></td>
+                        <td><%=vo.getPay_type()%></td>
+                        <td><%=vo.getIns_name()%></td>
+                        <td><%=vo.getStudent_name()%></td>
+                        <td>
+                            <button class="btn blueminus_btn" onclick="">
+                                支付
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn minus_btn" onclick="">
+                                删除
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 

@@ -12,3 +12,13 @@ th,tr{
     background-color: rgb(249,93,78);
     color: whitesmoke;
 }
+.blueminus_btn{
+    width:60px;
+    border-color: #0089A7;
+    background-color: transparent;
+    color: #0089A7;
+}
+.blueminus_btn:hover,.blueminus_btn:checked{
+    background-color: #0089A7;
+    color: whitesmoke;
+}

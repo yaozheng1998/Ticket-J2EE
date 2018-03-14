@@ -33,7 +33,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!--<li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>-->
-                    <li><a href="#">机构注册</a></li>
+                    <li><a href="/jsp/insRegister.jsp">机构注册</a></li>
                 </ul>
             </div>
         </div>
