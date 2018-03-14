@@ -2,6 +2,8 @@ package dao;
 
 import model.Teacher;
 
+import java.util.List;
+
 /**
  * @Author YZ
  * @Date 2018/3/4
@@ -26,5 +28,10 @@ public interface TeacherDao {
      */
     public long getNextId();
 
-
+    /**
+     * 得到一个机构的师资信息
+     * @param ins_id
+     * @return
+     */
+    public List<Teacher> getTeachers(int ins_id);
 }

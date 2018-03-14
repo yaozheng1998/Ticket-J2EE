@@ -44,6 +44,20 @@ public class OrderDaoImpl implements OrderDao {
         return this.getTPO(list);
     }
 
+    public List<ToPayOrderVO> getAllToPay() {
+        String sql="select o.order_id,o.order_time,i.ins_name,i.location,o.money from `orders` o,`institution` i where o.ins_id=i.ins_id and o.pay_type='待支付' order by o.order_time asc";
+        List<Object[]> list=baseDao.querySQL(sql);
+        return this.getTPO(list);
+    }
+
+    public void removeOrder(int order_id) {
+        String sql="delete from `orders` where order_id="+order_id;
+        String sql2="delete from `order_classes` where itorder_id="+order_id;
+        baseDao.querySQL(sql2);
+        baseDao.querySQL(sql);
+
+    }
+
     private List<ToPayOrderVO> getTPO(List<Object[]> list){
         List<ToPayOrderVO> toPayOrderVOList=new ArrayList<ToPayOrderVO>();
         for(Object[] objects:list){

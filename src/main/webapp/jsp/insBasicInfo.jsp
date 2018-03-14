@@ -1,4 +1,6 @@
-<%@ page import="model.Institution" %><%--
+<%@ page import="model.Institution" %>
+<%@ page import="model.Teacher" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/13
@@ -15,12 +17,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="../css/table.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
 <%
     Institution institution=(Institution) session.getAttribute("insInfo");
+    List<Teacher> teacherList=(List<Teacher>) request.getAttribute("teachers");
 %>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -97,10 +103,47 @@
         </div>
         <button type="submit" id="save" style="margin-left: 45%;margin-top: 25px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
     </form>
+
+    <h4>师资信息</h4>
+    <div class="write_form">
+        <table id="show_teacher" class="table table-bordered" style="width: 500px;border-width: 2;margin-top: 10px;text-align: center">
+            <thead>
+            <th>教师姓名</th>
+            <th>等级</th>
+            <th>科目</th>
+            <th></th>
+            </thead>
+            <tbody id="teachers">
+            <%
+                for(int i=0;i<teacherList.size();i++){
+                    Teacher teacher=teacherList.get(i);
+            %>
+            <tr id="r1">
+                <td><%=teacher.getName()%></td>
+                <td><%=teacher.getRank()%></td>
+                <td><%=teacher.getSubject()%></td>
+                <td><button id="b1" type="button" class="btn minus_btn" onclick="del(this)">
+                    删除
+                </button>
+                </td>
+            </tr>
+            <%
+                }
+            %>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" style="margin-top:-150px;margin-left: 90%;" onclick="append_teacher();"> + 新增教师</button>
+        <button id="confirm" type="button" onclick="add_teacher()" class="btn blueminus_btn" style="margin-left: 50%;visibility: hidden">确认</button>
+        <br/>
+        <button id="sign" class="alert alert-warning" role="alert" style="visibility: hidden">添加成功，请等待管理员审核</button>
+    </div>
+
 </fieldset>
 </body>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script>
     function modify(){
         document.getElementById("f-insname").style.visibility = "hidden";
@@ -110,6 +153,16 @@
         document.getElementById("loc_input").style.visibility = "";
         document.getElementById("num_input").style.visibility = "";
         document.getElementById("save").style.visibility = "";
+    }
+    var num=0;
+    function append_teacher(){
+        document.getElementById("confirm").style.visibility = "";
+        num=num+1;
+        var newLine='<tr id="r'+num+'"><td><input id="tn'+num+'" placeholder="请填写教师姓名"></td> <td> <select id="s'+num+'" style="height: 34px;background: white"> <option>金牌</option> <option>银牌</option> <option>铜牌</option> </select> </td><td><input id="t'+num+'" placeholder="请填写任教科目"></td> <td><button type="button" class="btn minus_btn" onclick="del(this)"> 删除 </button> </td> </tr>';
+        $("#teachers").append(newLine);
+    }
+    function add_teacher(){
+
     }
 </script>
 </html>

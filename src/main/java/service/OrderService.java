@@ -42,4 +42,15 @@ public interface OrderService {
      * @return
      */
     public List<ToPayOrderVO> getToPayOrders(String name);
+
+    /**
+     * 得到数据库中所有的未支付订单
+     * @return
+     */
+    public List<ToPayOrderVO> getAllToPay();
+
+    /**
+     * 清除过期的未支付订单
+     */
+    public void cancelOrders();
 }

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service.TeacherService;
 
+import java.util.List;
+
 /**
  * @Author YZ
  * @Date 2018/3/8
@@ -27,5 +29,9 @@ public class TeacherServiceImpl implements TeacherService{
 
     public long getNextId() {
         return teacherDao.getNextId();
+    }
+
+    public List<Teacher> getTeachers(int ins_id) {
+        return teacherDao.getTeachers(ins_id);
     }
 }

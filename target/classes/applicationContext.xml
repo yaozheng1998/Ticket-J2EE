@@ -83,4 +83,34 @@
     <!--支持事务注解-->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
+  <!--Spring整合quartz-->
+  <bean id="scheduleTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="service.impl.OrderServiceImpl"></bean>
+    </property>
+    <property name="targetMethod">
+      <value>cancelOrders</value>
+    </property>
+    <property name="concurrent">
+      <value>false</value>
+    </property>
+  </bean>
+
+  <!--配置取消订单的触发器-->
+  <bean id="scheduleTime" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail">
+      <ref bean="scheduleTask"></ref>
+    </property>
+    <property name="cronExpression">
+      <value>0 0/15 * * * ?</value>
+    </property>
+  </bean>
+  <!--配置调度工厂-->
+  <bean lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="scheduleTime"></ref>
+      </list>
+    </property>
+  </bean>
 </beans>

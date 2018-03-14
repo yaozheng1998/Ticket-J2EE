@@ -83,6 +83,7 @@ public class VIPClassAction extends BaseAction{
 
         List<ToPayOrderVO> toPayOrderVOList=orderService.getToPayOrders("'"+(String)session.getAttribute("id")+"'");
         request.setAttribute("topay",toPayOrderVOList);
+        session.setAttribute("session_topay",toPayOrderVOList);
 
         return "show_my_classes";
     }

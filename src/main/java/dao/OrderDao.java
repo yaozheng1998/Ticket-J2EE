@@ -42,4 +42,16 @@ public interface OrderDao {
      * @return
      */
     public List<ToPayOrderVO> getToPayOrders(String name);
+
+    /**
+     * 得到数据库中所有的未支付订单
+     * @return
+     */
+    public List<ToPayOrderVO> getAllToPay();
+
+    /**
+     * 移除某个订单
+     */
+    public void removeOrder(int order_id);
+
 }

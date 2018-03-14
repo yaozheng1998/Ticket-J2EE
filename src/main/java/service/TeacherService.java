@@ -2,6 +2,8 @@ package service;
 
 import model.Teacher;
 
+import java.util.List;
+
 /**
  * @Author YZ
  * @Date 2018/3/8
@@ -26,4 +28,10 @@ public interface TeacherService {
      */
     public long getNextId();
 
+    /**
+     * 得到一个机构的师资信息
+     * @param ins_id
+     * @return
+     */
+    public List<Teacher> getTeachers(int ins_id);
 }
