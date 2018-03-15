@@ -25,6 +25,15 @@ public class OrderClassVO {
     String state;
     String refund_time;
     double refund_money;
+    int order_classId;
+
+    public int getOrder_classId() {
+        return order_classId;
+    }
+
+    public void setOrder_classId(int order_classId) {
+        this.order_classId = order_classId;
+    }
 
     public double getRefund_money() {
         return refund_money;

@@ -42,6 +42,11 @@ public class OrderClassDaoImpl implements OrderClassDao {
         return current+1;
     }
 
+    public void cancel(int order_classId) {
+        String sql="delete from `order_classes` where orderclass_id="+order_classId;
+        baseDao.querySQL(sql);
+    }
+
     private List<OrderClass> getOrderClasses(List<Object[]> objects){
         List<OrderClass> orderClassList=new ArrayList<OrderClass>();
         for(Object[] object:objects){

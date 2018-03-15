@@ -121,7 +121,7 @@
                             if(vo.getState().equals("待开班")||vo.getState().equals("进行中")){
                         %>
 
-                            <button class="btn minus_btn" onclick="">
+                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
                                 退订
                             </button>
                             <%
@@ -187,7 +187,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button class="btn minus_btn" onclick="">
+                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
                                 退订
                             </button>
                         </td>
@@ -250,7 +250,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button class="btn minus_btn" onclick="">
+                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
                                 退订
                             </button>
                         </td>
@@ -433,7 +433,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button class="btn minus_btn" onclick="">
+                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
                                 退订
                             </button>
                         </td>
@@ -513,5 +513,20 @@
 </fieldset>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script>
+    function deleteClass(obj){
+        $.ajax({
+           type:"post",
+            url:"cancelMyClass",
+            async:true,
+            data:{
+               order_classId:obj.getAttribute("id"),
+            },
+            success:function(){
+               alert("12356765432");
+            }
+        });
+    }
+</script>
 </body>
 </html>

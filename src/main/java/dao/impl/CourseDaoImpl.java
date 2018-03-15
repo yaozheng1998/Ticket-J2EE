@@ -55,4 +55,12 @@ public class CourseDaoImpl implements CourseDao{
     public Course getInfoByCourseId(int courseId) {
         return (Course)baseDao.load(Course.class,courseId);
     }
+
+    public void save(Course course) {
+        try{
+            baseDao.save(course);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

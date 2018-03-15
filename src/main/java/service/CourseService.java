@@ -39,4 +39,10 @@ public interface CourseService {
      * @return
      */
     public Course getInfoByCourseId(int courseId);
+
+    /**
+     * 新发布课程
+     * @param course
+     */
+    public void save(Course course);
 }

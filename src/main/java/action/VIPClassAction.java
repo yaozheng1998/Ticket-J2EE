@@ -41,7 +41,16 @@ public class VIPClassAction extends BaseAction{
         this.state = state;
     }
 
-//    public String getVipname() {
+    private int order_classId;
+
+    public int getOrder_classId() {
+        return order_classId;
+    }
+
+    public void setOrder_classId(int order_classId) {
+        this.order_classId = order_classId;
+    }
+    //    public String getVipname() {
 //
 //        return vipname;
 //    }
@@ -117,8 +126,15 @@ public class VIPClassAction extends BaseAction{
             orderClassVO.setState(orderClass.getState());
             orderClassVO.setRefund_time(orderClass.getRefund_time());
             orderClassVO.setRefund_money(orderClass.getRefund_money());
+            orderClassVO.setOrder_classId(orderClass.getOrderclass_id());
             orderClassVOS.add(orderClassVO);
         }
         return orderClassVOS;
+    }
+
+    public String cancelClass(){
+        //退订，积分下降，退款
+        orderClassService.cancel(order_classId);
+        return "cancel_success";
     }
 }

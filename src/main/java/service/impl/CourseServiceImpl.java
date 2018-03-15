@@ -46,4 +46,8 @@ public class CourseServiceImpl implements CourseService{
     public Course getInfoByCourseId(int courseId) {
         return courseDao.getInfoByCourseId(courseId);
     }
+
+    public void save(Course course) {
+        courseDao.save(course);
+    }
 }

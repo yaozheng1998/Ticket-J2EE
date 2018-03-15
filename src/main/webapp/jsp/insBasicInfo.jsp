@@ -133,7 +133,8 @@
             </tbody>
         </table>
         <button type="button" class="btn btn-primary" style="margin-top:-150px;margin-left: 90%;" onclick="append_teacher();"> + 新增教师</button>
-        <button id="confirm" type="button" onclick="add_teacher()" class="btn blueminus_btn" style="margin-left: 50%;visibility: hidden">确认</button>
+        <button id="cancel" type="button" onclick="ret()" class="btn minus_btn" style="margin-left: 42%;visibility: hidden">取消</button>
+        <button id="confirm" type="button" onclick="add_teacher()" class="btn blueminus_btn" style="margin-left: 50%;margin-top: -56px;visibility: hidden">确认</button>
         <br/>
         <button id="sign" class="alert alert-warning" role="alert" style="visibility: hidden">添加成功，请等待管理员审核</button>
     </div>
@@ -157,9 +158,13 @@
     var num=0;
     function append_teacher(){
         document.getElementById("confirm").style.visibility = "";
+        document.getElementById("cancel").style.visibility = "";
         num=num+1;
         var newLine='<tr id="r'+num+'"><td><input id="tn'+num+'" placeholder="请填写教师姓名"></td> <td> <select id="s'+num+'" style="height: 34px;background: white"> <option>金牌</option> <option>银牌</option> <option>铜牌</option> </select> </td><td><input id="t'+num+'" placeholder="请填写任教科目"></td> <td><button type="button" class="btn minus_btn" onclick="del(this)"> 删除 </button> </td> </tr>';
         $("#teachers").append(newLine);
+    }
+    function ret(){
+        window.location.reload();
     }
     function add_teacher(){
 

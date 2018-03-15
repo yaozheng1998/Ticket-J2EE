@@ -35,4 +35,9 @@ public interface OrderClassService {
      * @return
      */
     public long getNextId();
+
+    /**
+     * 退订某一个订单
+     */
+    public void cancel(int order_classId);
 }

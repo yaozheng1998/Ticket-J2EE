@@ -30,7 +30,11 @@ public class ClassDaoImpl implements ClassDao {
     }
 
     public void save(Classroom classroom) {
-        baseDao.save(classroom);
+        try{
+            baseDao.save(classroom);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public int getIdFromName(String name) {

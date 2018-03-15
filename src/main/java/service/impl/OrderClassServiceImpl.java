@@ -35,4 +35,8 @@ public class OrderClassServiceImpl implements OrderClassService {
     public long getNextId() {
         return orderClassDao.getNextId();
     }
+
+    public void cancel(int order_classId) {
+        orderClassDao.cancel(order_classId);
+    }
 }
