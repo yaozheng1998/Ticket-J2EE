@@ -42,4 +42,10 @@ public interface ClassService {
      * @return
      */
     public List<CourseClassVO> getClassOfIns(int insId);
+
+    /**
+     * 得到下一个可用的班级ID
+     * @return
+     */
+    public int getNextId();
 }

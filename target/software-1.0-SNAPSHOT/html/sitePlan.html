@@ -136,6 +136,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <input id="count" value="1">
                             <button type="button" class="btn blueminus_btn" style="margin-left: 460px;" onclick="append_teacher();">新班级</button>
                         </div>
                     </form>
@@ -154,12 +155,24 @@
 <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script>
-    $('#startTime').datetimepicker({
+    $('#startTime').datepicker({
         format:'yyyy-mm-dd'
     });
-    $('#endTime').datetimepicker({
+    $('#endTime').datepicker({
         format:'yyyy-mm-dd'
     });
+    function del(obj){
+        var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+        child.parentNode.removeChild(child);
+    }
+    var num=1;
+    function append_teacher(){
+        num=num+1;
+        var newline='<tr id="r"'+num+'> <td><input style="width: 100px;" id="cn"'+num+' placeholder="请填写班级名"></td> <td> <select id="tn"'+num+'> <option>大花</option> <option>yoyo</option> </select> </td> <td><input style="width: 130px;" id="n"'+num+' placeholder="请填写班级人数"></td> <td><input style="width: 100px;" id="p"'+num+'" placeholder="请填写价格"></td> <td><button id="b"'+num+'" type="button" class="btn minus_btn" onclick="del(this)">删除 </button> </td> </tr>';
+        $("#classes").append(newline);
+        document.getElementById("count").value=num;
+        alert(document.getElementById("count").value);
+    }
 </script>
 </body>
 </html>

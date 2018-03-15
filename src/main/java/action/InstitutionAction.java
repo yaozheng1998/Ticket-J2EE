@@ -157,8 +157,10 @@ public class InstitutionAction extends BaseAction {
     public String showAllClasses(){
         int insId=(Integer) request.getSession().getAttribute("ins_now");
         List<CourseClassVO> courseClassVOList=classService.getClassOfIns(insId);
-        System.out.print(courseClassVOList.size()+"weghjhgfdqwwur");
+        List<Teacher> teacherList=teacherService.getTeachers(insId);
         request.setAttribute("insClasses",courseClassVOList);
+        request.setAttribute("insTeachers",teacherList);
+
         return "showAllClass";
     }
 

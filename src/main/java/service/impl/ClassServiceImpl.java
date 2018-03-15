@@ -39,4 +39,8 @@ public class ClassServiceImpl implements ClassService {
     public List<CourseClassVO> getClassOfIns(int insId) {
         return classDao.getClassOfIns(insId);
     }
+
+    public int getNextId() {
+        return classDao.getNextId();
+    }
 }

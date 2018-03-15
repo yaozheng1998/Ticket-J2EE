@@ -100,6 +100,9 @@
         <action name="showAllClasses" class="action.InstitutionAction" method="showAllClasses">
             <result name="showAllClass">/jsp/insNewPlan.jsp</result>
         </action>
+        <action name="newPlan" class="action.InstitutionPlanAction">
+            <result name="new_plan">/jsp/insNewPlan.jsp</result>
+        </action>
     </package>
 
 </struts>

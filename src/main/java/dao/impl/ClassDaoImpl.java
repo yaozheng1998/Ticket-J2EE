@@ -55,6 +55,10 @@ public class ClassDaoImpl implements ClassDao {
         return this.getCC(list);
     }
 
+    public int getNextId() {
+        return (int) (baseDao.getTotalCount(Classroom.class)+100);
+    }
+
     private List<CourseClassVO> getCC(List<Object[]> objects){
         List<CourseClassVO> courseClassVOList=new ArrayList<CourseClassVO>();
         for(Object[] object:objects){

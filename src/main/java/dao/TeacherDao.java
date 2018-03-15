@@ -34,4 +34,11 @@ public interface TeacherDao {
      * @return
      */
     public List<Teacher> getTeachers(int ins_id);
+
+    /**
+     * 根据教师姓名获得对应的编号
+     * @param name
+     * @return
+     */
+    public int getIdByName(String name);
 }

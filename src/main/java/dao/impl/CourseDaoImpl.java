@@ -63,4 +63,9 @@ public class CourseDaoImpl implements CourseDao{
             e.printStackTrace();
         }
     }
+
+    public int getNextId() {
+        String sql="select max(`course_id`) from `course`";
+        return (Integer)baseDao.querySQL(sql).get(0)+1;
+    }
 }

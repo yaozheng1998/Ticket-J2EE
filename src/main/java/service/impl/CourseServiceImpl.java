@@ -50,4 +50,8 @@ public class CourseServiceImpl implements CourseService{
     public void save(Course course) {
         courseDao.save(course);
     }
+
+    public int getNextId() {
+        return courseDao.getNextId();
+    }
 }

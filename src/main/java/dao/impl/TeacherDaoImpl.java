@@ -38,6 +38,12 @@ public class TeacherDaoImpl implements TeacherDao {
         String sql="select * from `teacher` where ins_id="+ins_id;
         return this.getTFO(baseDao.querySQL(sql));
     }
+
+    public int getIdByName(String name) {
+        String sql="select teacher_id from `teacher` where name='"+name+"'";
+        return (Integer) baseDao.querySQL(sql).get(0);
+    }
+
     private List<Teacher> getTFO(List<Object[]> list){
         List<Teacher> teacherList=new ArrayList<Teacher>();
         for(Object[] objects:list){

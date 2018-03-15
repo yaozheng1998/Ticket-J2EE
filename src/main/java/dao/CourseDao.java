@@ -52,4 +52,10 @@ public interface CourseDao {
      * @param course
      */
     public void save(Course course);
+
+    /**
+     * 得到下一个可用的课程编号
+     * @return
+     */
+    public int getNextId();
 }

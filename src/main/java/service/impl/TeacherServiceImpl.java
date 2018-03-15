@@ -34,4 +34,8 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Teacher> getTeachers(int ins_id) {
         return teacherDao.getTeachers(ins_id);
     }
+
+    public int getIdByName(String name) {
+        return teacherDao.getIdByName(name);
+    }
 }
