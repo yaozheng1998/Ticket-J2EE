@@ -74,4 +74,13 @@ public interface InstitutionDao {
      * @return
      */
     public List<Course> getCoursesOfIns(int insId);
+
+    /**
+     * 机构申请修改信息
+     * @param ins_id
+     * @param ins_name
+     * @param location
+     * @param classrooms
+     */
+    public void change(int ins_id,String ins_name,String location,int classrooms);
 }

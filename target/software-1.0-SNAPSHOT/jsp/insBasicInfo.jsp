@@ -101,7 +101,11 @@
                        style="position: absolute; left: 20px;margin-top: -30px; width: 250px; visibility: hidden;">
             </div>
         </div>
-        <button type="submit" id="save" style="margin-left: 45%;margin-top: 25px;visibility: hidden" class="btn btn-default btn-primary btn-sm">保存</button>
+
+        <button type="button" id="ca" onclick="ret()" class="btn minus_btn" style="margin-left: 35%;visibility: hidden;">取消</button>
+        <button type="submit" id="save" style="margin-left: 42px;margin-top: 0px;visibility: hidden" class="btn blueminus_btn">保存</button>
+        <button id="sign1" class="alert alert-warning" role="alert" style="visibility: hidden">信息修改后，请等待管理员的审核！</button>
+
     </form>
 
     <h4>师资信息</h4>
@@ -118,13 +122,14 @@
                 for(int i=0;i<teacherList.size();i++){
                     Teacher teacher=teacherList.get(i);
             %>
-            <tr id="r1">
+            <tr>
                 <td><%=teacher.getName()%></td>
                 <td><%=teacher.getRank()%></td>
                 <td><%=teacher.getSubject()%></td>
-                <td><button id="b1" type="button" class="btn minus_btn" onclick="del(this)">
+                <td>
+                    <button id="b0" type="button" class="btn minus_btn" onclick="del(this)">
                     删除
-                </button>
+                    </button>
                 </td>
             </tr>
             <%
@@ -136,7 +141,7 @@
         <button id="cancel" type="button" onclick="ret()" class="btn minus_btn" style="margin-left: 42%;visibility: hidden">取消</button>
         <button id="confirm" type="button" onclick="add_teacher()" class="btn blueminus_btn" style="margin-left: 50%;margin-top: -56px;visibility: hidden">确认</button>
         <br/>
-        <button id="sign" class="alert alert-warning" role="alert" style="visibility: hidden">添加成功，请等待管理员审核</button>
+        <button id="sign" class="alert alert-warning" role="alert" style="visibility: hidden">添加成功!</button>
     </div>
 
 </fieldset>
@@ -154,20 +159,44 @@
         document.getElementById("loc_input").style.visibility = "";
         document.getElementById("num_input").style.visibility = "";
         document.getElementById("save").style.visibility = "";
+        document.getElementById("ca").style.visibility = "";
+        document.getElementById("sign1").style.visibility = "";
     }
     var num=0;
     function append_teacher(){
         document.getElementById("confirm").style.visibility = "";
         document.getElementById("cancel").style.visibility = "";
         num=num+1;
-        var newLine='<tr id="r'+num+'"><td><input id="tn'+num+'" placeholder="请填写教师姓名"></td> <td> <select id="s'+num+'" style="height: 34px;background: white"> <option>金牌</option> <option>银牌</option> <option>铜牌</option> </select> </td><td><input id="t'+num+'" placeholder="请填写任教科目"></td> <td><button type="button" class="btn minus_btn" onclick="del(this)"> 删除 </button> </td> </tr>';
+        var newLine='<tr id="r'+num+'"><td><input id="tn'+num+'" placeholder="请填写教师姓名"></td> <td> <select id="s'+num+'" style="height: 34px;background: white"> <option>金牌</option> <option>银牌</option> <option>铜牌</option> </select> </td><td><input id="t'+num+'" placeholder="请填写任教科目"></td> <td><button id="b'+num+'"type="button" class="btn minus_btn" onclick="del(this)"> 删除 </button> </td> </tr>';
         $("#teachers").append(newLine);
     }
     function ret(){
         window.location.reload();
     }
     function add_teacher(){
-
+        for(var i=1;i<=num;i++){
+            if(document.getElementById("tn"+i)!=null) {
+                $.ajax({
+                    type: "post",
+                    url: "addSomeTeachers",
+                    async: false,
+                    data: {
+                        na: document.getElementById("tn" + i).value,
+                        ra: document.getElementById("s" + i).value,
+                        su: document.getElementById("t" + i).value,
+                    },
+                });
+            }
+        }
+        document.getElementById("sign").style.visibility="";
+        setTimeout(function(){
+            document.getElementById("sign").style.visibility="hidden";
+            window.location.reload();
+        },1000)
+    }
+    function del(obj){
+        var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+        child.parentNode.removeChild(child);
     }
 </script>
 </html>

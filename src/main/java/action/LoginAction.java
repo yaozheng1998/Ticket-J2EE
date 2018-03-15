@@ -24,6 +24,9 @@ public class LoginAction extends BaseAction{
     public String execute(){
         String name=request.getParameter("name");
         String password=request.getParameter("password");
+        if(name.equals("admin")&&password.equals("admin")){
+            return "adminLogin";
+        }
         char first=name.charAt(0);
         if(first=='8'){
             //institution

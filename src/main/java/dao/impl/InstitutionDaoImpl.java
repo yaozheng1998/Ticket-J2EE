@@ -79,6 +79,11 @@ public class InstitutionDaoImpl implements InstitutionDao {
         return null;
     }
 
+    public void change(int ins_id, String ins_name, String location, int classrooms) {
+        String sql="update `institution` set changes='"+ins_name+"-"+location+"-"+classrooms+"' where ins_id="+ins_id;
+        baseDao.excuteBySql(sql);
+    }
+
     private List<Course> getCourseFromOb(List<Object[]> list){
         List<Course> courseList=new ArrayList<Course>();
         for(Object[] object:list){

@@ -34,6 +34,7 @@
             <result name="relogin">/jsp/main.jsp</result>
             <result name="vipLogin" type="chain">showCourse</result>
             <result name="insLogin" type="chain">showInsBasicInfo</result>
+            <result name="adminLogin" type="chain">showApp</result>
         </action>
 
         <action name="showRegister" class="action.RegisterAction">
@@ -100,8 +101,25 @@
         <action name="showAllClasses" class="action.InstitutionAction" method="showAllClasses">
             <result name="showAllClass">/jsp/insNewPlan.jsp</result>
         </action>
+        <action name="addSomeTeachers" class="action.InstitutionAction" method="addSomeTeachers">
+            <result name="addSuccess">showInsBasicInfo</result>
+        </action>
         <action name="newPlan" class="action.InstitutionPlanAction">
-            <result name="new_plan">/jsp/insNewPlan.jsp</result>
+            <result name="new_plan">showAllClasses</result>
+        </action>
+
+        <!--经理版-->
+        <action name="showApp" class="action.ManageAction">
+            <result name="showApproval">/jsp/manageApproval.jsp</result>
+        </action>
+        <action name="appR" class="action.ManageAction" method="approveRegis">
+            <result name="app_regis">showApp</result>
+        </action>
+        <action name="appI" class="action.ManageAction" method="approveInfo">
+            <result name="app_info">showApp</result>
+        </action>
+        <action name="sump" class="action.ManageAction" method="CalPay">
+            <result name="sumpay">/jsp/managePay.jsp</result>
         </action>
     </package>
 

@@ -1,12 +1,14 @@
 package action;
 
 import model.Institution;
+import model.Manager;
 import model.Teacher;
 import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import service.ClassService;
 import service.InstitutionService;
+import service.ManageService;
 import service.TeacherService;
 import util.CourseClassVO;
 
@@ -26,6 +28,8 @@ public class InstitutionAction extends BaseAction {
     private TeacherService teacherService;
     @Autowired
     private ClassService classService;
+    @Autowired
+    private ManageService manageService;
 
     String teacherName;
     String rank;
@@ -116,6 +120,11 @@ public class InstitutionAction extends BaseAction {
         institution.setState("未审核");
         institutionService.addIns(institution);
 
+        Manager manager=new Manager();
+        manager.setId(manageService.getNextId());
+        manager.setIns_id(insId);
+        manager.setIns_allmoney(0);
+        manageService.save(manager);
         return "addIns_success";
     }
 
@@ -142,11 +151,12 @@ public class InstitutionAction extends BaseAction {
         String name=request.getParameter("insName");
         String loc=request.getParameter("insLocation");
         String num=request.getParameter("insNum");
-        Institution institution=institutionService.getInfoById((Integer) request.getSession().getAttribute("ins_now"));
-        institution.setIns_name(name);
-        institution.setLocation(loc);
-        institution.setClassrooms(Integer.parseInt(num));
-        institutionService.update(institution);
+//        Institution institution=institutionService.getInfoById((Integer) request.getSession().getAttribute("ins_now"));
+//        institution.setIns_name(name);
+//        institution.setLocation(loc);
+//        institution.setClassrooms(Integer.parseInt(num));
+//        institutionService.update(institution);
+        institutionService.change((Integer) request.getSession().getAttribute("ins_now"),name,loc,Integer.parseInt(num));
         return "modifyIns_success";
     }
 
@@ -162,6 +172,46 @@ public class InstitutionAction extends BaseAction {
         request.setAttribute("insTeachers",teacherList);
 
         return "showAllClass";
+    }
+
+    private String na;
+    private String ra;
+    private String su;
+
+    public String getSu() {
+        return su;
+    }
+
+    public void setSu(String su) {
+        this.su = su;
+    }
+
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public String getNa() {
+
+        return na;
+    }
+
+    public void setNa(String na) {
+        this.na = na;
+    }
+
+    public String addSomeTeachers(){
+        Teacher teacher=new Teacher();
+        teacher.setIns_id((Integer)request.getSession().getAttribute("ins_now"));
+        teacher.setTeacher_id((int)teacherService.getNextId());
+        teacher.setName(na);
+        teacher.setRank(ra);
+        teacher.setSubject(su);
+        teacherService.addTeacher(teacher);
+        return "addSuccess";
     }
 
 }

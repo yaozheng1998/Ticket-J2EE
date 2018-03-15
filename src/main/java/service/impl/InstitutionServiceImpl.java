@@ -64,4 +64,8 @@ public class InstitutionServiceImpl implements InstitutionService{
     public List<Course> getCoursesOfIns(int insId) {
         return institutionDao.getCoursesOfIns(insId);
     }
+
+    public void change(int ins_id, String ins_name, String location, int classrooms) {
+        institutionDao.change(ins_id, ins_name, location, classrooms);
+    }
 }

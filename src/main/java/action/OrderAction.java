@@ -1,14 +1,12 @@
 package action;
 
+import model.Manager;
 import model.Order;
 import model.OrderClass;
 import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import service.ClassService;
-import service.OrderClassService;
-import service.OrderService;
-import service.VipService;
+import service.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,6 +25,8 @@ public class OrderAction extends BaseAction{
     private ClassService classService;
     @Autowired
     private VipService vipService;
+    @Autowired
+    private ManageService manageService;
 
     private String student_name;
     private String class_name;
@@ -135,6 +135,10 @@ public class OrderAction extends BaseAction{
         }
         vip.setBalance(vip.getBalance()-money);
         vipService.update(vip);
+
+        Manager manager=manageService.getManagerByIns(ins_id);
+        manager.setIns_allmoney(manager.getIns_allmoney()+money);
+        manageService.update(manager);
 
         return "order_success";
     }

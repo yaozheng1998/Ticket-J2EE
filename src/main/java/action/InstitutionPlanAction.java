@@ -39,12 +39,13 @@ public class InstitutionPlanAction extends BaseAction{
         courseService.save(course);
 
         int classCount=Integer.parseInt(request.getParameter("count"));
-        for(int i=0;i<classCount;i++){
+        for(int i=1;i<=classCount;i++){
             Classroom classroom=new Classroom();
             classroom.setClass_id(classService.getNextId());
             classroom.setClass_name(request.getParameter("cn"+i));
             classroom.setCourse_id(id);
 
+//            System.out.println(request.getParameter("tn1"));
             classroom.setTeacher_id(teacherService.getIdByName(request.getParameter("tn"+i)));
             classroom.setPrice(Integer.parseInt(request.getParameter("p"+i)));
             classroom.setAll_num(Integer.parseInt(request.getParameter("n"+i)));

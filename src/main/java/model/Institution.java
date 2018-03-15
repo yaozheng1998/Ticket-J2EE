@@ -16,6 +16,26 @@ public class Institution {
 
     private String ins_name;
 
+    private String changes;
+
+    private double money;
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    public String getChanges() {
+        return changes;
+    }
+
+    public void setChanges(String changes) {
+        this.changes = changes;
+    }
+
     public String getIns_name() {
         return ins_name;
     }

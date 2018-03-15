@@ -210,7 +210,7 @@
     var num=1;
     function append_teacher(){
         num=num+1;
-        var newline='<tr id="r"'+num+' name="r"'+num+'> <td><input style="width: 100px;" id="cn"'+num+' name="cn"'+num+'placeholder="请填写班级名"></td> <td> <select id="tn"'+num+' name="tn"'+num+'>';
+        var newline='<tr id="r'+num+'" name="r'+num+'"> <td><input style="width: 100px;" id="cn'+num+'" name="cn'+num+'" placeholder="请填写班级名"></td> <td> <select id="tn'+num+'" name="tn'+num+'">';
         var teachers=new Array();
         <%
         for(int p=0;p<teacherList.size();p++){%>
@@ -218,7 +218,7 @@
             newline+="<option value="+teachers[<%=p%>]+">"+teachers[<%=p%>]+"</option>";
         <%}
         %>
-        newline+='</select> </td> <td><input style="width: 130px;" id="n"'+num+' name="n"'+num+' placeholder="请填写班级人数"></td> <td><input style="width: 100px;" id="p"'+num+' name="p"'+num+' placeholder="请填写价格"></td> <td><button id="b"'+num+'" type="button" class="btn minus_btn" onclick="del(this)">删除 </button> </td> </tr>';
+        newline+='</select> </td> <td><input style="width: 130px;" id="n'+num+'" name="n'+num+'" placeholder="请填写班级人数"></td> <td><input style="width: 100px;" id="p'+num+'" name="p'+num+'" placeholder="请填写价格"></td> <td><button id="b'+num+'" type="button" class="btn minus_btn" onclick="del(this)">删除 </button> </td> </tr>';
         $("#classes").append(newline);
         document.getElementById("count").value=num;
     }
