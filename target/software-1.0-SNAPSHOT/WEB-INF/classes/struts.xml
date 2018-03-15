@@ -64,8 +64,10 @@
         <action name="showMyClasses" class="action.VIPClassAction">
             <result name="show_my_classes">/jsp/vipOrder.jsp</result>
         </action>
-        <action name="cancelMyClass" class="action.VIPClassAction">
-            <result name="cancel_success">/jsp/vipOrder.jsp</result>
+        <action name="cancelMyClass" class="action.VIPClassAction" method="cancelClass">
+            <!--<result name="cancel_success">-->
+
+            <!--</result>-->
         </action>
 
         <action name="orderCourse" class="action.OrderAction" method="pay">

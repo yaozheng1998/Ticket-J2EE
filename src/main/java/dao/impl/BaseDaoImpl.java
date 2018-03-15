@@ -75,26 +75,41 @@ public class BaseDaoImpl implements BaseDao{
     }
 
     public void update(Object obj) {
-        Session session=getNewSession();
-        Transaction transaction=session.beginTransaction();
-        session.update(obj);
-        session.flush();
-        transaction.commit();
-        session.clear();
-        session.close();
+        try {
+            Session session = getNewSession();
+            Transaction transaction = session.beginTransaction();
+            session.update(obj);
+            session.flush();
+            transaction.commit();
+            session.clear();
+            session.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void delete(Object obj) {
-        Session session=getNewSession();
-        Transaction transaction=session.beginTransaction();
-        session.delete(obj);
-        session.flush();
-        transaction.commit();
-        session.clear();
-        session.close();
+        try {
+            Session session = getNewSession();
+            Transaction transaction = session.beginTransaction();
+            session.delete(obj);
+            session.flush();
+            transaction.commit();
+            session.clear();
+            session.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void delete(Class c, String id) {
+        Object obj=getSession().get(c,id);
+        if(obj!=null){
+            getSession().delete(obj);
+        }
+    }
+
+    public void delete(Class c, int id) {
         Object obj=getSession().get(c,id);
         if(obj!=null){
             getSession().delete(obj);

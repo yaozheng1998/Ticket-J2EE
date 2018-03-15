@@ -70,7 +70,7 @@
   <!--声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
   <tx:advice id="txAdvice" transaction-manager="transactionManager">
     <tx:attributes>
-      <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+      <tx:method name="*" propagation="REQUIRED" read-only="false"/>
     </tx:attributes>
   </tx:advice>
 

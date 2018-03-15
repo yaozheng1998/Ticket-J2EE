@@ -2,7 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.DateFormat" %>
-<%@ page import="util.ToPayOrderVO" %><%--
+<%@ page import="util.ToPayOrderVO" %>
+<%@ page import="util.CalReturnMoney" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/10
@@ -21,6 +22,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/vipOrder.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -96,7 +98,7 @@
                     <th>联系方式</th>
                     <th>成绩</th>
                     <th>订单状态</th>
-                    <th></th>
+                    <%--<th></th>--%>
                     </thead>
                     <tbody>
                     <%
@@ -116,18 +118,18 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getGrade()%></td>
                         <td><%=vo.getState()%></td>
-                        <td>
-                        <%
-                            if(vo.getState().equals("待开班")||vo.getState().equals("进行中")){
-                        %>
+                        <%--<td>--%>
+                        <%--<%--%>
+                            <%--if(vo.getState().equals("待开班")||vo.getState().equals("进行中")||vo.getState().equals("待分配")){--%>
+                        <%--%>--%>
 
-                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
-                                退订
-                            </button>
-                            <%
-                                }
-                            %>
-                        </td>
+                            <%--<button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">--%>
+                                <%--退订--%>
+                            <%--</button>--%>
+                            <%--<%--%>
+                                <%--}--%>
+                            <%--%>--%>
+                        <%--</td>--%>
                     </tr>
                     <%
                         }
@@ -138,6 +140,7 @@
                     }
                 %>
             </div>
+            <button id="sign" class="alert alert-warning" role="alert" style="visibility: hidden">退订成功，请查看账户退款</button>
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
@@ -187,7 +190,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
+                            <button id='<%=vo.getOrder_classId()%>+"-"+<%=vo.getOrder_time()%>+"-"+<%=vo.getPrice()%>' class="btn minus_btn" onclick="deleteClass2(this)">
                                 退订
                             </button>
                         </td>
@@ -201,6 +204,7 @@
                     }
                 %>
             </div>
+            <button id="sign2" class="alert alert-warning" role="alert" style="visibility: hidden">退订成功，请查看账户退款</button>
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-3">
@@ -250,7 +254,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
+                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass3(this)">
                                 退订
                             </button>
                         </td>
@@ -262,6 +266,7 @@
                 </table>
                 <%}%>
             </div>
+            <button id="sign3" class="alert alert-warning" role="alert" style="visibility: hidden">退订成功</button>
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-4">
@@ -433,7 +438,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass(this)">
+                            <button id='<%=vo.getOrder_classId()%>' class="btn minus_btn" onclick="deleteClass4(this)">
                                 退订
                             </button>
                         </td>
@@ -448,6 +453,7 @@
                     }
                 %>
             </div>
+            <button id="sign4" class="alert alert-warning" role="alert" style="visibility: hidden">退订成功，请查看账户退款</button>
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-7">
@@ -513,19 +519,135 @@
 </fieldset>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script>
     function deleteClass(obj){
-        $.ajax({
-           type:"post",
-            url:"cancelMyClass",
-            async:true,
-            data:{
-               order_classId:obj.getAttribute("id"),
-            },
-            success:function(){
-               alert("12356765432");
-            }
-        });
+        swal({
+            title: "确定退订？",
+            text: "不能全额退款！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            closeOnConfirm: true
+        }, function() {
+            $.ajax({
+                type:"post",
+                url:"cancelMyClass",
+                async:true,
+                data:{
+                    order_classId:obj.getAttribute("id"),
+                },
+                success:function(){
+                    document.getElementById("sign").style.visibility="";
+                    var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+                    child.parentNode.removeChild(child);
+                    setTimeout(function(){
+                        document.getElementById("sign").style.visibility="hidden";
+                    },1000);
+                }
+            });
+        })
+
+    }
+    function deleteClass2(obj){
+        var lid=obj.getAttribute("id");
+        arr=lid.split('-');
+        swal({
+            title: "确定退订？",
+            text: "不能全额退款！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            closeOnConfirm: true
+        }, function() {
+            $.ajax({
+                type:"post",
+                url:"cancelMyClass",
+                async:true,
+                data:{
+                    order_classId:arr[0],
+                    money:arr[2],
+                    vipName:'<%=session.getAttribute("id")%>',
+                },
+                success:function(){
+                    document.getElementById("sign2").style.visibility="";
+                    var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+                    child.parentNode.removeChild(child);
+                    setTimeout(function(){
+                        document.getElementById("sign2").style.visibility="hidden";
+                    },1000);
+                }
+            });
+        })
+
+    }
+    function deleteClass3(obj){
+        var lid=obj.getAttribute("id");
+        arr=lid.split('-');
+        swal({
+            title: "确定退订？",
+            text: "已开课，不退款！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            closeOnConfirm: true
+        }, function() {
+            $.ajax({
+                type:"post",
+                url:"cancelMyClass",
+                async:true,
+                data:{
+                    order_classId:arr[0],
+                    money:arr[2],
+                    vipName:'<%=session.getAttribute("id")%>',
+                },
+                success:function(){
+                    document.getElementById("sign3").style.visibility="";
+                    var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+                    child.parentNode.removeChild(child);
+                    setTimeout(function(){
+                        document.getElementById("sign3").style.visibility="hidden";
+                    },1000);
+                }
+            });
+        })
+
+    }
+    function deleteClass4(obj){
+        var lid=obj.getAttribute("id");
+        arr=lid.split('-');
+        swal({
+            title: "确定退订？",
+            text: "不能全额退款！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            closeOnConfirm: true
+        }, function() {
+            $.ajax({
+                type:"post",
+                url:"cancelMyClass",
+                async:true,
+                data:{
+                    order_classId:arr[0],
+                    money:arr[2],
+                    vipName:'<%=session.getAttribute("id")%>',
+                },
+                success:function(){
+                    document.getElementById("sign4").style.visibility="";
+                    var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+                    child.parentNode.removeChild(child);
+                    setTimeout(function(){
+                        document.getElementById("sign4").style.visibility="hidden";
+                    },1000);
+                }
+            });
+        })
+
     }
 </script>
 </body>

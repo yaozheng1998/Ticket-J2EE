@@ -3,11 +3,14 @@ package dao.impl;
 import dao.BaseDao;
 import dao.OrderClassDao;
 import model.OrderClass;
+import model.Vip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import util.OrderClassVO;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,14 +40,27 @@ public class OrderClassDaoImpl implements OrderClassDao {
     }
 
     public long getNextId() {
-        long current=baseDao.getTotalCount(OrderClass.class);
-        System.out.print("逻辑层的"+current);
-        return current+1;
+        String sql="select max(`orderclass_id`) from `order_classes`";
+//        long current=baseDao.getTotalCount(OrderClass.class);
+//        System.out.print("逻辑层的"+current);
+        return (Integer)baseDao.querySQL(sql).get(0)+1;
     }
 
-    public void cancel(int order_classId) {
-        String sql="delete from `order_classes` where orderclass_id="+order_classId;
-        baseDao.querySQL(sql);
+    public void cancel(int order_classId,double money,String vipName) {
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String d=sdf.format(date);
+        String sql="update `order_classes` set state='已退订',refund_time='"+d+"',refund_money="+money+" where orderclass_id="+order_classId;
+        baseDao.excuteBySql(sql);
+
+        Vip vip=(Vip)baseDao.load(Vip.class,vipName);
+        vip.setBalance(vip.getBalance()+money);
+        vip.setVipPoint(vip.getVipPoint()-money);
+        vip.setConsumeMoney(vip.getConsumeMoney()-money);
+        baseDao.update(vip);
+
+//        baseDao.delete(OrderClass.class,order_classId);
+
     }
 
     private List<OrderClass> getOrderClasses(List<Object[]> objects){

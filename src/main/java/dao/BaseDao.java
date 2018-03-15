@@ -33,6 +33,8 @@ public interface BaseDao {
 
     public void delete(Class c,String id);
 
+    public void delete(Class c,int id);
+
     public void delete(Class c,String[] ids);
 
     public List query(String hql);

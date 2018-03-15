@@ -50,14 +50,26 @@ public class VIPClassAction extends BaseAction{
     public void setOrder_classId(int order_classId) {
         this.order_classId = order_classId;
     }
-    //    public String getVipname() {
-//
-//        return vipname;
-//    }
-//
-//    public void setVipname(String vipname) {
-//        this.vipname = vipname;
-//    }
+
+    private double money;
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    private String vipName;
+
+    public String getVipName() {
+        return vipName;
+    }
+
+    public void setVipName(String vipName) {
+        this.vipName = vipName;
+    }
 
     /**
      * 获得用户的所有课程
@@ -132,9 +144,8 @@ public class VIPClassAction extends BaseAction{
         return orderClassVOS;
     }
 
-    public String cancelClass(){
+    public void cancelClass(){
         //退订，积分下降，退款
-        orderClassService.cancel(order_classId);
-        return "cancel_success";
+        orderClassService.cancel(order_classId,money,vipName);
     }
 }
