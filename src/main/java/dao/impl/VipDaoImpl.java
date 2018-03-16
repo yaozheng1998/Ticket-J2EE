@@ -76,4 +76,24 @@ public class VipDaoImpl implements VipDao {
             return false;
     }
 
+    public int getOrderNum(String vipName) {
+        String sql="select count(*) from `orders` where vip_name='"+vipName+"'";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public int getStudentNum(String vipName) {
+        String sql="select count(*) from `orders` o,`order_classes` oc where oc.itorder_id=o.order_id and o.vip_name='"+vipName+"'";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public double getOrderMoney(String vipName) {
+        String sql="select sum(money) from `orders` where vip_name='"+vipName+"'";
+        return Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public int getNumByState(String vipName, String state) {
+        String sql="select count(*) from `orders` o,`order_classes` oc where oc.itorder_id=o.order_id and vip_name='"+vipName+"' and oc.state='"+state+"'";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
 }

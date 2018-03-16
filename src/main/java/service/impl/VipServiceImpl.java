@@ -83,4 +83,20 @@ public class VipServiceImpl implements VipService{
     public void update(Vip vip) {
         vipDao.update(vip);
     }
+
+    public int getOrderNum(String vipName) {
+        return vipDao.getOrderNum(vipName);
+    }
+
+    public int getStudentNum(String vipName) {
+        return vipDao.getStudentNum(vipName);
+    }
+
+    public double getOrderMoney(String vipName) {
+        return vipDao.getOrderMoney(vipName);
+    }
+
+    public int getNumByState(String vipName, String state) {
+        return vipDao.getNumByState(vipName, state);
+    }
 }

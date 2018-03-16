@@ -76,4 +76,33 @@ public interface VipService {
      * @param vip
      */
     public void update(Vip vip);
+
+    /**
+     * 总单数
+     * @param vipName
+     * @return
+     */
+    public int getOrderNum(String vipName);
+
+    /**
+     * 上课总人数
+     * @param vipName
+     * @return
+     */
+    public int getStudentNum(String vipName);
+
+    /**
+     * 总支出
+     * @param vipName
+     * @return
+     */
+    public double getOrderMoney(String vipName);
+
+    /**
+     * 根据订单状态获得饼状图数据
+     * @param vipName
+     * @param state
+     * @return
+     */
+    public int getNumByState(String vipName,String state);
 }

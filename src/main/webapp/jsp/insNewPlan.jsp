@@ -60,7 +60,7 @@
         <li role="presentation"><a href="showInsBasicInfo"><h5 style="padding-left: 15px">基本信息</h5></a></li>
         <li role="presentation" class="active"><a href="showAllClasses"><h5 style="padding-left: 15px">机构计划</h5></a></li>
         <li role="presentation"><a href="showInsOrders"><h5 style="padding-left: 15px">学员登记</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">机构统计</h5></a></li>
+        <li role="presentation"><a href="insSta"><h5 style="padding-left: 15px">机构统计</h5></a></li>
     </ul>
 </div>
 

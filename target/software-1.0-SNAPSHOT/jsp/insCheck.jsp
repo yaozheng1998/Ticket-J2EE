@@ -2,7 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.Institution" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="model.Course" %><%--
+<%@ page import="model.Course" %>
+<%@ page import="model.Classroom" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/13
@@ -65,7 +66,7 @@
         <li role="presentation"><a href="showInsBasicInfo"><h5 style="padding-left: 15px">基本信息</h5></a></li>
         <li role="presentation"><a href="showAllClasses"><h5 style="padding-left: 15px">机构计划</h5></a></li>
         <li role="presentation" class="active"><a href="showInsOrders"><h5 style="padding-left: 15px">学员登记</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">机构统计</h5></a></li>
+        <li role="presentation"><a href="insSta"><h5 style="padding-left: 15px">机构统计</h5></a></li>
     </ul>
 </div>
 
@@ -292,13 +293,13 @@
                             <input style="width: 220px;" type="text" name="vipName" id="vipName" class="form-control" placeholder="请输入会员名（选填）">
                         </div>
                         <div class="form-group">
-                            <select class="selectpicker">
+                            <select class="selectpicker" id="courses">
                                 <option value="" disabled selected>请选择对应课程</option>
                                 <%
                                     for(int j=0;j<courseList.size();j++){
                                         Course course=courseList.get(j);
                                 %>
-                                <option value="<%=course.getType()+"-"+course.getTimes()+"课时/周-"+course.getBasic_price()%>"><%=course.getType()+"-"+course.getTimes()+"课时/周-"+course.getBasic_price()%></option>
+                                <option value="<%=course.getType()+"-"+course.getTimes()+"课时/周-"+course.getBasic_price()%>"><%=course.getType()+"-"+course.getTimes()+"课时/周-¥"+course.getBasic_price()%></option>
                                 <%
                                     }
                                 %>
@@ -318,7 +319,7 @@
                                 <tr id="r1">
                                     <td>
                                         <select form="formit" id="c1" name="c1">
-                                            <option value="">8.5</option>
+                                            <%--<option value="">8.5</option>--%>
                                         </select>
                                     </td>
                                     <td><input style="width: 130px;" id="n1" name="n1" placeholder="请填写学生姓名"></td>
@@ -365,4 +366,29 @@
         $("#classes").append(newline);
         document.getElementById("count").value=num;
     }
+
+    $("#courses").change(function(){
+        $.ajax({
+           type:"post",
+            url:"getCO",
+            async:true,
+            data:{
+               course_id:document.getElementById("courses").value,
+            },
+            success:function(){
+               <%
+               List<Classroom> co=(List<Classroom>) request.getAttribute("Ucourses");
+               if(co!=null){
+               for(int i=0;i<co.size();i++){
+               %>
+                document.getElementById("c1").options.add(new Option(<%=co.get(i).getClass_name()%>,<%=co.get(i).getClass_name()%>));
+                <%
+                }
+                }
+                %>
+
+
+            }
+        });
+    });
 </script>

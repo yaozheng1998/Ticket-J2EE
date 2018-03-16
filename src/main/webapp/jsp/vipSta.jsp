@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: YZ
+  Date: 2018/3/16
+  Time: 下午6:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +43,7 @@
             </ul>
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
-                <label>欢迎您, </label>
+                <label>欢迎您, <%=session.getAttribute("id")%></label>
                 <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px"></p>
             </div>
         </div>
@@ -45,9 +52,9 @@
 
 <div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 780px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">会员信息</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">我的订单</h5></a></li>
-        <li role="presentation" class="active"><a href=""><h5 style="padding-left: 15px">购买统计</h5></a></li>
+        <li role="presentation"><a href="vipBasicInfo"><h5 style="padding-left: 15px">会员信息</h5></a></li>
+        <li role="presentation"><a href="showMyClasses"><h5 style="padding-left: 15px">我的订单</h5></a></li>
+        <li role="presentation" class="active"><a href="vipSta"><h5 style="padding-left: 15px">购买统计</h5></a></li>
     </ul>
 </div>
 
@@ -58,7 +65,7 @@
             <div class="col-md-3 col-md-offset-2">
                 <div style="background: #337AB7;margin-right: 0.8em;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);transition: 0.5s all;border-radius: 20px">
                     <div class="col-md-8" style="padding: 10px;">
-                        <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">10 张</h4>
+                        <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;"><%=request.getAttribute("ORDERNUM")%> 张</h4>
                         <h4 style="	font-size: 1.2em;color: #fff;margin: 0.3em 0em;font-family: 'Carrois Gothic', sans-serif;">
                             累计订单</h4>
                         <p style=" color: #fff;font-size: 0.8em;line-height: 1.8em;"></p>
@@ -69,7 +76,7 @@
             <div class="col-md-3">
                 <div style="background: #337AB7;margin-right: 0.8em;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);transition: 0.5s all;border-radius: 20px">
                     <div class="col-md-8" style="padding: 10px;">
-                        <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">20
+                        <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;"><%=request.getAttribute("STUDENTNUM")%> 人
                         </h4>
                         <h4 style="	font-size: 1.2em;color: #fff;margin: 0.3em 0em;font-family: 'Carrois Gothic', sans-serif;">
                             累计人次</h4>
@@ -81,7 +88,7 @@
             <div class="col-md-3">
                 <div style="background: #337AB7;margin-right: 0.8em;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);transition: 0.5s all;border-radius: 20px">
                     <div class="col-md-8" style="padding: 10px;">
-                        <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">¥80000
+                        <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">¥<%=request.getAttribute("MONEY")%>
                         </h4>
                         <h4 style="	font-size: 1.2em;color: #fff;margin: 0.3em 0em;font-family: 'Carrois Gothic', sans-serif;">
                             累计消费</h4>
@@ -121,12 +128,12 @@
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:335, name:'待分配'},
-                    {value:310, name:'待开班'},
-                    {value:234, name:'进行中'},
-                    {value:135, name:'已结束'},
-                    {value:1548, name:'已退订'},
-                    {value:1548, name:'待支付'},
+                    {value:<%=request.getAttribute("DI")%>, name:'待分配'},
+                    {value:<%=request.getAttribute("OP")%>, name:'待开班'},
+                    {value:<%=request.getAttribute("GO")%>, name:'进行中'},
+                    {value:<%=request.getAttribute("EN")%>, name:'已结束'},
+                    {value:<%=request.getAttribute("RE")%>, name:'已退订'},
+                    {value:<%=request.getAttribute("TP")%>, name:'待支付'},
                 ],
                 itemStyle: {
                     emphasis: {

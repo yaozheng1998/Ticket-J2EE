@@ -55,7 +55,7 @@
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
         <li role="presentation"><a href="showApp"><h5 style="padding-left: 15px">机构审批</h5></a></li>
         <li role="presentation" class="active"><a href="sump"><h5 style="padding-left: 15px">支付结算</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">网站统计</h5></a></li>
+        <li role="presentation"><a href="manageSta"><h5 style="padding-left: 15px">网站统计</h5></a></li>
     </ul>
 </div>
 

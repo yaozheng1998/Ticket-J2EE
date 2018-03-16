@@ -113,6 +113,9 @@
         <action name="offlinePay" class="action.InstitutionCheckAction" method="offlinePay">
             <result name="offline_pay_success">showInsOrders</result>
         </action>
+        <action name="getCO" class="action.InstitutionCheckAction" method="getClassFromOneCourse">
+            <result name="CO">showInsOrders</result>
+        </action>
 
         <!--经理版-->
         <action name="showApp" class="action.ManageAction">
@@ -129,6 +132,17 @@
         </action>
         <action name="seven" class="action.ManageAction" method="sevenPay">
             <result name="seven">sump</result>
+        </action>
+
+        <!--统计-->
+        <action name="vipSta" class="action.VIPStaAction">
+            <result name="vipSta">/jsp/vipSta.jsp</result>
+        </action>
+        <action name="insSta" class="action.InsStaAction">
+            <result name="insSta">/jsp/insSta.jsp</result>
+        </action>
+        <action name="manageSta" class="action.ManagerStaAction">
+            <result name="manageSta">/jsp/manageSta.jsp</result>
         </action>
     </package>
 

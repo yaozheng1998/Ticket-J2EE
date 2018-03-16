@@ -33,9 +33,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     public long getNextNum() {
-        long current=baseDao.getTotalCount(Order.class);
-//        System.out.print(current);
-        return current+1;
+//        long current=baseDao.getTotalCount(Order.class);
+////        System.out.print(current);
+//        return current+1;
+        String sql="select max(`order_id`) from `orders`";
+        return (Integer)baseDao.querySQL(sql).get(0)+1;
     }
 
     public List<ToPayOrderVO> getToPayOrders(String name) {
@@ -53,8 +55,8 @@ public class OrderDaoImpl implements OrderDao {
     public void removeOrder(int order_id) {
         String sql="delete from `orders` where order_id="+order_id;
         String sql2="delete from `order_classes` where itorder_id="+order_id;
-        baseDao.querySQL(sql2);
-        baseDao.querySQL(sql);
+        baseDao.excuteBySql(sql2);
+        baseDao.excuteBySql(sql);
 
     }
 

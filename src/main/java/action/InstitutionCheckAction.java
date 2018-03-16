@@ -32,6 +32,16 @@ public class InstitutionCheckAction extends BaseAction{
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 
+    private int course_id;
+
+    public int getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(int course_id) {
+        this.course_id = course_id;
+    }
+
     public String execute(){
         int ins_id=(Integer)request.getSession().getAttribute("ins_now");
         List<Object[]> openList=institutionService.getInsOrdersByState(ins_id,"待开班") ;
@@ -84,6 +94,13 @@ public class InstitutionCheckAction extends BaseAction{
         }
 
         return "offline_pay_success";
+    }
+
+    public String getClassFromOneCourse(){
+        System.out.println("wertyuyhtrewqerty"+course_id);
+        List<Classroom> list=classService.getClassOfOneCourse(course_id);
+        request.setAttribute("Ucourses",list);
+        return "CO";
     }
 
     private List<OrderClassVO> getOrderClasses(List<Object[]> objects){

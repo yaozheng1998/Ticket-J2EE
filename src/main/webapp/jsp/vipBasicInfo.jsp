@@ -59,7 +59,7 @@
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
         <li role="presentation" class="active"><a href="vipBasicInfo.action"><h5 style="padding-left: 15px">会员信息</h5></a></li>
         <li role="presentation"><a href="showMyClasses.action"><h5 style="padding-left: 15px">我的课程</h5></a></li>
-        <li role="presentation"><a href=""><h5 style="padding-left: 15px">购买统计</h5></a></li>
+        <li role="presentation"><a href="vipSta"><h5 style="padding-left: 15px">购买统计</h5></a></li>
     </ul>
 </div>
 
