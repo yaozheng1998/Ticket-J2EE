@@ -4,6 +4,7 @@ import model.Course;
 import model.Institution;
 import model.Order;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -97,4 +98,40 @@ public interface InstitutionDao {
      * @return
      */
     public List<Object[]> getInsOrdersByState(int ins_id,String state);
+
+    /**
+     * 机构累计订单数
+     * @param ins_id
+     * @return
+     */
+    public int getOrderNum(int ins_id);
+
+    /**
+     * 机构累计听课学生人数
+     * @param ins_id
+     * @return
+     */
+    public int getStudentNum(int ins_id);
+
+    /**
+     * 机构累计分得的金额
+     * @param ins_id
+     * @return
+     */
+    public double getMoney(int ins_id);
+
+    /**
+     * 根据状态获得机构订单数目
+     * @param ins_id
+     * @param state
+     * @return
+     */
+    public int getNumByState(int ins_id,String state);
+
+    /**
+     * 获得每个老师手下的订单数
+     * @param ins_id
+     * @return
+     */
+    public HashMap getNumByTeacher(int ins_id);
 }

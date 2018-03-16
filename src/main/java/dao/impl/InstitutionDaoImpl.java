@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import util.ToPayOrderVO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -94,6 +95,36 @@ public class InstitutionDaoImpl implements InstitutionDao {
     public List<Object[]> getInsOrdersByState(int ins_id,String state) {
         String sql="select oc.orderclass_id,oc.itorder_id,oc.class_id,oc.real_name,oc.phone,oc.grade,oc.refund_time,oc.refund_money,o.vip_name,o.order_time,o.money,o.pay_type from `order_classes` oc,`orders` o where o.order_id=oc.itorder_id and o.ins_id="+ins_id+" and oc.state='"+state+"'";
         return baseDao.querySQL(sql);
+    }
+
+    public int getOrderNum(int ins_id) {
+        String sql="select count(*) from `orders` where ins_id="+ins_id;
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public int getStudentNum(int ins_id) {
+        String sql="select count(*) from `orders` o,`order_classes` oc where oc.itorder_id=o.order_id and ins_id="+ins_id;
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public double getMoney(int ins_id) {
+        String sql="select count(money) from `orders` where ins_id="+ins_id;
+        return Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public int getNumByState(int ins_id, String state) {
+        String sql="select count(*) from `orders` o,`order_classes` oc where oc.itorder_id=o.order_id and o.ins_id='"+ins_id+"' and oc.state='"+state+"'";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public HashMap getNumByTeacher(int ins_id) {
+        HashMap map=new HashMap();
+        String sql="select t.name,count(*) from `orders` o,`teacher` t,`order_classes` oc,`class` c where oc.itorder_id=o.order_id and oc.class_id=c.class_id and c.teacher_id=t.teacher_id and o.ins_id="+ins_id+" group by t.name";
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            map.put(String.valueOf(object[0]),Integer.parseInt(String.valueOf(object[1])));
+        }
+        return map;
     }
 
     private List<Course> getCourseFromOb(List<Object[]> list){

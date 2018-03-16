@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service.InstitutionService;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -76,5 +77,25 @@ public class InstitutionServiceImpl implements InstitutionService{
 
     public List<Object[]> getInsOrdersByState(int ins_id,String state) {
         return institutionDao.getInsOrdersByState(ins_id,state);
+    }
+
+    public int getOrderNum(int ins_id) {
+        return institutionDao.getOrderNum(ins_id);
+    }
+
+    public int getStudentNum(int ins_id) {
+        return institutionDao.getStudentNum(ins_id);
+    }
+
+    public double getMoney(int ins_id) {
+        return institutionDao.getMoney(ins_id);
+    }
+
+    public int getNumByState(int ins_id, String state) {
+        return institutionDao.getNumByState(ins_id, state);
+    }
+
+    public HashMap getNumByTeacher(int ins_id) {
+        return institutionDao.getNumByTeacher(ins_id);
     }
 }
