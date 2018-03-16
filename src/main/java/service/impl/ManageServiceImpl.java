@@ -56,4 +56,9 @@ public class ManageServiceImpl implements ManageService {
     public List<SumPayVO> getToCal() {
         return manageDao.getToCal();
     }
+
+    public double paySeven(int ins_id) {
+        return manageDao.paySeven(ins_id);
+
+    }
 }

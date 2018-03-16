@@ -124,6 +124,7 @@ public class InstitutionAction extends BaseAction {
         manager.setId(manageService.getNextId());
         manager.setIns_id(insId);
         manager.setIns_allmoney(0);
+        manager.setWeb_profit(0);
         manageService.save(manager);
         return "addIns_success";
     }

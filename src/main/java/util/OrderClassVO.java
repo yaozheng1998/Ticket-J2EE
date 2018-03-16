@@ -26,6 +26,15 @@ public class OrderClassVO {
     String refund_time;
     double refund_money;
     int order_classId;
+    String vipName;
+
+    public String getVipName() {
+        return vipName;
+    }
+
+    public void setVipName(String vipName) {
+        this.vipName = vipName;
+    }
 
     public int getOrder_classId() {
         return order_classId;

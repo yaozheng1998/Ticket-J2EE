@@ -3,6 +3,7 @@ package service.impl;
 import dao.InstitutionDao;
 import model.Course;
 import model.Institution;
+import model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,5 +68,13 @@ public class InstitutionServiceImpl implements InstitutionService{
 
     public void change(int ins_id, String ins_name, String location, int classrooms) {
         institutionDao.change(ins_id, ins_name, location, classrooms);
+    }
+
+    public void setMoney(int ins_id,double money) {
+        institutionDao.setMoney(ins_id, money);
+    }
+
+    public List<Object[]> getInsOrdersByState(int ins_id,String state) {
+        return institutionDao.getInsOrdersByState(ins_id,state);
     }
 }

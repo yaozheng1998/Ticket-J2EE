@@ -115,7 +115,7 @@
                 <tr id="r1">
                     <td><input id="n1" placeholder="请填写学生姓名"></td>
                     <td>
-                        <select id="s1"class="selectpicker">
+                        <select id="s1" class="selectpicker">
                             <%
                                 if(classroomVOS!=null){
                                     for(int k=0;k<classroomVOS.size();k++){

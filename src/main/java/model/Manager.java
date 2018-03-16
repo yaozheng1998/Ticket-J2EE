@@ -13,6 +13,15 @@ import javax.persistence.Table;
 public class Manager {
     @Id
     private int id;
+    private double web_profit;
+
+    public double getWeb_profit() {
+        return web_profit;
+    }
+
+    public void setWeb_profit(double web_profit) {
+        this.web_profit = web_profit;
+    }
 
     public int getId() {
         return id;

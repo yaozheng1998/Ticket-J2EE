@@ -3,6 +3,7 @@ package action;
 import model.Institution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import service.InstitutionService;
 import service.ManageService;
 import util.ChangeVO;
 import util.SumPayVO;
@@ -18,6 +19,8 @@ import java.util.List;
 public class ManageAction extends BaseAction{
     @Autowired
     private ManageService manageService;
+    @Autowired
+    private InstitutionService institutionService;
 
     private int ins_id;
 
@@ -65,6 +68,12 @@ public class ManageAction extends BaseAction{
         List<SumPayVO> list=manageService.getToCal();
         request.setAttribute("sumpay",list);
         return "sumpay";
+    }
+
+    public String sevenPay(){
+        double i=manageService.paySeven(ins_id);
+        institutionService.setMoney(ins_id,i);
+        return "seven";
     }
 
 }

@@ -107,6 +107,12 @@
         <action name="newPlan" class="action.InstitutionPlanAction">
             <result name="new_plan">showAllClasses</result>
         </action>
+        <action name="showInsOrders" class="action.InstitutionCheckAction">
+            <result name="showInsOrd">/jsp/insCheck.jsp</result>
+        </action>
+        <action name="offlinePay" class="action.InstitutionCheckAction" method="offlinePay">
+            <result name="offline_pay_success">showInsOrders</result>
+        </action>
 
         <!--经理版-->
         <action name="showApp" class="action.ManageAction">
@@ -120,6 +126,9 @@
         </action>
         <action name="sump" class="action.ManageAction" method="CalPay">
             <result name="sumpay">/jsp/managePay.jsp</result>
+        </action>
+        <action name="seven" class="action.ManageAction" method="sevenPay">
+            <result name="seven">sump</result>
         </action>
     </package>
 

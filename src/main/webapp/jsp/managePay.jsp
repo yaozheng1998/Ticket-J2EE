@@ -18,6 +18,7 @@
     <link href="../css/manage.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
     <link href="../css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 </head>
@@ -44,7 +45,7 @@
                 <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">Manager</p>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">会员版</a></li>
+                <li><a href="main.action">会员版</a></li>
             </ul>
         </div>
     </div>
@@ -79,7 +80,7 @@
                 <td><%=vo.getIns_name()%></td>
                 <td><%=vo.getIns_loc()%></td>
                 <td><%=vo.getSum()%></td>
-                <td><button id="d+'<%=i%>'" class="btn minus_btn" onclick="pay(this)">
+                <td><button id="<%=vo.getIns_id()%>" class="btn minus_btn" onclick="pay(this)">
                     结算
                 </button>
                 </td>
@@ -95,9 +96,33 @@
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-select.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 <script>
     function pay(obj){
-
+        swal({
+            title: "确定支付？",
+            text: "支付七成收入给机构",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定",
+            closeOnConfirm: false
+        }, function() {
+            $.ajax({
+                type:"post",
+                url : "seven",
+                async : false,
+                data:{
+                  ins_id:obj.getAttribute("id"),
+                },
+                success : function() {
+                    swal("成功", "已结算！", "success");
+                    setTimeout(function () {
+                        window.location.reload();
+                    },2000);
+                },
+            });
+        })
     }
 </script>
 </body>

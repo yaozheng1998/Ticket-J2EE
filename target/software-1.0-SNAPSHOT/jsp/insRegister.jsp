@@ -36,7 +36,7 @@
                 <!--</ul>-->
                 <ul class="nav navbar-nav navbar-right">
                     <!--<li data-toggle="modal" data-target="#login"><a href="#">登录/注册</a></li>-->
-                    <li><a href="#">会员版</a></li>
+                    <li><a href="main.action">会员版</a></li>
                 </ul>
             </div>
         </div>

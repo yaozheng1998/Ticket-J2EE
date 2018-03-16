@@ -64,4 +64,9 @@ public interface ManageService {
      */
     public List<SumPayVO> getToCal();
 
+    /**
+     * 将某机构的七成收入结算
+     */
+    public double paySeven(int ins_id);
+
 }

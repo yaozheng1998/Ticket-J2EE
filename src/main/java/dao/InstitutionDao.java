@@ -2,6 +2,7 @@ package dao;
 
 import model.Course;
 import model.Institution;
+import model.Order;
 
 import java.util.List;
 
@@ -83,4 +84,17 @@ public interface InstitutionDao {
      * @param classrooms
      */
     public void change(int ins_id,String ins_name,String location,int classrooms);
+
+    /**
+     * 挣钱
+     * @param ins_id
+     */
+    public void setMoney(int ins_id,double money);
+
+    /**
+     * 根据订单的不同状态获得信息
+     * @param state
+     * @return
+     */
+    public List<Object[]> getInsOrdersByState(int ins_id,String state);
 }

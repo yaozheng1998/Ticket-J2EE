@@ -40,4 +40,6 @@ public interface OrderClassDao {
      * 退订某一个订单
      */
     public void cancel(int order_classId,double money,String vipName);
+
+
 }

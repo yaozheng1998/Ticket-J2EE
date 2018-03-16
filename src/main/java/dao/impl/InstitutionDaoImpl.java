@@ -4,8 +4,10 @@ import dao.BaseDao;
 import dao.InstitutionDao;
 import model.Course;
 import model.Institution;
+import model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import util.ToPayOrderVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,12 +78,22 @@ public class InstitutionDaoImpl implements InstitutionDao {
     public List<Course> getCoursesOfIns(int insId) {
         String sql="select * from `course` where institution_id="+insId;
         List<Object[]> courses=baseDao.querySQL(sql);
-        return null;
+        return this.getCourseFromOb(courses);
     }
 
     public void change(int ins_id, String ins_name, String location, int classrooms) {
         String sql="update `institution` set changes='"+ins_name+"-"+location+"-"+classrooms+"' where ins_id="+ins_id;
         baseDao.excuteBySql(sql);
+    }
+
+    public void setMoney(int ins_id,double money) {
+        String sql="update `institution` set money=money+"+money+"where ins_id="+ins_id;
+        baseDao.excuteBySql(sql);
+    }
+
+    public List<Object[]> getInsOrdersByState(int ins_id,String state) {
+        String sql="select oc.orderclass_id,oc.itorder_id,oc.class_id,oc.real_name,oc.phone,oc.grade,oc.refund_time,oc.refund_money,o.vip_name,o.order_time,o.money,o.pay_type from `order_classes` oc,`orders` o where o.order_id=oc.itorder_id and o.ins_id="+ins_id+" and oc.state='"+state+"'";
+        return baseDao.querySQL(sql);
     }
 
     private List<Course> getCourseFromOb(List<Object[]> list){
@@ -98,5 +110,21 @@ public class InstitutionDaoImpl implements InstitutionDao {
             courseList.add(course);
         }
         return courseList;
+    }
+
+    private List<Order> getO(List<Object[]> list){
+        List<Order> orders=new ArrayList<Order>();
+        for(Object[] objects:list){
+            Order vo=new Order();
+            vo.setOrder_id((Integer) objects[0]);
+            vo.setVip_name(String.valueOf(objects[1]));
+            vo.setIns_id((Integer)objects[2]);
+            vo.setOrder_time(String.valueOf(objects[3]));
+            vo.setMoney((Double)objects[4]);
+            vo.setPay_type(String.valueOf(objects[5]));
+            orders.add(vo);
+        }
+        return orders;
+
     }
 }
