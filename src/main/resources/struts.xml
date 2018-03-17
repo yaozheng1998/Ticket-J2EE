@@ -118,7 +118,7 @@
         <action name="offlinePay" class="action.InstitutionCheckAction" method="offlinePay">
             <result name="offline_pay_success">showInsOrders</result>
         </action>
-        <action name="getCO" class="action.InstitutionCheckAction" method="getClassFromOneCourse">
+        <action name="getCO" class="action.InstitutionCheckAction" method="getClassFromOne">
             <result name="CO">showInsOrders</result>
         </action>
         <action name="gradeIN" class="action.InstitutionCheckAction" method="loginGrade">

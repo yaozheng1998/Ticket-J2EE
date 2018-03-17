@@ -96,10 +96,11 @@ public class InstitutionCheckAction extends BaseAction{
         return "offline_pay_success";
     }
 
-    public String getClassFromOneCourse(){
-        System.out.println("wertyuyhtrewqerty"+course_id);
+    public String getClassFromOne(){
+        System.out.print("参数"+course_id);
         List<Classroom> list=classService.getClassOfOneCourse(course_id);
-        request.setAttribute("Ucourses",list);
+        System.out.println(list.size());
+        request.getSession().setAttribute("Ucourses",list);
         return "CO";
     }
 

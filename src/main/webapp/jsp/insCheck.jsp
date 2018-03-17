@@ -310,7 +310,7 @@
                                     for(int j=0;j<courseList.size();j++){
                                         Course course=courseList.get(j);
                                 %>
-                                <option value="<%=course.getType()+"-"+course.getTimes()+"课时/周-"+course.getBasic_price()%>"><%=course.getType()+"-"+course.getTimes()+"课时/周-¥"+course.getBasic_price()%></option>
+                                <option value="<%=course.getCourse_id()+"-"+course.getType()+"-"+course.getTimes()+"课时/周-"+course.getBasic_price()%>"><%=course.getType()+"-"+course.getTimes()+"课时/周-¥"+course.getBasic_price()%></option>
                                 <%
                                     }
                                 %>
@@ -379,28 +379,27 @@
     }
 
     $("#courses").change(function(){
+        document.getElementById("c1").options.remove(0);
         $.ajax({
            type:"post",
             url:"getCO",
-            async:true,
+            async:false,
             data:{
-               course_id:document.getElementById("courses").value,
+               course_id:document.getElementById("courses").value.split("-")[0],
             },
-            success:function(){
-               <%
-               List<Classroom> co=(List<Classroom>) request.getAttribute("Ucourses");
-               if(co!=null){
-               for(int i=0;i<co.size();i++){
-               %>
-                document.getElementById("c1").options.add(new Option(<%=co.get(i).getClass_name()%>,<%=co.get(i).getClass_name()%>));
-                <%
-                }
-                }
-                %>
-
-
+            success:function(data){
             }
         });
+        <%
+        List<Classroom> co=(List<Classroom>) session.getAttribute("Ucourses");
+        if(co!=null){
+        for(int i=0;i<co.size();i++){
+        %>
+        document.getElementById("c1").options.add(new Option("<%=co.get(i).getClass_name()%>","<%=co.get(i).getClass_name()%>"));
+        <%
+        }
+        }
+        %>
     });
 
     function gradein(){

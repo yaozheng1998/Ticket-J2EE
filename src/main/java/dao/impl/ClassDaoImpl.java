@@ -88,6 +88,7 @@ public class ClassDaoImpl implements ClassDao {
             classroom.setPrice((Double)object[4]);
             classroom.setAll_num((Integer)object[5]);
             classroom.setNow_num((Integer)object[6]);
+//            System.out.println("banji"+classroom);
             classroomList.add(classroom);
         }
         return classroomList;
