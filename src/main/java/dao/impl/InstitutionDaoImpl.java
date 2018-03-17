@@ -108,7 +108,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
     }
 
     public double getMoney(int ins_id) {
-        String sql="select count(money) from `orders` where ins_id="+ins_id;
+        String sql="select sum(money) from `orders` where ins_id="+ins_id;
         return Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0)));
     }
 

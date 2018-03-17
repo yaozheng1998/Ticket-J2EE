@@ -1,4 +1,5 @@
-<%@ page import="model.Institution" %><%--
+<%@ page import="model.Institution" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/13
@@ -25,6 +26,7 @@
 <body>
 <%
     Institution institution=(Institution) session.getAttribute("insInfo");
+    System.out.println(request.getAttribute("barx"));
 %>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -148,25 +150,25 @@
     myChart.setOption(option);
 
 
-    <%--var myChart1=echarts.init(document.getElementById("bar"));--%>
-    <%--option1 = {--%>
-        <%--title : {--%>
-            <%--text: '教师班级信息',--%>
-            <%--x:'center'--%>
-        <%--},--%>
-        <%--xAxis: {--%>
-            <%--type: 'category',--%>
-            <%--data: <%=request.getAttribute("barx")%>,--%>
-        <%--},--%>
-        <%--yAxis: {--%>
-            <%--type: 'value'--%>
-        <%--},--%>
-        <%--series: [{--%>
-            <%--data: <%=request.getAttribute("bary")%>,--%>
-            <%--type: 'bar'--%>
-        <%--}]--%>
-    <%--};--%>
-    <%--myChart1.setOption(option1);--%>
+    var myChart1=echarts.init(document.getElementById("bar"));
+    option1 = {
+        title : {
+            text: '教师班级信息',
+            x:'center'
+        },
+        xAxis: {
+            type: 'category',
+            data: <%=request.getAttribute("barx")%>,
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: <%=request.getAttribute("bary")%>,
+            type: 'bar'
+        }]
+    };
+    myChart1.setOption(option1);
 
 
 </script>

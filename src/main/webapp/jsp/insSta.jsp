@@ -1,4 +1,5 @@
-<%@ page import="model.Institution" %><%--
+<%@ page import="model.Institution" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: YZ
   Date: 2018/3/13
@@ -25,6 +26,7 @@
 <body>
 <%
     Institution institution=(Institution) session.getAttribute("insInfo");
+    System.out.println(request.getAttribute("barx"));
 %>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">

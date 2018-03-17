@@ -28,23 +28,23 @@ public class InsStaAction extends BaseAction {
         request.setAttribute("ins_TP",institutionService.getNumByState(ins_id,"待支付"));
 
         HashMap map=institutionService.getNumByTeacher(ins_id);
-        List t=new ArrayList();
-        List n=new ArrayList();
+        List t=new ArrayList<String>();
+        List n=new ArrayList<Integer>();
         Set set=map.keySet();
         Iterator<String> it=set.iterator();
         while(it.hasNext()){
             String key=it.next();
-            t.add(key);
+            t.add("'"+key+"'");
             n.add(map.get(key));
         }
-        String[] tarray=new String[t.size()];
-        int[] narray=new int[n.size()];
-        String[] too= (String[]) t.toArray(tarray);
-        for(int j=0;j<n.size();j++){
-            narray[j]= (Integer) n.get(j);
-        }
-        request.setAttribute("barx",too);
-        request.setAttribute("bary",narray);
+//        String[] tarray=new String[t.size()];
+//        int[] narray=new int[n.size()];
+//        String[] too= (String[]) t.toArray(tarray);
+//        for(int j=0;j<n.size();j++){
+//            narray[j]= (Integer) n.get(j);
+//        }
+        request.setAttribute("barx",t);
+        request.setAttribute("bary",n);
         return "insSta";
     }
 }
