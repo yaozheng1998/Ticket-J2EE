@@ -43,4 +43,12 @@ public class OrderClassServiceImpl implements OrderClassService {
     public void setGrade(int order_id, String name, double grade) {
         orderClassDao.setGrade(order_id, name, grade);
     }
+
+    public List<OrderClass> getAllDistri() {
+        return orderClassDao.getAllDistri();
+    }
+
+    public void addNum(int order_classId) {
+        orderClassDao.addNum(order_classId);
+    }
 }

@@ -124,6 +124,7 @@
             <%
                 for(int i=0;i<teacherList.size();i++){
                     Teacher teacher=teacherList.get(i);
+                    if(teacher.getName()!=null){
             %>
             <tr>
                 <td><%=teacher.getName()%></td>
@@ -136,6 +137,7 @@
                 </td>
             </tr>
             <%
+                    }
                 }
             %>
             </tbody>

@@ -59,6 +59,11 @@ public class ClassDaoImpl implements ClassDao {
         return (int) (baseDao.getTotalCount(Classroom.class)+100);
     }
 
+    public void minus(int class_id) {
+        String sql="update `class` set now_num=now_num+1 where class_id="+class_id;
+        baseDao.excuteBySql(sql);
+    }
+
     private List<CourseClassVO> getCC(List<Object[]> objects){
         List<CourseClassVO> courseClassVOList=new ArrayList<CourseClassVO>();
         for(Object[] object:objects){

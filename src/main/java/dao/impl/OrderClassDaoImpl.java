@@ -68,6 +68,16 @@ public class OrderClassDaoImpl implements OrderClassDao {
         baseDao.excuteBySql(sql);
     }
 
+    public List<OrderClass> getAllDistri() {
+        String sql="select * from `order_classes` where state='待分配'";
+        return this.getOrderClasses(baseDao.querySQL(sql));
+    }
+
+    public void addNum(int order_classId) {
+        String sql="update `class` set now_num=now_num+1 where class_id=(select class_id from `order_classes` where orderclass_id="+order_classId+")";
+        baseDao.excuteBySql(sql);
+    }
+
     private List<OrderClass> getOrderClasses(List<Object[]> objects){
         List<OrderClass> orderClassList=new ArrayList<OrderClass>();
         for(Object[] object:objects){

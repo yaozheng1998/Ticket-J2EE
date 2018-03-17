@@ -49,4 +49,16 @@ public interface OrderClassService {
      */
     public void setGrade(int order_id,String name,double grade);
 
+    /**
+     * 得到所有待分配的学生
+     * @return
+     */
+    public List<OrderClass> getAllDistri();
+
+    /**
+     * 退订班级人数增加
+     * @param order_classId
+     */
+    public void addNum(int order_classId);
+
 }

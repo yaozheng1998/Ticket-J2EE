@@ -43,4 +43,8 @@ public class ClassServiceImpl implements ClassService {
     public int getNextId() {
         return classDao.getNextId();
     }
+
+    public void minus(int class_id) {
+        classDao.minus(class_id);
+    }
 }

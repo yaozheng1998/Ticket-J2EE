@@ -146,6 +146,7 @@ public class VIPClassAction extends BaseAction{
 
     public void cancelClass(){
         //退订，积分下降，退款
+        orderClassService.addNum(order_classId);
         orderClassService.cancel(order_classId,money,vipName);
     }
 

@@ -99,8 +99,10 @@ public class OrderAction extends BaseAction{
 //        if(class_name==null||class_name.equals("")){
 //            orderClass.setClass_id(-1);
 //        }else {
-            orderClass.setClass_id(classService.getIdFromName(class_name));
+        int class_id=classService.getIdFromName(class_name);
+            orderClass.setClass_id(class_id);
 //        }
+        classService.minus(class_id);
         orderClass.setReal_name(student_name);
         orderClass.setPhone(phone);
         orderClass.setState("待开班");
@@ -109,11 +111,15 @@ public class OrderAction extends BaseAction{
     }
 
     public String notChooseAddIntoClass(){
+        /**
+         * 这里不选班级，随机分配；先全部分配到第一个班，之后与数量相比较，再移入之后的班级；
+         */
         int oc_id=(int)orderClassService.getNextId();
         OrderClass orderClass=new OrderClass();
         orderClass.setOrderclass_id(oc_id);
         orderClass.setItorder_id((int)orderService.getNextNum()-1);
-        orderClass.setClass_id(classService.getIdFromName(class_name));
+        int class_id=classService.getIdFromName(class_name);
+        orderClass.setClass_id(class_id);
         orderClass.setReal_name(student_name);
         orderClass.setPhone(phone);
         orderClass.setState("待分配");

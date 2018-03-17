@@ -271,7 +271,7 @@
                     <tr>
                         <td><%=vo.getOrder_id()%></td>
                         <td><%=vo.getVipName()%></td>
-                        <td><%=vo.getOrder_time()%></td>
+                        <td><%=sdf.format(vo.getOrder_time())%></td>
                         <td><%=vo.getPay_type()%></td>
                         <%--<td><%=vo%></td>--%>
                         <td><%=vo.getStudent_name()%></td>

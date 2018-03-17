@@ -48,4 +48,10 @@ public interface ClassService {
      * @return
      */
     public int getNextId();
+
+    /**
+     * 班级剩余人数-1
+     * @param class_id
+     */
+    public void minus(int class_id);
 }
