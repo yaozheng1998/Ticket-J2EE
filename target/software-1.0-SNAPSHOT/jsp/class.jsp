@@ -49,14 +49,17 @@
                 <li><a href="../showCourse.action">首页</a></li>
                 <li><a href="../vipBasicInfo.action">个人信息</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../jsp/insRegister.jsp">机构注册</a></li>
-            </ul>
+            <%--<ul class="nav navbar-nav navbar-right">--%>
+                <%--<li><a href="../jsp/insRegister.jsp">机构注册</a></li>--%>
+            <%--</ul>--%>
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">
                 <label>欢迎您, </label>
                 <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px"><%=session.getAttribute("id")%></p>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="main">登出</a></li>
+            </ul>
         </div>
     </div>
 </nav>

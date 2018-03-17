@@ -47,7 +47,7 @@
                 <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">Manager</p>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="main.action">会员版</a></li>
+                <li><a href="main.action">登出</a></li>
             </ul>
         </div>
     </div>
@@ -151,8 +151,20 @@
 <script src="../js/bootstrap-select.js"></script>
 <script>
     function disapprove(obj){
-        var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
-        child.parentNode.removeChild(child);
+//        var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+//        child.parentNode.removeChild(child);
+        $.ajax({
+            type:"post",
+            url:"disappR",
+            async:true,
+            data:{
+                ins_id:obj.getAttribute("id"),
+            },
+            success:function () {
+//                alert("审核通过！");
+                window.location.reload();
+            }
+        });
     }
     function approve(obj){
         $.ajax({
@@ -169,8 +181,21 @@
         });
     }
     function disapproveIn(obj){
-        var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
-        child.parentNode.removeChild(child);
+
+        $.ajax({
+            type:"post",
+            url:"disappR",
+            async:true,
+            data:{
+                ins_id:obj.getAttribute("id"),
+            },
+            success:function () {
+////                alert("审核通过！");
+//                window.location.reload();
+                var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+                child.parentNode.removeChild(child);
+            }
+        });
     }
     function approveIn(obj){
         $.ajax({

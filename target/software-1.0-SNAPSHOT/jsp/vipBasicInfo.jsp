@@ -43,8 +43,11 @@
                 <li><a href="showCourse.action">首页</a></li>
                 <li><a href="vipBasicInfo.action">个人信息</a></li>
             </ul>
+            <%--<ul class="nav navbar-nav navbar-right">--%>
+                <%--<li><a href="/jsp/insRegister.jsp">机构注册</a></li>--%>
+            <%--</ul>--%>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/jsp/insRegister.jsp">机构注册</a></li>
+                <li><a href="main">登出</a></li>
             </ul>
             <div id="memberDiv"
                  style="position: absolute;top: 15px;left: 950px;width: 150px;height: 30px;color: black">

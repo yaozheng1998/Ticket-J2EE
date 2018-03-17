@@ -130,6 +130,12 @@
         <action name="appI" class="action.ManageAction" method="approveInfo">
             <result name="app_info">showApp</result>
         </action>
+        <action name="disappR" class="action.ManageAction" method="disapproveRegis">
+            <result name="disapp_regis">showApp</result>
+        </action>
+        <action name="disappI" class="action.ManageAction" method="disapproveInfo">
+            <result name="disapp_info">showApp</result>
+        </action>
         <action name="sump" class="action.ManageAction" method="CalPay">
             <result name="sumpay">/jsp/managePay.jsp</result>
         </action>

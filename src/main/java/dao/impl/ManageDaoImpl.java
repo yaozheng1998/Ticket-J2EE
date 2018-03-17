@@ -52,6 +52,16 @@ public class ManageDaoImpl implements ManageDao{
         baseDao.excuteBySql(sqlq);
     }
 
+    public void disapproveRegis(int ins_id) {
+        String sql="update `institution` set state='不通过' where ins_id="+ins_id;
+        baseDao.excuteBySql(sql);
+    }
+
+    public void disapproveInfo(int ins_id) {
+        String sql="update `institution` set changes='' where ins_id="+ins_id;
+        baseDao.excuteBySql(sql);
+    }
+
     public int getNextId() {
         return (int) (baseDao.getTotalCount(Manager.class)+1);
     }

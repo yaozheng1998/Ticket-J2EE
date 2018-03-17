@@ -45,7 +45,7 @@
                 <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px">Manager</p>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="main.action">会员版</a></li>
+                <li><a href="main.action">登出</a></li>
             </ul>
         </div>
     </div>

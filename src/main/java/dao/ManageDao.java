@@ -37,6 +37,17 @@ public interface ManageDao {
     public void approveInfo(int ins_id);
 
     /**
+     * 不通过某个机构的审核注册
+     */
+    public void disapproveRegis(int ins_id);
+
+    /**
+     * 不通过某个机构的信息修改申请
+     * @param ins_id
+     */
+    public void disapproveInfo(int ins_id);
+
+    /**
      * 得到下一个可用的manager ID
      * @return
      */

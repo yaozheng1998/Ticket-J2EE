@@ -39,6 +39,14 @@ public class ManageServiceImpl implements ManageService {
         manageDao.approveInfo(ins_id);
     }
 
+    public void disapproveRegis(int ins_id) {
+        manageDao.disapproveRegis(ins_id);
+    }
+
+    public void disapproveInfo(int ins_id) {
+        manageDao.disapproveInfo(ins_id);
+    }
+
     public int getNextId() {
         return manageDao.getNextId();
     }

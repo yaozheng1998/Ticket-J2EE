@@ -64,6 +64,16 @@ public class ManageAction extends BaseAction{
         return "app_info";
     }
 
+    public String disapproveRegis(){
+        manageService.disapproveRegis(ins_id);
+        return "disapp_regis";
+    }
+
+    public String disapproveInfo(){
+        manageService.disapproveInfo(ins_id);
+        return "disapp_info";
+    }
+
     public String CalPay(){
         List<SumPayVO> list=manageService.getToCal();
         request.setAttribute("sumpay",list);

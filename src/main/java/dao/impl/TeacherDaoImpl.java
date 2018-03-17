@@ -31,7 +31,9 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     public long getNextId() {
-        return baseDao.getTotalCount(Teacher.class)+200;
+        String sql="select max(`teacher_id`) from `teacher`";
+        return (Integer)baseDao.querySQL(sql).get(0)+1;
+//        return baseDao.getTotalCount(Teacher.class)+200;
     }
 
     public List<Teacher> getTeachers(int ins_id) {

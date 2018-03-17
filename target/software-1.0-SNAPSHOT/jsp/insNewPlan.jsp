@@ -51,6 +51,9 @@
                 <label>欢迎您, </label>
                 <p id="name" style="position:absolute;top:0px;left:50px;width:70px;height:20px"><%=institution.getIns_name()%></p>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="main">登出</a></li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -143,7 +146,7 @@
                         <br/>
                         <b>班级信息【即一个课程名下的多个班级】</b>
                         <div class="write_form">
-                            <table id="addClass" class="table table-bordered" style="width: 500px;border-width: 2;margin-top: 10px;text-align: center">
+                            <table id="addClass" class="table table-bordered" style="width: 470px;border-width: 2;margin-top: 10px;text-align: center">
                                 <thead>
                                 <th>班级名</th>
                                 <th>授课老师</th>
@@ -166,8 +169,8 @@
                                             %>
                                         </select>
                                     </td>
-                                    <td><input style="width: 130px;" id="n1" name="n1" placeholder="请填写班级人数"></td>
-                                    <td><input style="width: 100px;" id="p1" name="p1" placeholder="请填写价格"></td>
+                                    <td><input style="width: 125px;" id="n1" name="n1" placeholder="请填写班级人数"></td>
+                                    <td><input style="width: 96px;" id="p1" name="p1" placeholder="请填写价格"></td>
                                     <td><button id="b1" type="button" class="btn minus_btn" onclick="del(this)">
                                         删除
                                     </button>
