@@ -2,7 +2,9 @@ package service;
 
 import model.Institution;
 import model.Manager;
+import util.InsStaVO;
 import util.SumPayVO;
+import util.VIPStaVO;
 
 import java.util.List;
 
@@ -68,5 +70,43 @@ public interface ManageService {
      * 将某机构的七成收入结算
      */
     public double paySeven(int ins_id);
+
+    /**
+     * 得到网站的总订单数
+     * @return
+     */
+    public int getAllOrder();
+
+    /**
+     * 得到网站的总学生数量
+     * @return
+     */
+    public int getAllStudent();
+
+    /**
+     * 得到网站流通的总金额
+     * @return
+     */
+    public double getAllMoney();
+
+    /**
+     * 得到机构统计信息
+     * @return
+     */
+    public List<InsStaVO> getInsSta();
+
+    /**
+     * 得到会员统计信息
+     * @return
+     */
+    public List<VIPStaVO> getVIPSta();
+
+    public List getVipMoneyList();
+
+    public List getVipList();
+
+    public List getInsList() ;
+
+    public List getInsMoneyList();
 
 }

@@ -6,7 +6,9 @@ import model.Institution;
 import model.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import util.InsStaVO;
 import util.SumPayVO;
+import util.VIPStaVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,11 @@ import java.util.List;
 public class ManageDaoImpl implements ManageDao{
     @Autowired
     private BaseDao baseDao;
+
+    private List insList=new ArrayList();
+    private List insMoneyList=new ArrayList();
+    private List vipList=new ArrayList();
+    private List vipMoneyList=new ArrayList();
 
     public List<Institution> getAllIns() {
         String sql="select * from `institution` where state='未审核'";
@@ -84,6 +91,97 @@ public class ManageDaoImpl implements ManageDao{
         //没给机构
     }
 
+    public int getAllOrder() {
+        String sql="select count(*) from `orders`";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public int getAllStudent() {
+        String sql="select count(*) from `order_classes`";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public double getAllMoney() {
+        String sql="select sum(money) from `orders`";
+        return Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0)));
+    }
+
+    public List<InsStaVO> getInsSta() {
+        String sql="select i.ins_id,i.ins_name,i.location,i.classrooms,count(*),sum(o.money) from `institution` i,`orders` o where o.ins_id=i.ins_id group by i.ins_id,i.ins_name,i.location,i.classrooms order by sum(o.money) desc";
+        return this.getInsSta(baseDao.querySQL(sql));
+    }
+
+    public List<VIPStaVO> getVIPSta() {
+        String sql="select v.vipName,v.vipLevel,count(*),sum(money) from `orders` o,`vip` v where v.vipName=o.vip_name group by v.vipName,v.vipLevel order by sum(money) desc";
+        return this.getVIPSta(baseDao.querySQL(sql));
+    }
+
+    private  List<InsStaVO> getInsSta(List<Object[]> list){
+        List<InsStaVO> insStaVOS=new ArrayList<InsStaVO>();
+        for(Object[] objects:list){
+            InsStaVO vo=new InsStaVO();
+            vo.setIns_id((Integer)objects[0]);
+            vo.setIns_name(String.valueOf(objects[1]));
+            insList.add(String.valueOf(objects[1]));
+            vo.setLocation(String.valueOf(objects[2]));
+            vo.setClass_num((Integer)objects[3]);
+            vo.setOrder_num(Integer.parseInt(String.valueOf(objects[4])));
+            vo.setMoney(Double.parseDouble(String.valueOf(objects[5])));
+            insMoneyList.add(String.valueOf(objects[5]));
+            insStaVOS.add(vo);
+        }
+        return insStaVOS;
+    }
+    private List<VIPStaVO> getVIPSta(List<Object[]> list){
+        List<VIPStaVO> vipStaVOS=new ArrayList<VIPStaVO>();
+        for(Object[] objects:list){
+            VIPStaVO vo=new VIPStaVO();
+            vo.setVip_name(String.valueOf(objects[0]));
+            vipList.add(String.valueOf(objects[0]));
+            vo.setVip_rank(String.valueOf(objects[1]));
+            vo.setOrder_num(Integer.parseInt(String.valueOf(objects[2])));
+            vo.setAll_money(Double.parseDouble(String.valueOf(objects[3])));
+            vipMoneyList.add((Double)objects[3]);
+            vipStaVOS.add(vo);
+        }
+        return vipStaVOS;
+    }
+
+    public List getVipMoneyList() {
+        List list=new ArrayList();
+        List<VIPStaVO> l=getVIPSta();
+        for(int i=0;i<l.size();i++){
+            list.add("'"+l.get(i).getAll_money()+"'");
+        }
+        return list;
+    }
+
+    public List getVipList() {
+        List list=new ArrayList();
+        List<VIPStaVO> l=getVIPSta();
+        for(int i=0;i<l.size();i++){
+            list.add("'"+l.get(i).getVip_name()+"'");
+        }
+        return list;
+    }
+
+    public List getInsList() {
+        List list=new ArrayList();
+        List<InsStaVO> l=getInsSta();
+        for(int i=0;i<l.size();i++){
+            list.add("'"+l.get(i).getIns_name()+"'");
+        }
+        return list;
+    }
+
+    public List getInsMoneyList() {
+        List list=new ArrayList();
+        List<InsStaVO> l=getInsSta();
+        for(int i=0;i<l.size();i++){
+            list.add("'"+l.get(i).getMoney()+"'");
+        }
+        return list;
+    }
 
     private List<SumPayVO> getSPV(List<Object[]> list){
         List<SumPayVO> sumPayVOList=new ArrayList<SumPayVO>();

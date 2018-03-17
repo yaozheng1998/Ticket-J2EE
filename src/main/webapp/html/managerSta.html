@@ -55,7 +55,7 @@
         <label for="tab-radio-1" class="tab-handler tab-handler-1">机构统计</label>
         <div class="tab-content tab-content-1">
             <div class="write_form">
-                <table id="regist" class="table table-bordered" style="margin-left:-92px;width: 900px;border-width: 1;margin-top: 10px;text-align: center">
+                <table id="regist" class="table table-bordered" style="margin-left:-92px;width: 980px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
                     <th>机构编号</th>
                     <th>机构名</th>
@@ -67,11 +67,13 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><%=institution.getIns_id()%></td>
-                        <td><%=institution.getIns_name()%></td>
-                        <td><%=institution.getLocation()%></td>
+                        <td>8000001</td>
+                        <td>xxxx</td>
+                        <td>上海</td>
                         <td><%=institution.getClassrooms()%></td>
-                        <td></td>
+                        <td>4444</td>
+                        <td>43323</td>
+                        <td>5434655</td>
                     </tr>
                     </tbody>
                 </table>
@@ -79,7 +81,7 @@
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
-        <label for="tab-radio-2" class="tab-handler tab-handler-2">信息修改</label>
+        <label for="tab-radio-2" class="tab-handler tab-handler-2">学员统计</label>
         <div class="tab-content tab-content-2">
             <div class="write_form">
                 <table id="info" class="table table-bordered" style="margin-left:-92px;width: 900px;border-width: 1;margin-top: 10px;text-align: center">
@@ -105,12 +107,54 @@
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-3">
         <label for="tab-radio-3" class="tab-handler tab-handler-3">财务统计</label>
         <div class="tab-content tab-content-3">
-
+            <div style="position: absolute;top:10px;left:0px;width: 900px;height: 600px;">
+                <div class="row" style="top: 100px;">
+                    <div class="col-md-3 col-md-offset-2">
+                        <div style="background: #337AB7;margin-right: 0.8em;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);transition: 0.5s all;border-radius: 20px">
+                            <div class="col-md-8" style="padding: 10px;">
+                                <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">123 张</h4>
+                                <h4 style="	font-size: 1.2em;color: #fff;margin: 0.3em 0em;font-family: 'Carrois Gothic', sans-serif;">
+                                    累计订单</h4>
+                                <p style=" color: #fff;font-size: 0.8em;line-height: 1.8em;"></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="background: #337AB7;margin-right: 0.8em;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);transition: 0.5s all;border-radius: 20px">
+                            <div class="col-md-8" style="padding: 10px;">
+                                <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">64 人
+                                </h4>
+                                <h4 style="	font-size: 1.2em;color: #fff;margin: 0.3em 0em;font-family: 'Carrois Gothic', sans-serif;">
+                                    听课人次</h4>
+                                <p style=" color: #fff;font-size: 0.8em;line-height: 1.8em;"></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="background: #337AB7;margin-right: 0.8em;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);transition: 0.5s all;border-radius: 20px">
+                            <div class="col-md-8" style="padding: 10px;">
+                                <h4 style="color: #fff;font-size: 2.5em;font-family: 'Carrois Gothic', sans-serif;">¥56765
+                                </h4>
+                                <h4 style="	font-size: 1.2em;color: #fff;margin: 0.3em 0em;font-family: 'Carrois Gothic', sans-serif;">
+                                    累计成交</h4>
+                                <p style=" color: #fff;font-size: 0.8em;line-height: 1.8em;"></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div id="pie" style="margin-left:50px;top:100px;width: 500px;height:400px;"></div>
+                    <div id="bar" style="margin-left:600px;margin-top:-200px;width: 500px;height: 400px;"></div>
+                </div>
+            </div>
         </div>
     </div>
 </fieldset>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-select.js"></script>
+<script>
+</script>
 </body>
 </html>

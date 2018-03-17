@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service.ManageService;
+import util.InsStaVO;
 import util.SumPayVO;
+import util.VIPStaVO;
 
 import java.util.List;
 
@@ -60,5 +62,41 @@ public class ManageServiceImpl implements ManageService {
     public double paySeven(int ins_id) {
         return manageDao.paySeven(ins_id);
 
+    }
+
+    public int getAllOrder() {
+        return manageDao.getAllOrder();
+    }
+
+    public int getAllStudent() {
+        return manageDao.getAllStudent();
+    }
+
+    public double getAllMoney() {
+        return manageDao.getAllMoney();
+    }
+
+    public List<InsStaVO> getInsSta() {
+        return manageDao.getInsSta();
+    }
+
+    public List<VIPStaVO> getVIPSta() {
+        return manageDao.getVIPSta();
+    }
+
+    public List getVipMoneyList() {
+        return manageDao.getVipMoneyList();
+    }
+
+    public List getVipList() {
+        return manageDao.getVipList();
+    }
+
+    public List getInsList() {
+        return manageDao.getInsList();
+    }
+
+    public List getInsMoneyList() {
+        return manageDao.getInsMoneyList();
     }
 }
