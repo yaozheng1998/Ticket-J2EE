@@ -137,5 +137,38 @@ public class InstitutionCheckAction extends BaseAction{
         return orderClassList;
     }
 
+    private int order_id;
+    private String name;
+    private double grade;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getGrade() {
+
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
+    public int getOrder_id() {
+
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public String loginGrade(){
+        orderClassService.setGrade(order_id,name,grade);
+        return "grade_success";
+    }
 }

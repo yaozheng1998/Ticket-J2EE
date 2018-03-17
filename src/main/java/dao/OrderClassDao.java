@@ -41,5 +41,13 @@ public interface OrderClassDao {
      */
     public void cancel(int order_classId,double money,String vipName);
 
+    /**
+     * 登分
+     * @param order_id
+     * @param name
+     * @param grade
+     */
+    public void setGrade(int order_id,String name,double grade);
+
 
 }

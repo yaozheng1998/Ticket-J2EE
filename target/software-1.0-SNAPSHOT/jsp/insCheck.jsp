@@ -128,6 +128,7 @@
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
         <label for="tab-radio-2" class="tab-handler tab-handler-2">进行中</label>
         <div class="tab-content tab-content-2">
+            <button class="blueminus_btn btn" style="margin-left: 83%;margin-top: -84px;" onclick="gradein()">登分</button>
             <div class="write_form">
                 <%
                     if(go.size()==0){
@@ -155,16 +156,16 @@
                             OrderClassVO vo=go.get(i);
                     %>
                     <tr>
-                        <td><%=vo.getOrder_id()%></td>
+                        <td id="o<%=i%>"><%=vo.getOrder_id()%></td>
                         <td><%=vo.getVipName()%></td>
                         <td><%=vo.getPay_type()%></td>
                         <td><%=vo.getClass_name()%></td>
                         <td><%=sdf.format(vo.getEnd_time())%></td>
                         <td><%=vo.getTeacher_name()%></td>
                         <td><%=vo.getPrice()%></td>
-                        <td><%=vo.getStudent_name()%></td>
+                        <td id="sn<%=i%>"><%=vo.getStudent_name()%></td>
                         <td><%=vo.getPhone()%></td>
-                        <td><%=vo.getGrade()%></td>
+                        <td id="g<%=i%>"><%=vo.getGrade()%></td>
                     </tr>
                     <%
                         }
@@ -175,6 +176,7 @@
                     }
                 %>
             </div>
+            <button id="con" class="blueminus_btn btn" style="margin-left: 83%;visibility: hidden" onclick="save_grade()">保存</button>
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-3">
@@ -391,4 +393,38 @@
             }
         });
     });
+
+    function gradein(){
+        document.getElementById("con").style.visibility="";
+        <%
+        for(int i=0;i<go.size();i++){
+        %>
+        document.getElementById("g<%=i%>").innerHTML='<input id="gi<%=i%>" value='+document.getElementById("g<%=i%>").innerHTML+'>';
+        <%
+        }
+        %>
+    }
+    function save_grade(){
+        document.getElementById("con").style.visibility="hidden";
+        <%
+        for(int j=0;j<go.size();j++){
+        %>
+        $.ajax({
+           type:"post",
+            url:"gradeIN",
+            async:"false",
+            data:{
+               order_id:document.getElementById("o<%=j%>").innerHTML,
+               name:document.getElementById("sn<%=j%>").innerHTML,
+               grade:document.getElementById("gi<%=j%>").value,
+            },
+            success:function(){
+                document.getElementById("g<%=j%>").innerHTML=document.getElementById("gi<%=j%>").value;
+            }
+        });
+        <%
+        }
+        %>
+
+    }
 </script>

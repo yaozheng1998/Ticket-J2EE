@@ -39,4 +39,8 @@ public class OrderClassServiceImpl implements OrderClassService {
     public void cancel(int order_classId,double money,String vipName) {
         orderClassDao.cancel(order_classId,money,vipName);
     }
+
+    public void setGrade(int order_id, String name, double grade) {
+        orderClassDao.setGrade(order_id, name, grade);
+    }
 }

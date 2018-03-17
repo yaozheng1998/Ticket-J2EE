@@ -63,6 +63,11 @@ public class OrderClassDaoImpl implements OrderClassDao {
 
     }
 
+    public void setGrade(int order_id, String name, double grade) {
+        String sql="update `order_classes` set grade="+grade+" where itorder_id="+order_id+" and real_name='"+name+"'";
+        baseDao.excuteBySql(sql);
+    }
+
     private List<OrderClass> getOrderClasses(List<Object[]> objects){
         List<OrderClass> orderClassList=new ArrayList<OrderClass>();
         for(Object[] object:objects){

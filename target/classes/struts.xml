@@ -116,6 +116,9 @@
         <action name="getCO" class="action.InstitutionCheckAction" method="getClassFromOneCourse">
             <result name="CO">showInsOrders</result>
         </action>
+        <action name="gradeIN" class="action.InstitutionCheckAction" method="loginGrade">
+            <result name="grade_success">showInsOrders</result>
+        </action>
 
         <!--经理版-->
         <action name="showApp" class="action.ManageAction">
