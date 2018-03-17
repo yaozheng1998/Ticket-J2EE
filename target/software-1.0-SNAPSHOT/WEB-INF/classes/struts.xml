@@ -35,13 +35,14 @@
             <result name="vipLogin" type="chain">showCourse</result>
             <result name="insLogin" type="chain">showInsBasicInfo</result>
             <result name="adminLogin" type="chain">showApp</result>
+            <!--<result name="insNotAct">/jsp/insNotAct.jsp</result>-->
         </action>
 
         <action name="showRegister" class="action.RegisterAction">
             <result name="showregister">/jsp/register.jsp</result>
         </action>
         <action name="register" class="action.RegisterAction" method="register_submit">
-            <result name="register_done">/jsp/main.jsp</result>
+            <result name="register_done">/jsp/reg.jsp</result>
         </action>
 
         <!--<action name="register" class="action.RegisterAction" method="compare">-->
@@ -82,6 +83,10 @@
         </action>
         <action name="addOnetopayOrder" class="action.OrderAction" method="addtopayOrder">
             <result name="topayorder_success">/jsp/class.jsp</result>
+        </action>
+
+        <action name="deleteOrder" class="action.VIPClassAction" method="retClass">
+            <result name="del_success">/jsp/class.jsp</result>
         </action>
 
         <action name="addIns" class="action.InstitutionAction" method="addIns">

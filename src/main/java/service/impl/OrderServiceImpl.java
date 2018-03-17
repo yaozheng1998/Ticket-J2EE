@@ -90,6 +90,10 @@ public class OrderServiceImpl implements OrderService{
         }
     }
 
+    public void deleteOrder(int order_id) {
+        orderDao.removeOrder(order_id);
+    }
+
     /**
      * 获取某个订单下单时间和现在的时间差
      * @param vo

@@ -148,4 +148,22 @@ public class VIPClassAction extends BaseAction{
         //退订，积分下降，退款
         orderClassService.cancel(order_classId,money,vipName);
     }
+
+
+    private int order_id;
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    //取消未支付订单
+    public String retClass(){
+        orderService.deleteOrder(order_id);
+        return "del_success";
+    }
+
 }

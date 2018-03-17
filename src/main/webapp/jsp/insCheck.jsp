@@ -131,7 +131,13 @@
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
         <label for="tab-radio-2" class="tab-handler tab-handler-2">进行中</label>
         <div class="tab-content tab-content-2">
+            <%
+                if(go.size()!=0){
+            %>
             <button class="blueminus_btn btn" style="margin-left: 83%;margin-top: -84px;" onclick="gradein()">登分</button>
+            <%
+                }
+            %>
             <div class="write_form">
                 <%
                     if(go.size()==0){

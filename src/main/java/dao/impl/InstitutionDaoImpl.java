@@ -58,7 +58,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
 
     public boolean whetherAct(int insId) {
         Institution institution=getInfoById(insId);
-        if(institution.getState().equals("待审核")){
+        if(!institution.getState().equals("已审核")){
             return false;
         }
         return true;

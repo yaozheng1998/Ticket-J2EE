@@ -159,7 +159,10 @@
             async:false,
             success:function(){
                 swal("恭喜您","优惠券10元","success");
-                location.reload();
+                setTimeout(function () {
+                    location.reload();
+                },2000);
+
             },
         });
     }

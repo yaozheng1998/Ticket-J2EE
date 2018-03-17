@@ -13,5 +13,6 @@
 <body>
     <b>您的机构注册已完成！请等待管理员审核</b>
     <b>您的机构编号为<%=session.getAttribute("insId")%>,您将以此编号登录，请妥善保存～</b>
+    <a href="../main">Training College</a>
 </body>
 </html>

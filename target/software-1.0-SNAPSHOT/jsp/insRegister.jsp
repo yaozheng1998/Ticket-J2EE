@@ -110,13 +110,13 @@
 <script>
     var num=1;
     function del(obj){
-        var id=obj.getAttribute("id");
-        document.getElementById("addTeacher").deleteRow(document.getElementById(id).rowIndex+1);
+        var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+        child.parentNode.removeChild(child);
     }
 
     function append_teacher(){
         num=num+1;
-        var newLine='<tr id="r'+num+'"><td><input id="tn'+num+'" placeholder="请填写教师姓名"></td> <td> <select id="s'+num+'" style="width: 219px;height: 34px;background: white"> <option>金牌</option> <option>银牌</option> <option>铜牌</option> </select> </td><td><input id="t'+num+'" placeholder="请填写任教科目"></td> <td><button type="button" class="btn minus_btn" onclick="del(this)"> 删除 </button> </td> </tr>';
+        var newLine='<tr id="r'+num+'"><td><input id="tn'+num+'" placeholder="请填写教师姓名"></td> <td> <select id="s'+num+'" style="width: 219px;height: 34px;background: white"> <option>金牌</option> <option>银牌</option> <option>铜牌</option> </select> </td><td><input id="t'+num+'" placeholder="请填写任教科目"></td> <td><button id="b'+num+'" type="button" class="btn minus_btn" onclick="del(this)"> 删除 </button> </td> </tr>';
         $("#teachers").append(newLine);
     }
     function regis(){

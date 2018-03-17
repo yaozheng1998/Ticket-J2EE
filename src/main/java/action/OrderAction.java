@@ -32,6 +32,15 @@ public class OrderAction extends BaseAction{
     private String class_name;
     private String phone;
     private double money;
+    private int sub;
+
+    public int getSub() {
+        return sub;
+    }
+
+    public void setSub(int sub) {
+        this.sub = sub;
+    }
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
     int order_id;
@@ -134,6 +143,11 @@ public class OrderAction extends BaseAction{
             return "fail";
         }
         vip.setBalance(vip.getBalance()-money);
+        if(sub!=0){
+            vip.setVipSubMoney(vip.getVipSubMoney()-sub);
+        }
+        vip.setVipPoint(vip.getVipPoint()+money);
+        vip.setConsumeMoney(vip.getConsumeMoney()+money);
         vipService.update(vip);
 
         Manager manager=manageService.getManagerByIns(ins_id);

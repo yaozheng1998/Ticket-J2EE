@@ -502,7 +502,7 @@
                             </button>
                         </td>
                         <td>
-                            <button class="btn minus_btn" onclick="">
+                            <button id="<%=vo.getOrder_id()%>" class="btn minus_btn" onclick="del(this)">
                                 删除
                             </button>
                         </td>
@@ -651,6 +651,20 @@
             });
         })
 
+    }
+    function del(obj){
+        $.ajax({
+           type:"post",
+            url:"deleteOrder",
+            async:true,
+            data:{
+               order_id:obj.getAttribute("id"),
+            },
+            success:function(){
+                var child=document.getElementById(obj.getAttribute("id")).parentNode.parentNode;
+                child.parentNode.removeChild(child);
+            }
+        });
     }
 </script>
 </body>

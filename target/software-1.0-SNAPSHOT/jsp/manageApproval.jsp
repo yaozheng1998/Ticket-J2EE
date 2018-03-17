@@ -67,6 +67,13 @@
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-1" checked>
         <label for="tab-radio-1" class="tab-handler tab-handler-1">注册申请</label>
         <div class="tab-content tab-content-1">
+            <%
+                if(institutionList.size()==0){
+            %>
+            <b>当前没有机构注册申请！</b>
+            <%
+                }else{
+            %>
             <div class="write_form">
                 <table id="regist" class="table table-bordered" style="margin-left:-92px;width: 900px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
@@ -87,7 +94,7 @@
                         <td><%=institution.getIns_name()%></td>
                         <td><%=institution.getLocation()%></td>
                         <td><%=institution.getClassrooms()%></td>
-                        <td><button id="d+'<%=i%>'" class="btn minus_btn" onclick="disapprove(this)">
+                        <td><button id="d<%=institution.getIns_id()%>" class="btn minus_btn" onclick="disapprove(this)">
                             不通过
                         </button>
                         </td>
@@ -102,11 +109,21 @@
                     </tbody>
                 </table>
             </div>
+            <%
+                }
+            %>
         </div>
 
         <input type="radio" name="tab-radio" class="tab-radio" id="tab-radio-2">
         <label for="tab-radio-2" class="tab-handler tab-handler-2">信息修改</label>
         <div class="tab-content tab-content-2">
+            <%
+                if(changeVOS.size()==0){
+            %>
+            <b>当前没有机构信息修改申请！</b>
+            <%
+            }else{
+            %>
             <div class="write_form">
                 <table id="info" class="table table-bordered" style="margin-left:-92px;width: 900px;border-width: 1;margin-top: 10px;text-align: center">
                     <thead>
@@ -127,7 +144,7 @@
                         <td><%=vo.getNameChange()%></td>
                         <td><%=vo.getLocChange()%></td>
                         <td><%=vo.getClassChange()%></td>
-                        <td><button id="dd+'<%=j%>'" class="btn minus_btn" onclick="disapproveIn(this)">
+                        <td><button id="dd<%=vo.getId()%>" class="btn minus_btn" onclick="disapproveIn(this)">
                             不通过
                         </button>
                         </td>
@@ -142,6 +159,9 @@
                     </tbody>
                 </table>
             </div>
+            <%
+                }
+            %>
         </div>
     </div>
 
@@ -158,7 +178,7 @@
             url:"disappR",
             async:true,
             data:{
-                ins_id:obj.getAttribute("id"),
+                ins_id:obj.getAttribute("id").slice(1),
             },
             success:function () {
 //                alert("审核通过！");
@@ -184,10 +204,10 @@
 
         $.ajax({
             type:"post",
-            url:"disappR",
+            url:"disappI",
             async:true,
             data:{
-                ins_id:obj.getAttribute("id"),
+                ins_id:obj.getAttribute("id").slice(2),
             },
             success:function () {
 ////                alert("审核通过！");

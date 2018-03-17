@@ -47,7 +47,7 @@ public class RegisterAction extends BaseAction{
         vip.setVip_bankCardId(rbank);
         vip.setConsumeMoney(0);
         vip.setVipPoint(0);
-        vip.setVipLevel(VipLevelEnum.BRONZE.toString());
+        vip.setVipLevel("青铜");
         vip.setBalance(10000);
         vip.setCode(captcha);
 

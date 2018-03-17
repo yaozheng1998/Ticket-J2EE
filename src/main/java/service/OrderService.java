@@ -53,4 +53,10 @@ public interface OrderService {
      * 清除过期的未支付订单
      */
     public void cancelOrders();
+
+    /**
+     * 删除某一条订单
+     * @param order_id
+     */
+    public void deleteOrder(int order_id);
 }
