@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>InsSuccess</title>
+    <title>机构注册成功</title>
 </head>
 <body>
     <b>您的机构注册已完成！请等待管理员审核</b>

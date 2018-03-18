@@ -36,8 +36,8 @@ public class OrderDaoImpl implements OrderDao {
 //        long current=baseDao.getTotalCount(Order.class);
 ////        System.out.print(current);
 //        return current+1;
-        String sql="select max(`order_id`) from `orders`";
-        return (Integer)baseDao.querySQL(sql).get(0)+1;
+        String sql="select coalesce(max(`order_id`),0) from `orders`";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)))+1;
     }
 
     public List<ToPayOrderVO> getToPayOrders(String name) {

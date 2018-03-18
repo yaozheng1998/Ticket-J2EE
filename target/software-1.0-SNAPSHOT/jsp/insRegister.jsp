@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>InstitutionRegister</title>
+    <title>机构-注册</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <link href="../css/bootstrap-select.min.css" rel="stylesheet">

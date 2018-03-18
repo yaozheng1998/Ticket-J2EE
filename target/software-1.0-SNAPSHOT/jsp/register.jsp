@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>会员注册</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-image: url(../img/training.jpg);background-size: cover">

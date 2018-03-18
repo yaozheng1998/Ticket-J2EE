@@ -87,7 +87,7 @@ public class VipDaoImpl implements VipDao {
     }
 
     public double getOrderMoney(String vipName) {
-        String sql="select sum(money) from `orders` where vip_name='"+vipName+"'";
+        String sql="select coalesce(sum(money),0) from `orders` where vip_name='"+vipName+"'";
         return Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0)));
     }
 

@@ -40,10 +40,10 @@ public class OrderClassDaoImpl implements OrderClassDao {
     }
 
     public long getNextId() {
-        String sql="select max(`orderclass_id`) from `order_classes`";
+        String sql="select coalesce(max(`orderclass_id`),0) from `order_classes`";
 //        long current=baseDao.getTotalCount(OrderClass.class);
 //        System.out.print("逻辑层的"+current);
-        return (Integer)baseDao.querySQL(sql).get(0)+1;
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)))+1;
     }
 
     public void cancel(int order_classId,double money,String vipName) {

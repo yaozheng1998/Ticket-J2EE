@@ -65,7 +65,7 @@ public class CourseDaoImpl implements CourseDao{
     }
 
     public int getNextId() {
-        String sql="select max(`course_id`) from `course`";
-        return (Integer)baseDao.querySQL(sql).get(0)+1;
+        String sql="select coalesce(max(`course_id`),0) from `course`";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)))+1;
     }
 }

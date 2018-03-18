@@ -112,7 +112,7 @@ public class ManageDaoImpl implements ManageDao{
     }
 
     public double getAllMoney() {
-        String sql="select sum(money) from `orders`";
+        String sql="select coalesce(sum(money),0) from `orders`";
         return Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0)));
     }
 
