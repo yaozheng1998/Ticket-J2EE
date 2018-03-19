@@ -56,7 +56,8 @@ public class ClassDaoImpl implements ClassDao {
     }
 
     public int getNextId() {
-        return (int) (baseDao.getTotalCount(Classroom.class)+100);
+        String sql="select coalesce(max(`class_id`),0) from `class`";
+        return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)))+1;
     }
 
     public void minus(int class_id) {

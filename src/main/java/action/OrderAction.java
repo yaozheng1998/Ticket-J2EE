@@ -4,12 +4,19 @@ import model.Manager;
 import model.Order;
 import model.OrderClass;
 import model.Vip;
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import service.*;
+import util.StudentClassVO;
+
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author YZ
@@ -28,6 +35,7 @@ public class OrderAction extends BaseAction{
     @Autowired
     private ManageService manageService;
 
+    private String thedata;
     private String student_name;
     private String class_name;
     private String phone;
@@ -89,8 +97,27 @@ public class OrderAction extends BaseAction{
         this.student_name = student_name;
     }
 
+    public Object getThedata() {
+        return thedata;
+    }
+
+    public void setThedata(String thedata) {
+        this.thedata = thedata;
+    }
+
+    private String thedata2;
+
+    public String getThedata2() {
+        return thedata2;
+    }
+
+    public void setThedata2(String thedata2) {
+        this.thedata2 = thedata2;
+    }
+
     //class选择班级 而已
     public String chooseOrderIntoClass(){
+
 //        System.out.println("就一次吗");
         /**
          * 先增加班级，外键约束
@@ -100,22 +127,43 @@ public class OrderAction extends BaseAction{
         order.setOrder_id(order_id);
         orderService.save(order);
 
-        int oc_id=(int)orderClassService.getNextId();
-        OrderClass orderClass=new OrderClass();
-        orderClass.setOrderclass_id(oc_id);
-        orderClass.setItorder_id(order_id);
+        //取到object，转成list；加到。。
+        System.out.println("对象"+thedata);
+
+        List<StudentClassVO> voList=new ArrayList<StudentClassVO>();
+        JSONArray jsonArray=JSONArray.fromObject(thedata);
+        for(int j=0;j<jsonArray.size();j++){
+            StudentClassVO vo=new StudentClassVO();
+            JSONObject jsonObject=jsonArray.getJSONObject(j);
+            String student_name=jsonObject.getString("student_name");
+            String class_name=jsonObject.getString("class_name");
+            String phone=jsonObject.getString("phone");
+            vo.setStudent_name(student_name);
+            vo.setClass_name(class_name);
+            vo.setPhone(phone);
+            voList.add(vo);
+        }
+
+        for(int i=0;i<voList.size();i++) {
+            StudentClassVO vo=voList.get(i);
+            int oc_id = (int) orderClassService.getNextId();
+            OrderClass orderClass = new OrderClass();
+            orderClass.setOrderclass_id(oc_id);
+            orderClass.setItorder_id(order_id);
 //        if(class_name==null||class_name.equals("")){
 //            orderClass.setClass_id(-1);
 //        }else {
-        int class_id=classService.getIdFromName(class_name);
+            int class_id = classService.getIdFromName(vo.getClass_name());
             orderClass.setClass_id(class_id);
 //        }
-        classService.minus(class_id);
-        orderClass.setReal_name(student_name);
-        orderClass.setPhone(phone);
-        orderClass.setState("待开班");
-        orderClassService.save(orderClass);
+            classService.minus(class_id);
+            orderClass.setReal_name(vo.getStudent_name());
+            orderClass.setPhone(vo.getPhone());
+            orderClass.setState("待开班");
+            orderClassService.save(orderClass);
+        }
         return "choose_success";
+
     }
 
     public String notChooseAddIntoClass(){
@@ -127,16 +175,34 @@ public class OrderAction extends BaseAction{
         order.setOrder_id(order_id);
         orderService.save(order);
 
-        int oc_id=(int)orderClassService.getNextId();
-        OrderClass orderClass=new OrderClass();
-        orderClass.setOrderclass_id(oc_id);
-        orderClass.setItorder_id(order_id);
-        int class_id=classService.getIdFromName(class_name);
-        orderClass.setClass_id(class_id);
-        orderClass.setReal_name(student_name);
-        orderClass.setPhone(phone);
-        orderClass.setState("待分配");
-        orderClassService.save(orderClass);
+
+        List<StudentClassVO> voList2=new ArrayList<StudentClassVO>();
+        JSONArray jsonArray2=JSONArray.fromObject(thedata2);
+        for(int j=0;j<jsonArray2.size();j++){
+            StudentClassVO vo2=new StudentClassVO();
+            JSONObject jsonObject=jsonArray2.getJSONObject(j);
+            String student_name=jsonObject.getString("student_name");
+            String class_name=jsonObject.getString("class_name");
+            String phone=jsonObject.getString("phone");
+            vo2.setStudent_name(student_name);
+            vo2.setClass_name(class_name);
+            vo2.setPhone(phone);
+            voList2.add(vo2);
+        }
+
+        for(int k=0;k<voList2.size();k++){
+            StudentClassVO vo=voList2.get(k);
+            int oc_id=(int)orderClassService.getNextId();
+            OrderClass orderClass=new OrderClass();
+            orderClass.setOrderclass_id(oc_id);
+            orderClass.setItorder_id(order_id);
+            int class_id=classService.getIdFromName(vo.getClass_name());
+            orderClass.setClass_id(class_id);
+            orderClass.setReal_name(vo.getStudent_name());
+            orderClass.setPhone(vo.getPhone());
+            orderClass.setState("待分配");
+            orderClassService.save(orderClass);
+        }
         return "add_success";
     }
 

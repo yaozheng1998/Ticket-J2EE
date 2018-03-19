@@ -143,6 +143,7 @@ public class InstitutionAction extends BaseAction {
     public String showBasicInfo(){
         int id=(Integer) (request.getSession().getAttribute("ins_now"));
         //没有实质性内容
+        request.getSession().setAttribute("insInfo",institutionService.getInfoById(id));
         List<Teacher> teacherList=teacherService.getTeachers(id);
         request.setAttribute("teachers",teacherList);
         return "basicinfo";

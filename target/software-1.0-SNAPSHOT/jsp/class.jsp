@@ -263,25 +263,32 @@
     function choosePay(){
         //order增加，并且orderclass增加
         sum=0;
+        var jsonArray=[];
         for(var g=1;g<=num;g++){
-            sum=sum+document.getElementById("s"+g).value.split('-')[1];
-            $.ajax({
-                type:"post",
-                url:"../chooseOrder",
-                async:false,
-                data:{
-                    student_name:document.getElementById("n"+g).value,
-                    class_name:document.getElementById("s"+g).value.split('-')[0],
-                    phone:document.getElementById("t"+g).value,
-                },
-            });
+            sum=sum + Number(document.getElementById("s"+g).value.split('-')[1]);
+            var json=new Object();
+            json.student_name=document.getElementById("n"+g).value;
+            json.class_name=document.getElementById("s"+g).value.split('-')[0];
+            json.phone=document.getElementById("t"+g).value;
+            jsonArray.push(json);
         }
 
+        $.ajax({
+            type:"post",
+            url:"../chooseOrder",
+            async:false,
+            data:{
+//                student_name:document.getElementById("n"+g).value,
+//                class_name:document.getElementById("s"+g).value.split('-')[0],
+//                phone:document.getElementById("t"+g).value,
+                thedata:JSON.stringify(jsonArray),
+            },
+        });
         if(document.getElementById("wdis").checked){
             sum=sum*<%=GetDiscount.getdis(vip.getVipLevel())%>/10;
             document.getElementById("sum_money").innerHTML="合计："+sum+" 元";
         }
-        if(document.getElementById("wsub").checked){
+        if(document.getElementById("wsub")!=null && document.getElementById("wsub").checked){
             sum=sum-<%=vip.getVipSubMoney()%>;
             pointit=<%=vip.getVipSubMoney()%>;
             document.getElementById("sum_money").innerHTML="合计："+sum+" 元";
@@ -345,18 +352,22 @@
     var po=0;
     function notChoosePay(){
         var ssum=document.getElementById("bpp").value*nnum;
+        var jsonArray2=[];
         for(var e=1;e<=nnum;e++){
-            $.ajax({
-                type:"post",
-                url:"../notChooseOrder",
-                async:false,
-                data:{
-                    student_name:document.getElementById("nn"+e).value,
-                    class_name:document.getElementById("random_class").value,
-                    phone:document.getElementById("tt"+e).value,
-                },
-            });
+            var json=new Object();
+            json.student_name=document.getElementById("nn"+e).value;
+            json.class_name=document.getElementById("random_class").value;
+            json.phone=document.getElementById("tt"+e).value;
+            jsonArray2.push(json);
         }
+        $.ajax({
+            type:"post",
+            url:"../notChooseOrder",
+            async:false,
+            data:{
+                thedata2:JSON.stringify(jsonArray2),
+            },
+        });
         if(document.getElementById("ndis").checked){
             ssum=ssum*<%=GetDiscount.getdis(vip.getVipLevel())%>/10;
             document.getElementById("sumMoney").innerHTML="合计："+ssum+" 元";

@@ -193,7 +193,7 @@
                         <td><%=vo.getPhone()%></td>
                         <td><%=vo.getState()%></td>
                         <td>
-                            <button id='<%=vo.getOrder_classId()%>+"-"+<%=vo.getOrder_time()%>+"-"+<%=vo.getPrice()%>' class="btn minus_btn" onclick="deleteClass2(this)">
+                            <button id='<%=vo.getOrder_classId()%>-<%=vo.getOrder_time()%>-<%=vo.getPrice()%>' class="btn minus_btn" onclick="deleteClass2(this)">
                                 退订
                             </button>
                         </td>
@@ -556,6 +556,7 @@
     function deleteClass2(obj){
         var lid=obj.getAttribute("id");
         arr=lid.split('-');
+        console.log(arr);
         swal({
             title: "确定退订？",
             text: "不能全额退款！",

@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderDao orderDao;
 
-    public static final long EFFTIVE_TIME=15*60*1000;
+    public static final long EFFTIVE_TIME=4*60*1000;
     public List<Order> getOrdersFromVIPName(String name) {
         return orderDao.getOrdersFromVIPName(name);
     }

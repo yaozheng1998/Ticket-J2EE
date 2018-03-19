@@ -158,6 +158,7 @@
                     <th>学生名</th>
                     <th>联系方式</th>
                     <th>成绩</th>
+                    <th></th>
                     </thead>
                     <tbody>
                     <%
@@ -175,6 +176,10 @@
                         <td id="sn<%=i%>"><%=vo.getStudent_name()%></td>
                         <td><%=vo.getPhone()%></td>
                         <td id="g<%=i%>"><%=vo.getGrade()%></td>
+                        <td id="come<%=i%>"><button id="<%=i%>" class="btn minus_btn" onclick="comein(this)">
+                            报道
+                        </button>
+                        </td>
                     </tr>
                     <%
                         }
@@ -434,5 +439,8 @@
         }
         %>
 
+    }
+    function comein(obj){
+        document.getElementById("come"+obj.getAttribute("id")).innerHTML="已报道";
     }
 </script>
