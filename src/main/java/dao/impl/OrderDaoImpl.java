@@ -60,6 +60,10 @@ public class OrderDaoImpl implements OrderDao {
 
     }
 
+    public void update(Order order) {
+        baseDao.update(order);
+    }
+
     private List<ToPayOrderVO> getTPO(List<Object[]> list){
         List<ToPayOrderVO> toPayOrderVOList=new ArrayList<ToPayOrderVO>();
         for(Object[] objects:list){

@@ -94,6 +94,10 @@ public class OrderServiceImpl implements OrderService{
         orderDao.removeOrder(order_id);
     }
 
+    public void update(Order order) {
+        orderDao.update(order);
+    }
+
     /**
      * 获取某个订单下单时间和现在的时间差
      * @param vo

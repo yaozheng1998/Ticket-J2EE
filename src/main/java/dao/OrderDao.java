@@ -54,4 +54,10 @@ public interface OrderDao {
      */
     public void removeOrder(int order_id);
 
+    /**
+     * 更新order
+     * @param order
+     */
+    public void update(Order order);
+
 }

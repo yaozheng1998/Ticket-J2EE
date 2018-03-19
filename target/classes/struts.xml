@@ -72,14 +72,14 @@
             <!--</result>-->
         </action>
 
-        <action name="orderCourse" class="action.OrderAction" method="pay">
-            <result name="pay_success">/jsp/class.jsp</result>
+        <action name="chooseOrder" class="action.OrderAction" method="chooseOrderIntoClass">
+            <result name="choose_success">/jsp/class.jsp</result>
         </action>
         <action name="notChooseOrder" class="action.OrderAction" method="notChooseAddIntoClass">
             <result name="add_success">/jsp/class.jsp</result>
         </action>
-        <action name="addOneOrder" class="action.OrderAction" method="addOrder">
-            <result name="order_success">/jsp/class.jsp</result>
+        <action name="pay" class="action.OrderAction" method="pay">
+            <result name="pay_success">/jsp/class.jsp</result>
         </action>
         <action name="addOnetopayOrder" class="action.OrderAction" method="addtopayOrder">
             <result name="topayorder_success">/jsp/class.jsp</result>

@@ -59,4 +59,10 @@ public interface OrderService {
      * @param order_id
      */
     public void deleteOrder(int order_id);
+
+    /**
+     * 更新order
+     * @param order
+     */
+    public void update(Order order);
 }

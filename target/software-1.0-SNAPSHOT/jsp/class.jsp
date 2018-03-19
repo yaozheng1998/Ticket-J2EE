@@ -267,7 +267,7 @@
             sum=sum+document.getElementById("s"+g).value.split('-')[1];
             $.ajax({
                 type:"post",
-                url:"../orderCourse",
+                url:"../chooseOrder",
                 async:false,
                 data:{
                     student_name:document.getElementById("n"+g).value,
@@ -281,7 +281,7 @@
             sum=sum*<%=GetDiscount.getdis(vip.getVipLevel())%>/10;
             document.getElementById("sum_money").innerHTML="合计："+sum+" 元";
         }
-        if(document.getElementById("wsub")!=null&&document.getElementById("wsub").checked){
+        if(document.getElementById("wsub").checked){
             sum=sum-<%=vip.getVipSubMoney()%>;
             pointit=<%=vip.getVipSubMoney()%>;
             document.getElementById("sum_money").innerHTML="合计："+sum+" 元";
@@ -307,7 +307,7 @@
             if (isConfirm) {
                 $.ajax({
                     type:"post",
-                    url:"../addOneOrder",
+                    url:"../pay",
                     async:true,
                     data:{
                         money:sum,
@@ -382,7 +382,7 @@
             if (isConfirm) {
                 $.ajax({
                     type:"post",
-                    url:"../addOneOrder",
+                    url:"../pay",
                     async:true,
                     data:{
                         money:ssum,

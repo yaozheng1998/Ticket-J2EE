@@ -43,15 +43,15 @@ public class OrderAction extends BaseAction{
     }
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-    int order_id;
-
-    public int getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
+//    int order_id;
+//
+//    public int getOrder_id() {
+//        return order_id;
+//    }
+//
+//    public void setOrder_id(int order_id) {
+//        this.order_id = order_id;
+//    }
 
     public double getMoney() {
 
@@ -89,13 +89,21 @@ public class OrderAction extends BaseAction{
         this.student_name = student_name;
     }
 
-    //class
-    public String pay(){
+    //class选择班级 而已
+    public String chooseOrderIntoClass(){
 //        System.out.println("就一次吗");
+        /**
+         * 先增加班级，外键约束
+         */
+        int order_id=(int)orderService.getNextNum();
+        Order order=new Order();
+        order.setOrder_id(order_id);
+        orderService.save(order);
+
         int oc_id=(int)orderClassService.getNextId();
         OrderClass orderClass=new OrderClass();
         orderClass.setOrderclass_id(oc_id);
-        orderClass.setItorder_id((int)orderService.getNextNum()-1);
+        orderClass.setItorder_id(order_id);
 //        if(class_name==null||class_name.equals("")){
 //            orderClass.setClass_id(-1);
 //        }else {
@@ -107,17 +115,22 @@ public class OrderAction extends BaseAction{
         orderClass.setPhone(phone);
         orderClass.setState("待开班");
         orderClassService.save(orderClass);
-        return "pay_success";
+        return "choose_success";
     }
 
     public String notChooseAddIntoClass(){
         /**
          * 这里不选班级，随机分配；先全部分配到第一个班，之后与数量相比较，再移入之后的班级；
          */
+        int order_id=(int)orderService.getNextNum();
+        Order order=new Order();
+        order.setOrder_id(order_id);
+        orderService.save(order);
+
         int oc_id=(int)orderClassService.getNextId();
         OrderClass orderClass=new OrderClass();
         orderClass.setOrderclass_id(oc_id);
-        orderClass.setItorder_id((int)orderService.getNextNum()-1);
+        orderClass.setItorder_id(order_id);
         int class_id=classService.getIdFromName(class_name);
         orderClass.setClass_id(class_id);
         orderClass.setReal_name(student_name);
@@ -127,21 +140,22 @@ public class OrderAction extends BaseAction{
         return "add_success";
     }
 
-    //order
-    public String addOrder(){
-        order_id=(int)orderService.getNextNum();
+    //order付款
+    public String pay(){
+        int order_id=(int)orderService.getNextNum();
         String vip_name=(String) request.getSession().getAttribute("id");
         int ins_id= (Integer) request.getSession().getAttribute("ins");
         String date_time=sdf.format(new Date());
         String pay_type="线上";
-        Order order=new Order();
-        order.setOrder_id(order_id);
+//        Order order=new Order();
+        Order order=orderService.getInfoByOrderId(order_id-1);
+//        order.setOrder_id(order_id);
         order.setVip_name(vip_name);
         order.setIns_id(ins_id);
         order.setOrder_time(date_time);
         order.setMoney(money);
         order.setPay_type(pay_type);
-        orderService.save(order);
+        orderService.update(order);
 
         //bankcard
         Vip vip=vipService.findVipByName(vip_name);
@@ -160,7 +174,7 @@ public class OrderAction extends BaseAction{
         manager.setIns_allmoney(manager.getIns_allmoney()+money);
         manageService.update(manager);
 
-        return "order_success";
+        return "pay_success";
     }
 
     /**
@@ -168,19 +182,19 @@ public class OrderAction extends BaseAction{
      * @return
      */
     public String addtopayOrder(){
-        order_id=(int)orderService.getNextNum();
+        int order_id=(int)orderService.getNextNum();
         String vip_name=(String) request.getSession().getAttribute("id");
         int ins_id= (Integer) request.getSession().getAttribute("ins");
         String date_time=sdf.format(new Date());
         String pay_type="待支付";
-        Order order=new Order();
-        order.setOrder_id(order_id);
+        Order order=orderService.getInfoByOrderId(order_id-1);
+//        order.setOrder_id(order_id);
         order.setVip_name(vip_name);
         order.setIns_id(ins_id);
         order.setOrder_time(date_time);
         order.setMoney(money);
         order.setPay_type(pay_type);
-        orderService.save(order);
+        orderService.update(order);
         return "topayorder_success";
     }
 
