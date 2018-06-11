@@ -6,6 +6,7 @@ import model.Order;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author YZ
@@ -134,4 +135,88 @@ public interface InstitutionDao {
      * @return
      */
     public HashMap getNumByTeacher(int ins_id);
+
+    /**
+     * 某个机构销售状况及变化分析，按月份
+     */
+
+    /**
+     * 机构总订单数随时间的变化
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Integer> getOrderNumChange(int ins_id);
+
+    /**
+     * 机构总金额随时间的变化
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Double> getOrderMoneyChange(int ins_id);
+
+    /**
+     * 机构总学员数随时间的变化
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Integer> getStudentNumChange(int ins_id);
+
+    /**
+     * 机构成交率随时间的变化
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Double> getOKRateChange(int ins_id);
+
+    /**
+     * 机构平均订单价格随时间的变化
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Double> getAveragePrice(int ins_id);
+
+    /**
+     * 机构线上订单比例随时间的变化
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Double> getBuyMethod(int ins_id);
+
+    /**
+     * 某个机构热门分析按月以及总时间
+     */
+
+    /**
+     * 当月机构热门课程榜单
+     * @param ins_id
+     * @return
+     */
+    public List getTopCourseMonth(int ins_id);
+
+    /**
+     * 总时间内的热门课程榜单
+     * @param ins_id
+     * @return
+     */
+    public List getTopCourseAll(int ins_id);
+
+    /**
+     * 当月机构热门班级／教师榜单
+     * @param ins_id
+     * @return
+     */
+    public List getTopClassMonth(int ins_id);
+
+    /**
+     * 总时间内的热门班级／教师榜单
+     * @param ins_id
+     * @return
+     */
+    public List getTopClassAll(int ins_id);
+
+    /**
+     * 活跃学员特征分析
+     */
+
+
 }
