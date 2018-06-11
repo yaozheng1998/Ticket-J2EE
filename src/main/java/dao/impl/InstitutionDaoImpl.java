@@ -12,6 +12,7 @@ import util.ToPayOrderVO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author YZ
@@ -125,6 +126,62 @@ public class InstitutionDaoImpl implements InstitutionDao {
             map.put(String.valueOf(object[0]),Integer.parseInt(String.valueOf(object[1])));
         }
         return map;
+    }
+
+    public Map<String, Integer> getOrderNumChange(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Double> getOrderMoneyChange(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Integer> getStudentNumChange(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Double> getOKRateChange(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Double> getAveragePrice(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Double> getBuyMethod(int ins_id) {
+        return null;
+    }
+
+    public List getTopCourseMonth(int ins_id) {
+        return null;
+    }
+
+    public List getTopCourseAll(int ins_id) {
+        return null;
+    }
+
+    public List getTopClassMonth(int ins_id) {
+        return null;
+    }
+
+    public List getTopClassAll(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Integer> getClassType(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Integer> getClassStatus(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Integer> getClassGrades(int ins_id) {
+        return null;
+    }
+
+    public Map<String, Double> getTop5(int ins_id) {
+        return null;
     }
 
     private List<Course> getCourseFromOb(List<Object[]> list){

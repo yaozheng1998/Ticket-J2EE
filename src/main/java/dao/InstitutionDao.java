@@ -216,7 +216,40 @@ public interface InstitutionDao {
 
     /**
      * 活跃学员特征分析
+     * 1. 学员消费总额与会员等级关系
+     * 2. 学员购买课程类型
+     * 3. 学员课程状态比例分析
+     * 4. 学员听课率随时间变化
+     * 5. 已结束课程中学员成绩比例分析
      */
+
+    /**
+     * 该机构内不同课程类型销量统计
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Integer> getClassType(int ins_id);
+
+    /**
+     * 该机构内不同课程状态统计
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Integer> getClassStatus(int ins_id);
+
+    /**
+     * 该机构内已结束课程学员成绩比例分析
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Integer> getClassGrades(int ins_id);
+
+    /**
+     * 该机构内消费最高的5名会员；名字后加上会员等级
+     * @param ins_id
+     * @return
+     */
+    public Map<String,Double> getTop5(int ins_id);
 
 
 }
