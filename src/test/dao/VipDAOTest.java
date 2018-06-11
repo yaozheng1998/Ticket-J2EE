@@ -29,7 +29,12 @@ public class VipDAOTest extends TestCase{
 
     @Test
     public void testOrderNum(){
-        vipDaoImpl.getLatestNum("yz");
+//        vipDaoImpl.getLatestNum("yz");
+//        vipDaoImpl.getOrderType("yz");
+//        vipDaoImpl.getOrderLocation("yz");
+//        vipDaoImpl.getOrderOnOffline("yz");
+//        vipDaoImpl.getOKrate("yz");
+
     }
 
 }

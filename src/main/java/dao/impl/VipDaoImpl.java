@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -99,34 +101,101 @@ public class VipDaoImpl implements VipDao {
         return Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
     }
 
-    public List<Integer> getLatestNum(String vipName) {
-        String sql="select distinct DATE_FORMAT(order_time,'%Y-%m'),ifnull(A.count,0) from `orders` o1 left join (select count(*) count,DATE_FORMAT(order_time,'%Y-%m') from `orders` o2 where DATE_FORMAT(order_time,'%Y-%m')>DATE_FORMAT(date_sub(curdate(), interval 12 month),'%Y-%m') group by DATE_FORMAT(order_time,'%Y-%m')) as A on DATE_FORMAT(o1.order_time,'%Y-%m')=DATE_FORMAT(order_time,'%Y-%m')";
-        System.out.println(baseDao.querySQL(sql));
-        return null;
+    public Map<String,Integer> getLatestNum(String vipName) {
+        String sql="select distinct DATE_FORMAT(order_time,'%Y-%m'),ifnull(A.count,0) from `orders` o1 left join (select count(*) count,DATE_FORMAT(order_time,'%Y-%m') from `orders` o2 where DATE_FORMAT(order_time,'%Y-%m')>DATE_FORMAT(date_sub(curdate(), interval 12 month),'%Y-%m') and vip_name='"+ vipName +"' group by DATE_FORMAT(order_time,'%Y-%m')) as A on DATE_FORMAT(o1.order_time,'%Y-%m')=DATE_FORMAT(order_time,'%Y-%m')";
+        Map<String,Integer> map=new HashMap();
+        List result=baseDao.querySQL(sql);
+        for(int i=0;i<result.size();i++){
+            Object[] o=(Object[])result.get(i);
+            map.put(String.valueOf(o[0]),Integer.valueOf(o[1].toString()));
+        }
+        return map;
     }
 
-    public List<Double> getLatestMoney(String vipName) {
-        return null;
+    public Map<String,Double> getLatestMoney(String vipName) {//maybe线上线下
+        String sql="select distinct DATE_FORMAT(order_time,'%Y-%m'),ifnull(s,0) from `orders` o1 left join (select sum(money) s,DATE_FORMAT(order_time,'%Y-%m') from `orders` o2 where DATE_FORMAT(order_time,'%Y-%m')>DATE_FORMAT(date_sub(curdate(), interval 12 month),'%Y-%m') and vip_name='"+ vipName +"' group by DATE_FORMAT(order_time,'%Y-%m')) as A on DATE_FORMAT(o1.order_time,'%Y-%m')=DATE_FORMAT(order_time,'%Y-%m');";
+        Map<String,Double> map=new HashMap();
+        List result=baseDao.querySQL(sql);
+        for(int i=0;i<result.size();i++){
+            Object[] o=(Object[])result.get(i);
+            map.put(String.valueOf(o[0]),Double.valueOf(o[1].toString()));
+        }
+        return map;
     }
 
+    /**
+     * 不同课程类型
+     * @param vipName
+     * @return
+     */
     public Map<String, Integer> getOrderType(String vipName) {
-        return null;
+        String sql="select co.type,count(*) from orders o,order_classes oc,course co,class c where oc.itorder_id=o.order_id and oc.class_id=c.class_id and c.course_id=co.course_id and o.vip_name='"+vipName+"' group by co.type";
+        Map<String,Integer> map=new HashMap();
+        List result=baseDao.querySQL(sql);
+        for(int i=0;i<result.size();i++){
+            Object[] o=(Object[])result.get(i);
+            map.put(String.valueOf(o[0]),Integer.valueOf(o[1].toString()));
+        }
+        return map;
     }
 
+    /**
+     * 订单机构地点
+     * @param vipName
+     * @return
+     */
     public Map<String, Integer> getOrderLocation(String vipName) {
-        return null;
+        String sql="select ins.location, count(*) from institution ins, orders o where ins.ins_id=o.ins_id and o.vip_name='"+vipName+"' group by ins.location;";
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        List result=baseDao.querySQL(sql);
+        for(int i=0;i<result.size();i++){
+            Object[] o=(Object[])result.get(i);
+            map.put(String.valueOf(o[0]),Integer.valueOf(o[1].toString()));
+        }
+        return map;
     }
 
     public Map<String, Integer> getOrderStatus(String vipName) {
-        return null;
+        String sql="select oc.state, count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and o.vip_name='"+vipName+"' group by oc.state;";
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        List result=baseDao.querySQL(sql);
+        for(int i=0;i<result.size();i++){
+            Object[] o=(Object[])result.get(i);
+            map.put(String.valueOf(o[0]),Integer.valueOf(o[1].toString()));
+        }
+        return map;
     }
 
-    public double getOKrate(String vipName) {
-        return 0;
+    public String getOKrate(String vipName) {
+        String all_sql="select count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and o.vip_name='"+vipName+"';";
+        String ok_sql="select count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and oc.state='已结束' and o.vip_name='"+vipName+"';";
+        int all=Integer.parseInt(baseDao.querySQL(all_sql).get(0).toString());
+        int ok=Integer.parseInt(baseDao.querySQL(ok_sql).get(0).toString());
+        DecimalFormat df=new DecimalFormat("0.00");
+//        System.out.println(df.format((float)ok/all));
+        return df.format((float)ok/all);
     }
 
     public List<Integer> getGrades(String vipName) {
-        return null;
+        String sql0_59="select count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and o.vip_name='"+vipName+"' and oc.grade between 1 and 59;";
+        String sql60_74="select count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and o.vip_name='"+vipName+"' and oc.grade between 60 and 74;";
+        String sql75_84="select count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and o.vip_name='"+vipName+"' and oc.grade between 75 and 84;";
+        String sql85_100="select count(*) from order_classes oc, orders o where o.order_id=oc.itorder_id and o.vip_name='"+vipName+"' and oc.grade between 85 and 100;";
+        List result=new ArrayList();
+        result.add(Integer.parseInt(baseDao.querySQL(sql0_59).get(0).toString()));
+        result.add(Integer.parseInt(baseDao.querySQL(sql60_74).get(0).toString()));
+        result.add(Integer.parseInt(baseDao.querySQL(sql75_84).get(0).toString()));
+        result.add(Integer.parseInt(baseDao.querySQL(sql85_100).get(0).toString()));
+        return result;
+    }
+
+    public List<Integer> getOrderOnOffline(String vipName) {
+        String onsql="select count(*) from orders where vip_name='"+vipName+"' and pay_type='线上';";
+        String offsql="select count(*) from orders where vip_name='"+vipName+"' and pay_type='现金';";
+        List result=new ArrayList();
+        result.add(Integer.parseInt(baseDao.querySQL(onsql).get(0).toString()));
+        result.add(Integer.parseInt(baseDao.querySQL(offsql).get(0).toString()));
+        return result;
     }
 
 }

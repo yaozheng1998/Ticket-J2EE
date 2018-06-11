@@ -90,14 +90,14 @@ public interface VipDao {
      * @param vipName
      * @return
      */
-    public List<Integer> getLatestNum(String vipName);
+    public Map<String,Integer> getLatestNum(String vipName);
 
     /**
      * 获取最近12个月每个月订单总金额的变化
      * @param vipName
      * @return
      */
-    public List<Double> getLatestMoney(String vipName);
+    public Map<String,Double> getLatestMoney(String vipName);
 
     /**
      * 学员订单课程类型分析
@@ -125,7 +125,7 @@ public interface VipDao {
      * @param vipName
      * @return
      */
-    public double getOKrate(String vipName);
+    public String getOKrate(String vipName);
 
     /**
      * 学员已结束课程成绩比例分析
@@ -133,4 +133,11 @@ public interface VipDao {
      * @return
      */
     public List<Integer> getGrades(String vipName);
+
+    /**
+     * 学员线上或线下预订课程订单数量
+     * @param vipName
+     * @return
+     */
+    public List<Integer> getOrderOnOffline(String vipName);
 }
