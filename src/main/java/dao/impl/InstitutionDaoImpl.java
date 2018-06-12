@@ -7,6 +7,7 @@ import model.Institution;
 import model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import util.ToPayOrderVO;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @Author YZ
  * @Date 2018/3/7
  */
+@Transactional
 @Repository
 public class InstitutionDaoImpl implements InstitutionDao {
     @Autowired
@@ -129,15 +131,28 @@ public class InstitutionDaoImpl implements InstitutionDao {
     }
 
     public Map<String, Integer> getOrderNumChange(int ins_id) {
-
-        return null;
+        String sql="select distinct DATE_FORMAT(order_time,'%Y-%m'),count(*) from orders where ins_id="+ins_id+" and DATE_FORMAT(order_time,'%Y%m')>DATE_FORMAT(date_sub(curdate(), interval 12 month),'%Y-%m') group by DATE_FORMAT(order_time,'%Y-%m')";
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            map.put(String.valueOf(object[0]),Integer.parseInt(String.valueOf(object[1])));
+        }
+//        System.out.print(map);
+        return map;
     }
 
     public Map<String, Double> getOrderMoneyChange(int ins_id) {
-        return null;
+        String sql="select distinct DATE_FORMAT(order_time,'%Y-%m'),sum(money) from orders where ins_id="+ins_id+" and DATE_FORMAT(order_time,'%Y%m')>DATE_FORMAT(date_sub(curdate(), interval 12 month),'%Y-%m') group by DATE_FORMAT(order_time,'%Y-%m')";
+        Map<String,Double> map=new HashMap<String, Double>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            map.put(String.valueOf(object[0]),Double.parseDouble(String.valueOf(object[1])));
+        }
+        return map;
     }
 
     public Map<String, Integer> getStudentNumChange(int ins_id) {
+
         return null;
     }
 
@@ -154,19 +169,43 @@ public class InstitutionDaoImpl implements InstitutionDao {
     }
 
     public List getTopCourseMonth(int ins_id) {
-        return null;
+        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')=DATE_FORMAT(curdate(),'%Y-%m') and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc limit 6;";
+        List<String> list=new ArrayList<String>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            list.add(String.valueOf(object[0]));
+        }
+        return list;
     }
 
     public List getTopCourseAll(int ins_id) {
-        return null;
+        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc limit 6;";
+        List<String> list=new ArrayList<String>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            list.add(String.valueOf(object[0]));
+        }
+        return list;
     }
 
     public List getTopClassMonth(int ins_id) {
-        return null;
+        String sql="select cl.class_name,count(*) from class cl, orders o, order_classes oc where o.order_id=oc.itorder_id and o.ins_id="+ins_id+" and oc.class_id=cl.class_id and DATE_FORMAT(o.order_time,'%Y-%m')=DATE_FORMAT(curdate(),'%Y-%m') group by cl.class_name order by count(*) desc limit 10;";
+        List<String> list=new ArrayList<String>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            list.add(String.valueOf(object[0]));
+        }
+        return list;
     }
 
     public List getTopClassAll(int ins_id) {
-        return null;
+        String sql="select cl.class_name,count(*) from class cl, orders o, order_classes oc where o.order_id=oc.itorder_id and o.ins_id="+ins_id+" and oc.class_id=cl.class_id group by cl.class_name order by count(*) desc limit 10;";
+        List<String> list=new ArrayList<String>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            list.add(String.valueOf(object[0]));
+        }
+        return list;
     }
 
     public Map<String, Integer> getClassType(int ins_id) {

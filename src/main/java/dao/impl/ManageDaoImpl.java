@@ -12,6 +12,7 @@ import util.VIPStaVO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author YZ
@@ -191,6 +192,54 @@ public class ManageDaoImpl implements ManageDao{
             list.add("'"+l.get(i).getMoney()+"'");
         }
         return list;
+    }
+
+    public double averagePrice() {
+        return 0;
+    }
+
+    public Map<String, String> getAboutLocation() {
+        return null;
+    }
+
+    public Map<String, Double> getOkRateChange() {
+        return null;
+    }
+
+    public Map<String, String> getAboutClassType() {
+        return null;
+    }
+
+    public Map<String, Double> getMoneyChange() {
+        return null;
+    }
+
+    public List getTop10Money() {
+        return null;
+    }
+
+    public List getTop10Num() {
+        return null;
+    }
+
+    public Map<String, Integer> getStudentsChange() {
+        return null;
+    }
+
+    public Map<String, Integer> getInsChange() {
+        return null;
+    }
+
+    public Map<String, Integer> getInsLocation() {
+        return null;
+    }
+
+    public List getTop10MoneyAll() {
+        return null;
+    }
+
+    public List getTop10NumAll() {
+        return null;
     }
 
     private List<SumPayVO> getSPV(List<Object[]> list){

@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="487cea54-8364-4723-9277-f623f44fa95d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/ManageDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/ManageDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/InstitutionDao.class" afterPath="$PROJECT_DIR$/target/classes/dao/InstitutionDao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/ManageDao.class" afterPath="$PROJECT_DIR$/target/classes/dao/ManageDao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/impl/InstitutionDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/dao/impl/InstitutionDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/impl/ManageDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/dao/impl/ManageDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao/impl/VipDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/dao/impl/VipDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/dao/VipDAOTest.class" afterPath="$PROJECT_DIR$/target/test-classes/dao/VipDAOTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/ManageDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ManageDaoImpl.java" />
     </list>
@@ -18,32 +25,57 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BaseDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/BaseDaoImpl.java">
+      <file leaf-file-name="InstitutionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="139" column="40" lean-forward="false" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="40" />
+            <state relative-caret-position="-235">
+              <caret line="159" column="14" lean-forward="true" selection-start-line="159" selection-start-column="14" selection-end-line="159" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VipService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/VipService.java">
+      <file leaf-file-name="InstitutionDaoImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="362">
+              <caret line="222" column="35" lean-forward="true" selection-start-line="222" selection-start-column="35" selection-end-line="222" selection-end-column="35" />
+              <folding>
+                <element signature="e#4989#5006#0" expanded="true" />
+                <element signature="e#5624#5640#0" expanded="true" />
+                <element signature="e#6021#6022#0" expanded="true" />
+                <element signature="e#6048#6049#0" expanded="true" />
+                <element signature="e#6110#6111#0" expanded="true" />
+                <element signature="e#6137#6138#0" expanded="true" />
+                <element signature="e#6196#6197#0" expanded="true" />
+                <element signature="e#6223#6224#0" expanded="true" />
+                <element signature="e#6643#6651#0" expanded="true" />
+                <element signature="e#7180#7188#0" expanded="true" />
+                <element signature="e#7759#7767#0" expanded="true" />
+                <element signature="e#8267#8275#0" expanded="true" />
+                <element signature="e#8515#8516#0" expanded="true" />
+                <element signature="e#8542#8543#0" expanded="true" />
+                <element signature="e#8604#8605#0" expanded="true" />
+                <element signature="e#8631#8632#0" expanded="true" />
+                <element signature="e#8693#8694#0" expanded="true" />
+                <element signature="e#8720#8721#0" expanded="true" />
+                <element signature="e#8774#8775#0" expanded="true" />
+                <element signature="e#8801#8802#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VipDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/VipDao.java">
+      <file leaf-file-name="InstitutionDAOTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="137" column="22" lean-forward="false" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="345">
+              <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#647#648#0" expanded="true" />
+                <element signature="e#708#709#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,113 +83,8 @@
       <file leaf-file-name="VipDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/VipDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
+            <state relative-caret-position="2115">
               <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-              <folding>
-                <element signature="e#5566#5583#0" expanded="true" />
-                <element signature="e#6100#6117#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstitutionDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="247" column="30" lean-forward="false" selection-start-line="247" selection-start-column="30" selection-end-line="247" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstitutionDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-              <folding>
-                <element signature="e#4707#4708#0" expanded="true" />
-                <element signature="e#4734#4735#0" expanded="true" />
-                <element signature="e#4801#4802#0" expanded="true" />
-                <element signature="e#4828#4829#0" expanded="true" />
-                <element signature="e#4890#4891#0" expanded="true" />
-                <element signature="e#4917#4918#0" expanded="true" />
-                <element signature="e#4979#4980#0" expanded="true" />
-                <element signature="e#5006#5007#0" expanded="true" />
-                <element signature="e#5065#5066#0" expanded="true" />
-                <element signature="e#5092#5093#0" expanded="true" />
-                <element signature="e#5141#5142#0" expanded="true" />
-                <element signature="e#5168#5169#0" expanded="true" />
-                <element signature="e#5215#5216#0" expanded="true" />
-                <element signature="e#5242#5243#0" expanded="true" />
-                <element signature="e#5290#5291#0" expanded="true" />
-                <element signature="e#5317#5318#0" expanded="true" />
-                <element signature="e#5363#5364#0" expanded="true" />
-                <element signature="e#5390#5391#0" expanded="true" />
-                <element signature="e#5450#5451#0" expanded="true" />
-                <element signature="e#5477#5478#0" expanded="true" />
-                <element signature="e#5539#5540#0" expanded="true" />
-                <element signature="e#5566#5567#0" expanded="true" />
-                <element signature="e#5628#5629#0" expanded="true" />
-                <element signature="e#5655#5656#0" expanded="true" />
-                <element signature="e#5709#5710#0" expanded="true" />
-                <element signature="e#5736#5737#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManageDaoImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/ManageDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="197" column="8" lean-forward="false" selection-start-line="197" selection-start-column="8" selection-end-line="197" selection-end-column="17" />
-              <folding>
-                <element signature="e#6748#6749#0" expanded="true" />
-                <element signature="e#6772#6773#0" expanded="true" />
-                <element signature="e#6825#6826#0" expanded="true" />
-                <element signature="e#6852#6853#0" expanded="true" />
-                <element signature="e#6904#6905#0" expanded="true" />
-                <element signature="e#6931#6932#0" expanded="true" />
-                <element signature="e#6985#6986#0" expanded="true" />
-                <element signature="e#7012#7013#0" expanded="true" />
-                <element signature="e#7063#7064#0" expanded="true" />
-                <element signature="e#7090#7091#0" expanded="true" />
-                <element signature="e#7125#7126#0" expanded="true" />
-                <element signature="e#7152#7153#0" expanded="true" />
-                <element signature="e#7185#7186#0" expanded="true" />
-                <element signature="e#7212#7213#0" expanded="true" />
-                <element signature="e#7267#7268#0" expanded="true" />
-                <element signature="e#7294#7295#0" expanded="true" />
-                <element signature="e#7344#7345#0" expanded="true" />
-                <element signature="e#7371#7372#0" expanded="true" />
-                <element signature="e#7423#7424#0" expanded="true" />
-                <element signature="e#7450#7451#0" expanded="true" />
-                <element signature="e#7488#7489#0" expanded="true" />
-                <element signature="e#7515#7516#0" expanded="true" />
-                <element signature="e#7551#7552#0" expanded="true" />
-                <element signature="e#7578#7579#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManageDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/ManageDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="213" column="0" lean-forward="true" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/ClassDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -166,8 +93,8 @@
       <file leaf-file-name="VipDAOTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/dao/VipDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+            <state relative-caret-position="120">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -197,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/html/success_sent.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/insNotAct.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/action/LoginAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/action/InstitutionCheckAction.java" />
@@ -245,9 +171,10 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/impl/VipDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/test/dao/VipDAOTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/ManageDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/impl/ManageDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" />
       </list>
     </option>
   </component>
@@ -301,7 +228,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="355" />
+    <option name="x" value="419" />
     <option name="y" value="23" />
     <option name="width" value="1376" />
     <option name="height" value="877" />
@@ -521,7 +448,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VipDAOTest">
+  <component name="RunManager" selected="JUnit.InstitutionDAOTest">
     <configuration default="false" name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -574,6 +501,32 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="dao" />
       <option name="MAIN_CLASS_NAME" value="dao.VipDAOTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="InstitutionDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Ticket" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.InstitutionDAOTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1013,17 +966,19 @@
         </option>
       </method>
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.tomcat" />
       <item index="1" class="java.lang.String" itemvalue="Application.test" />
       <item index="2" class="java.lang.String" itemvalue="Application.InstitutionDaoImpl" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.VipDAOTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.InstitutionDAOTest" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.VipDAOTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.InstitutionDaoImpl" />
-        <item index="2" class="java.lang.String" itemvalue="Application.test" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.InstitutionDAOTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.VipDAOTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.InstitutionDaoImpl" />
+        <item index="3" class="java.lang.String" itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -1053,16 +1008,16 @@
       <workItem from="1528460488150" duration="2303000" />
       <workItem from="1528462884852" duration="1440000" />
       <workItem from="1528616648813" duration="1463000" />
-      <workItem from="1528637364517" duration="15278000" />
+      <workItem from="1528637364517" duration="21455000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="VipDAOTest - 2018.06.10 at 21h 44m 29s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.12 at 09h 19m 20s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.10 at 21h 55m 34s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.12 at 09h 19m 55s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="VipDAOTest - 2018.06.10 at 22h 01m 47s.xml">
       <configuration name="VipDAOTest" configurationId="JUnit" />
@@ -1090,7 +1045,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="460607000" />
+    <option name="totallyTimeSpent" value="466784000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1102,23 +1057,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="355" y="23" width="1376" height="877" extended-state="0" />
+    <frame x="419" y="23" width="1376" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17523056" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2964427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49011856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0311804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.121212125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15678525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23763119" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13118441" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1182,13 +1137,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1532,68 +1480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/dao/VipDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/VipDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-          <folding>
-            <element signature="e#5566#5583#0" expanded="true" />
-            <element signature="e#6100#6117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="247" column="30" lean-forward="false" selection-start-line="247" selection-start-column="30" selection-end-line="247" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="e#4707#4708#0" expanded="true" />
-            <element signature="e#4734#4735#0" expanded="true" />
-            <element signature="e#4801#4802#0" expanded="true" />
-            <element signature="e#4828#4829#0" expanded="true" />
-            <element signature="e#4890#4891#0" expanded="true" />
-            <element signature="e#4917#4918#0" expanded="true" />
-            <element signature="e#4979#4980#0" expanded="true" />
-            <element signature="e#5006#5007#0" expanded="true" />
-            <element signature="e#5065#5066#0" expanded="true" />
-            <element signature="e#5092#5093#0" expanded="true" />
-            <element signature="e#5141#5142#0" expanded="true" />
-            <element signature="e#5168#5169#0" expanded="true" />
-            <element signature="e#5215#5216#0" expanded="true" />
-            <element signature="e#5242#5243#0" expanded="true" />
-            <element signature="e#5290#5291#0" expanded="true" />
-            <element signature="e#5317#5318#0" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5390#5391#0" expanded="true" />
-            <element signature="e#5450#5451#0" expanded="true" />
-            <element signature="e#5477#5478#0" expanded="true" />
-            <element signature="e#5539#5540#0" expanded="true" />
-            <element signature="e#5566#5567#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
-            <element signature="e#5655#5656#0" expanded="true" />
-            <element signature="e#5709#5710#0" expanded="true" />
-            <element signature="e#5736#5737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/ManageDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1604,33 +1490,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/ManageDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
+        <state relative-caret-position="-210">
           <caret line="197" column="8" lean-forward="false" selection-start-line="197" selection-start-column="8" selection-end-line="197" selection-end-column="17" />
           <folding>
-            <element signature="e#6748#6749#0" expanded="true" />
-            <element signature="e#6772#6773#0" expanded="true" />
-            <element signature="e#6825#6826#0" expanded="true" />
-            <element signature="e#6852#6853#0" expanded="true" />
-            <element signature="e#6904#6905#0" expanded="true" />
-            <element signature="e#6931#6932#0" expanded="true" />
-            <element signature="e#6985#6986#0" expanded="true" />
-            <element signature="e#7012#7013#0" expanded="true" />
-            <element signature="e#7063#7064#0" expanded="true" />
-            <element signature="e#7090#7091#0" expanded="true" />
-            <element signature="e#7125#7126#0" expanded="true" />
-            <element signature="e#7152#7153#0" expanded="true" />
-            <element signature="e#7185#7186#0" expanded="true" />
-            <element signature="e#7212#7213#0" expanded="true" />
-            <element signature="e#7267#7268#0" expanded="true" />
-            <element signature="e#7294#7295#0" expanded="true" />
-            <element signature="e#7344#7345#0" expanded="true" />
-            <element signature="e#7371#7372#0" expanded="true" />
-            <element signature="e#7423#7424#0" expanded="true" />
-            <element signature="e#7450#7451#0" expanded="true" />
-            <element signature="e#7488#7489#0" expanded="true" />
-            <element signature="e#7515#7516#0" expanded="true" />
-            <element signature="e#7551#7552#0" expanded="true" />
-            <element signature="e#7578#7579#0" expanded="true" />
+            <element signature="e#6748#6749#0" expanded="false" />
+            <element signature="e#6772#6773#0" expanded="false" />
+            <element signature="e#6825#6826#0" expanded="false" />
+            <element signature="e#6852#6853#0" expanded="false" />
+            <element signature="e#6904#6905#0" expanded="false" />
+            <element signature="e#6931#6932#0" expanded="false" />
+            <element signature="e#6985#6986#0" expanded="false" />
+            <element signature="e#7012#7013#0" expanded="false" />
+            <element signature="e#7063#7064#0" expanded="false" />
+            <element signature="e#7090#7091#0" expanded="false" />
+            <element signature="e#7125#7126#0" expanded="false" />
+            <element signature="e#7152#7153#0" expanded="false" />
+            <element signature="e#7185#7186#0" expanded="false" />
+            <element signature="e#7212#7213#0" expanded="false" />
+            <element signature="e#7267#7268#0" expanded="false" />
+            <element signature="e#7294#7295#0" expanded="false" />
+            <element signature="e#7344#7345#0" expanded="false" />
+            <element signature="e#7371#7372#0" expanded="false" />
+            <element signature="e#7423#7424#0" expanded="false" />
+            <element signature="e#7450#7451#0" expanded="false" />
+            <element signature="e#7488#7489#0" expanded="false" />
+            <element signature="e#7515#7516#0" expanded="false" />
+            <element signature="e#7551#7552#0" expanded="false" />
+            <element signature="e#7578#7579#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/dao/VipDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+            <element signature="e#708#709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/VipDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2115">
+          <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-235">
+          <caret line="159" column="14" lean-forward="true" selection-start-line="159" selection-start-column="14" selection-end-line="159" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="222" column="35" lean-forward="true" selection-start-line="222" selection-start-column="35" selection-end-line="222" selection-end-column="35" />
+          <folding>
+            <element signature="e#4989#5006#0" expanded="true" />
+            <element signature="e#5624#5640#0" expanded="true" />
+            <element signature="e#6021#6022#0" expanded="true" />
+            <element signature="e#6048#6049#0" expanded="true" />
+            <element signature="e#6110#6111#0" expanded="true" />
+            <element signature="e#6137#6138#0" expanded="true" />
+            <element signature="e#6196#6197#0" expanded="true" />
+            <element signature="e#6223#6224#0" expanded="true" />
+            <element signature="e#6643#6651#0" expanded="true" />
+            <element signature="e#7180#7188#0" expanded="true" />
+            <element signature="e#7759#7767#0" expanded="true" />
+            <element signature="e#8267#8275#0" expanded="true" />
+            <element signature="e#8515#8516#0" expanded="true" />
+            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#8604#8605#0" expanded="true" />
+            <element signature="e#8631#8632#0" expanded="true" />
+            <element signature="e#8693#8694#0" expanded="true" />
+            <element signature="e#8720#8721#0" expanded="true" />
+            <element signature="e#8774#8775#0" expanded="true" />
+            <element signature="e#8801#8802#0" expanded="true" />
           </folding>
         </state>
       </provider>
