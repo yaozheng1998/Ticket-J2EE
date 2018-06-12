@@ -151,6 +151,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
         return map;
     }
 
+    //可以for循环？
     public Map<String, Integer> getStudentNumChange(int ins_id) {
 
         return null;
@@ -246,15 +247,15 @@ public class InstitutionDaoImpl implements InstitutionDao {
      * @param ins_id
      * @return
      */
-    public Map<String, Double> getTop5(int ins_id) {
+    public List getTop5(int ins_id) {
         String sql="select o.vip_name, v.vipLevel, sum(money) from orders o, vip v where o.vip_name=v.vipName and o.vip_name<>'非会员' and o.ins_id="+ins_id+" group by o.vip_name order by sum(money) desc limit 5;";
-        Map<String,Double> map=new HashMap<String, Double>();
+        List result=new ArrayList();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
-            map.put(String.valueOf(object[0])+'-'+String.valueOf(object[1]),Double.parseDouble(String.valueOf(object[2])));
+            result.add(String.valueOf(object[0])+'-'+String.valueOf(object[1])+'-'+Double.parseDouble(String.valueOf(object[2])));
         }
-        System.out.println(map);
-        return map;
+//        System.out.println(result);
+        return result;
     }
 
     private List<Course> getCourseFromOb(List<Object[]> list){

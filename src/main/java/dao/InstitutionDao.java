@@ -249,7 +249,7 @@ public interface InstitutionDao {
      * @param ins_id
      * @return
      */
-    public Map<String,Double> getTop5(int ins_id);
+    public List getTop5(int ins_id);
 
 
 }
