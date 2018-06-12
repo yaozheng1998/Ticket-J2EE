@@ -21,6 +21,7 @@ public class InstitutionDAOTest extends TestCase{
 
     @Test
     public void testIns(){
-        institutionDaoImpl.getOrderNumChange(8000001);
+//        institutionDaoImpl.getOrderNumChange(8000001);
+        institutionDaoImpl.getTop5(8000001);
     }
 }

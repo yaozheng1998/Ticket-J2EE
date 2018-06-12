@@ -209,19 +209,52 @@ public class InstitutionDaoImpl implements InstitutionDao {
     }
 
     public Map<String, Integer> getClassType(int ins_id) {
-        return null;
+        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc;";
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            map.put(String.valueOf(object[0]),Integer.parseInt(String.valueOf(object[1])));
+        }
+        return map;
     }
 
     public Map<String, Integer> getClassStatus(int ins_id) {
-        return null;
+        String sql="select oc.state, count(*) from orders o, order_classes oc where oc.itorder_id=o.order_id and o.ins_id="+ins_id+" group by oc.state;";
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            map.put(String.valueOf(object[0]),Integer.parseInt(String.valueOf(object[1])));
+        }
+        return map;
     }
 
     public Map<String, Integer> getClassGrades(int ins_id) {
-        return null;
+        String sql0_59="select count(*) from orders o, order_classes oc where oc.itorder_id=o.order_id and o.ins_id="+ins_id+" and oc.grade between 1 and 59;";
+        String sql60_74="select count(*) from orders o, order_classes oc where oc.itorder_id=o.order_id and o.ins_id="+ins_id+" and oc.grade between 60 and 74;";
+        String sql75_84="select count(*) from orders o, order_classes oc where oc.itorder_id=o.order_id and o.ins_id="+ins_id+" and oc.grade between 75 and 84;";
+        String sql85_100="select count(*) from orders o, order_classes oc where oc.itorder_id=o.order_id and o.ins_id="+ins_id+" and oc.grade between 85 and 100;";
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        map.put("0-59",Integer.parseInt(baseDao.querySQL(sql0_59).get(0).toString()));
+        map.put("60-74",Integer.parseInt(baseDao.querySQL(sql60_74).get(0).toString()));
+        map.put("75-84",Integer.parseInt(baseDao.querySQL(sql75_84).get(0).toString()));
+        map.put("85-100",Integer.parseInt(baseDao.querySQL(sql85_100).get(0).toString()));
+        return map;
     }
 
+    /**
+     * 需要解决HashMap没有顺序的问题
+     * @param ins_id
+     * @return
+     */
     public Map<String, Double> getTop5(int ins_id) {
-        return null;
+        String sql="select o.vip_name, v.vipLevel, sum(money) from orders o, vip v where o.vip_name=v.vipName and o.vip_name<>'非会员' and o.ins_id="+ins_id+" group by o.vip_name order by sum(money) desc limit 5;";
+        Map<String,Double> map=new HashMap<String, Double>();
+        List<Object[]> objects=baseDao.querySQL(sql);
+        for(Object[] object:objects){
+            map.put(String.valueOf(object[0])+'-'+String.valueOf(object[1]),Double.parseDouble(String.valueOf(object[2])));
+        }
+        System.out.println(map);
+        return map;
     }
 
     private List<Course> getCourseFromOb(List<Object[]> list){
