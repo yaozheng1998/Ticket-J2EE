@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import util.ToPayOrderVO;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Author YZ
@@ -151,22 +150,89 @@ public class InstitutionDaoImpl implements InstitutionDao {
         return map;
     }
 
+    static int nowMonth=Calendar.MONTH;
+    static SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
+    static SimpleDateFormat df=new SimpleDateFormat("yyyy-MM");
     //可以for循环？
     public Map<String, Integer> getStudentNumChange(int ins_id) {
-
-        return null;
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        Calendar c=Calendar.getInstance();
+        int month=nowMonth;
+        for(int i=1;i<=12;i++){
+            c.add(month,-1);
+            String time=f.format(c.getTime());
+            String sql="select count(*) from order_classes oc, orders o, class cl, course co where  oc.itorder_id=o.order_id and o.ins_id="+ins_id+" and oc.class_id=cl.class_id and cl.course_id=co.course_id and DATE_FORMAT(co.start_time,'%Y-%m-%d')<='"+time+"' and DATE_FORMAT(co.end_time,'%Y-%m-%d')>='"+time+"';";
+            map.put(time.substring(0,7),Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0))));
+        }
+//        System.out.println(map);
+        return map;
     }
 
-    public Map<String, Double> getOKRateChange(int ins_id) {
-        return null;
+    public Map<String, String> getOKRateChange(int ins_id) {
+        Map<String,String> map=new HashMap<String, String>();
+        Calendar c=Calendar.getInstance();
+        int month=nowMonth;
+        for(int i=1;i<=12;i++){
+            c.add(month,-1);
+            String time=df.format(c.getTime());
+            String oksql="select count(*) from orders o,order_classes oc where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and o.order_id=oc.itorder_id and o.ins_id="+ins_id+" and oc.state<>'已退订';";
+            String allsql="select count(*) from orders o,order_classes oc where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and o.order_id=oc.itorder_id and o.ins_id="+ins_id+";";
+            int ok=Integer.parseInt(String.valueOf(baseDao.querySQL(oksql).get(0)));
+            int all=Integer.parseInt(String.valueOf(baseDao.querySQL(allsql).get(0)));
+            DecimalFormat d=new DecimalFormat("0.00");
+            if(all==0){
+                map.put(time,"0");
+            }
+            else {
+                map.put(time, d.format((float)ok/all));
+            }
+        }
+//        System.out.println(map);
+        return map;
     }
 
-    public Map<String, Double> getAveragePrice(int ins_id) {
-        return null;
+    public Map<String, String> getAveragePrice(int ins_id) {
+        Map<String,String> map=new HashMap<String, String>();
+        Calendar c=Calendar.getInstance();
+        int month=nowMonth;
+        for(int i=1;i<=12;i++){
+            c.add(month,-1);
+            String time=f.format(c.getTime());
+            String sql="select count(*),sum(basic_price) from course co where co.institution_id="+ins_id+" and DATE_FORMAT(co.start_time,'%Y-%m-%d')<='"+time+"' and DATE_FORMAT(co.end_time,'%Y-%m-%d')>='"+time+"';";
+            DecimalFormat d=new DecimalFormat("0.00");
+            int count=Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
+            int money=Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(1)));
+            if(count==0){
+                map.put(time,"0");
+            }
+            else {
+                map.put(time.substring(0,7), d.format((float)money/count));
+            }
+        }
+        return map;
     }
 
-    public Map<String, Double> getBuyMethod(int ins_id) {
-        return null;
+    public Map<String, String> getBuyMethod(int ins_id) {
+        Map<String,String> map=new HashMap<String, String>();
+        Calendar c=Calendar.getInstance();
+        int month=nowMonth;
+        for(int i=1;i<=12;i++){
+            c.add(month,-1);
+            String time=f.format(c.getTime());
+            String onlinesql="select count(*) from orders o where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and o.pay_type='线上';";
+            String allsql="select count(*) from orders o where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"';";
+            DecimalFormat d=new DecimalFormat("0.00");
+            int online=Integer.parseInt(String.valueOf(baseDao.querySQL(onlinesql).get(0)));
+            int all=Integer.parseInt(String.valueOf(baseDao.querySQL(allsql).get(0)));
+            if(all==0){
+                map.put(time,"0");
+            }
+            else {
+                map.put(time.substring(0,7), d.format((float)online/all));
+            }
+        }
+        System.out.println(map);
+        return map;
     }
 
     public List getTopCourseMonth(int ins_id) {

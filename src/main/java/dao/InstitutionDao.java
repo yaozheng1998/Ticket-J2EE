@@ -166,21 +166,21 @@ public interface InstitutionDao {
      * @param ins_id
      * @return
      */
-    public Map<String,Double> getOKRateChange(int ins_id);
+    public Map<String,String> getOKRateChange(int ins_id);
 
     /**
-     * 机构平均订单价格随时间的变化
+     * 机构课程平均价格随时间的变化
      * @param ins_id
      * @return
      */
-    public Map<String,Double> getAveragePrice(int ins_id);
+    public Map<String,String> getAveragePrice(int ins_id);
 
     /**
      * 机构线上订单比例随时间的变化
      * @param ins_id
      * @return
      */
-    public Map<String,Double> getBuyMethod(int ins_id);
+    public Map<String,String> getBuyMethod(int ins_id);
 
     /**
      * 某个机构热门分析按月以及总时间

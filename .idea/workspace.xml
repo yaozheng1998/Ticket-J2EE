@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="487cea54-8364-4723-9277-f623f44fa95d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java" afterPath="$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,8 +22,8 @@
       <file leaf-file-name="InstitutionDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="251" column="15" lean-forward="false" selection-start-line="251" selection-start-column="15" selection-end-line="251" selection-end-column="15" />
+            <state relative-caret-position="172">
+              <caret line="177" column="7" lean-forward="true" selection-start-line="177" selection-start-column="7" selection-end-line="177" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -30,24 +32,22 @@
       <file leaf-file-name="InstitutionDaoImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+            <state relative-caret-position="3031">
+              <caret line="224" column="24" lean-forward="true" selection-start-line="224" selection-start-column="24" selection-end-line="224" selection-end-column="24" />
               <folding>
-                <element signature="e#4989#5006#0" expanded="true" />
-                <element signature="e#5624#5640#0" expanded="true" />
-                <element signature="e#6036#6037#0" expanded="true" />
-                <element signature="e#6063#6064#0" expanded="true" />
-                <element signature="e#6125#6126#0" expanded="true" />
-                <element signature="e#6152#6153#0" expanded="true" />
-                <element signature="e#6211#6212#0" expanded="true" />
-                <element signature="e#6238#6239#0" expanded="true" />
-                <element signature="e#6658#6666#0" expanded="true" />
-                <element signature="e#7195#7203#0" expanded="true" />
-                <element signature="e#7774#7782#0" expanded="true" />
-                <element signature="e#8282#8290#0" expanded="true" />
-                <element signature="e#8828#8845#0" expanded="true" />
-                <element signature="e#9328#9345#0" expanded="true" />
-                <element signature="e#10322#10339#0" expanded="true" />
+                <element signature="e#4977#4994#0" expanded="true" />
+                <element signature="e#5612#5628#0" expanded="true" />
+                <element signature="e#6149#6166#0" expanded="true" />
+                <element signature="e#6945#6961#0" expanded="true" />
+                <element signature="e#8090#8106#0" expanded="true" />
+                <element signature="e#9053#9069#0" expanded="true" />
+                <element signature="e#10448#10456#0" expanded="true" />
+                <element signature="e#10985#10993#0" expanded="true" />
+                <element signature="e#11564#11572#0" expanded="true" />
+                <element signature="e#12072#12080#0" expanded="true" />
+                <element signature="e#12618#12635#0" expanded="true" />
+                <element signature="e#13118#13135#0" expanded="true" />
+                <element signature="e#14112#14129#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,8 +56,8 @@
       <file leaf-file-name="InstitutionDAOTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+            <state relative-caret-position="315">
+              <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,8 +68,8 @@
       <file leaf-file-name="VipDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/VipDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="188" column="22" lean-forward="true" selection-start-line="179" selection-start-column="8" selection-end-line="188" selection-end-column="22" />
+            <state relative-caret-position="265">
+              <caret line="173" column="8" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="175" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -167,9 +167,9 @@
         <option value="$PROJECT_DIR$/src/test/dao/VipDAOTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/ManageDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/impl/ManageDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java" />
       </list>
     </option>
   </component>
@@ -223,7 +223,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="259" />
+    <option name="x" value="236" />
     <option name="y" value="23" />
     <option name="width" value="1376" />
     <option name="height" value="877" />
@@ -1003,14 +1003,11 @@
       <workItem from="1528460488150" duration="2303000" />
       <workItem from="1528462884852" duration="1440000" />
       <workItem from="1528616648813" duration="1463000" />
-      <workItem from="1528637364517" duration="29698000" />
+      <workItem from="1528637364517" duration="34940000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="InstitutionDAOTest - 2018.06.12 at 09h 19m 20s.xml">
-      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="InstitutionDAOTest - 2018.06.12 at 09h 19m 55s.xml">
       <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
@@ -1020,27 +1017,30 @@
     <history-entry file="InstitutionDAOTest - 2018.06.12 at 23h 25m 19s.xml">
       <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.10 at 22h 07m 43s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 08h 31m 30s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.10 at 22h 08m 00s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 08h 32m 56s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.10 at 22h 27m 46s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 09h 13m 04s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.10 at 22h 28m 19s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 09h 14m 06s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.11 at 15h 27m 31s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 09h 15m 20s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VipDAOTest - 2018.06.11 at 15h 28m 49s.xml">
-      <configuration name="VipDAOTest" configurationId="JUnit" />
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 09h 21m 29s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InstitutionDAOTest - 2018.06.13 at 09h 43m 03s.xml">
+      <configuration name="InstitutionDAOTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="475027000" />
+    <option name="totallyTimeSpent" value="480269000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1052,7 +1052,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="259" y="23" width="1376" height="877" extended-state="0" />
+    <frame x="236" y="23" width="1376" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1064,7 +1064,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49011856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0311804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36231884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14756258" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1526,24 +1526,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/VipDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="188" column="22" lean-forward="true" selection-start-line="179" selection-start-column="8" selection-end-line="188" selection-end-column="22" />
+        <state relative-caret-position="265">
+          <caret line="173" column="8" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="175" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstitutionDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="251" column="15" lean-forward="false" selection-start-line="251" selection-start-column="15" selection-end-line="251" selection-end-column="15" />
+        <state relative-caret-position="172">
+          <caret line="177" column="7" lean-forward="true" selection-start-line="177" selection-start-column="7" selection-end-line="177" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/dao/InstitutionDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        <state relative-caret-position="315">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1552,24 +1552,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/impl/InstitutionDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+        <state relative-caret-position="3031">
+          <caret line="224" column="24" lean-forward="true" selection-start-line="224" selection-start-column="24" selection-end-line="224" selection-end-column="24" />
           <folding>
-            <element signature="e#4989#5006#0" expanded="true" />
-            <element signature="e#5624#5640#0" expanded="true" />
-            <element signature="e#6036#6037#0" expanded="true" />
-            <element signature="e#6063#6064#0" expanded="true" />
-            <element signature="e#6125#6126#0" expanded="true" />
-            <element signature="e#6152#6153#0" expanded="true" />
-            <element signature="e#6211#6212#0" expanded="true" />
-            <element signature="e#6238#6239#0" expanded="true" />
-            <element signature="e#6658#6666#0" expanded="true" />
-            <element signature="e#7195#7203#0" expanded="true" />
-            <element signature="e#7774#7782#0" expanded="true" />
-            <element signature="e#8282#8290#0" expanded="true" />
-            <element signature="e#8828#8845#0" expanded="true" />
-            <element signature="e#9328#9345#0" expanded="true" />
-            <element signature="e#10322#10339#0" expanded="true" />
+            <element signature="e#4977#4994#0" expanded="true" />
+            <element signature="e#5612#5628#0" expanded="true" />
+            <element signature="e#6149#6166#0" expanded="true" />
+            <element signature="e#6945#6961#0" expanded="true" />
+            <element signature="e#8090#8106#0" expanded="true" />
+            <element signature="e#9053#9069#0" expanded="true" />
+            <element signature="e#10448#10456#0" expanded="true" />
+            <element signature="e#10985#10993#0" expanded="true" />
+            <element signature="e#11564#11572#0" expanded="true" />
+            <element signature="e#12072#12080#0" expanded="true" />
+            <element signature="e#12618#12635#0" expanded="true" />
+            <element signature="e#13118#13135#0" expanded="true" />
+            <element signature="e#14112#14129#0" expanded="true" />
           </folding>
         </state>
       </provider>
