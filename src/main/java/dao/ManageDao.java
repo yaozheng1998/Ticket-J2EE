@@ -127,10 +127,10 @@ public interface ManageDao {
      */
 
     /**
-     * Training College课程平均售价=网站总销售额 / 课程销售总数
+     * Training College课程平均售价=网站总销售额 / 课程销售总数随时间的变化
      * @return
      */
-    public double averagePrice();
+    public Map<String,String> averagePrice();
 
     /**
      * 网站课程销售量、销售额以及课程平均售价与地域的关系
@@ -142,7 +142,7 @@ public interface ManageDao {
      * 网站的成交率【=1-课程退订数/课程销售总数】随时间的变化
      * @return
      */
-    public Map<String,Double> getOkRateChange();
+    public Map<String,String> getOkRateChange();
 
     /**
      * 网站课程销售数/销售额与课程类型之间的关系
