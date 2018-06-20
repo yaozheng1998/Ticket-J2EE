@@ -54,7 +54,7 @@
     </div>
 </nav>
 
-<div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 2100px;top: 50px">
+<div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 2420px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
         <li role="presentation"><a href="vipBasicInfo"><h5 style="padding-left: 15px">会员信息</h5></a></li>
         <li role="presentation"><a href="showMyClasses"><h5 style="padding-left: 15px">我的订单</h5></a></li>
@@ -125,9 +125,12 @@
             <div id="typeChart" style="margin-left:0px;top:20px;width: 500px;height:400px;"></div>
             <div id="mapChart" style="margin-left:600px;top:-360px;width: 600px;height:400px;"></div>
         </div>
+        <div class="row" style="top: 20px;">
+            <div id="payChart" style="margin-left:30px;top:-310px;width: 500px;height:400px;"></div>
+        </div>
     </div>
 </fieldset>
-<fieldset style="position:absolute;top:1340px;left:200px;width: 900px;">
+<fieldset style="position:absolute;top:1740px;left:200px;width: 900px;">
     <legend>成绩分布</legend>
     <div style="position: absolute;top:80px;left:-20px;width: 900px;height: 600px;">
         <div class="row" style="top: 100px;">
@@ -179,6 +182,44 @@
         ]
     };
     gradeChart.setOption(optionn);
+
+    var payChart=echarts.init(document.getElementById("payChart"));
+    optionnn = {
+        title : {
+            text: '支付方式偏好',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['现金','线上','待支付']
+        },
+        series : [
+            {
+                name: '支付方式',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:<%=request.getAttribute("poff")%>, name:'现金'},
+                    {value:<%=request.getAttribute("pon")%>, name:'线上'},
+                    {value:<%=request.getAttribute("pto")%>, name:'待支付'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    payChart.setOption(optionnn);
 
     var map=echarts.init(document.getElementById("mapChart"));
     var mydata = [];

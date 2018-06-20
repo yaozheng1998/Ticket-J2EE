@@ -53,7 +53,7 @@
     </div>
 </nav>
 
-<div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 1330px;top: 50px">
+<div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 2330px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
         <li role="presentation"><a href="showApp"><h5 style="padding-left: 15px">机构审批</h5></a></li>
         <li role="presentation"><a href="sump"><h5 style="padding-left: 15px">支付结算</h5></a></li>
@@ -190,112 +190,113 @@
             <!--总时间销售额／学员数-->
             <div id="line4" style="margin-top:40px;margin-left:-40px;top:100px;width: 500px;height:400px;"></div>
             <div id="map2" style="margin-top:-400px;margin-left:490px;top:100px;width: 500px;height:400px;"></div>
-            <div class="row" style="top: 100px;margin-left: -20px;margin-top: 210px;">
-                <div class="col-md-3">
-                    <table class="table table-bordered table-striped" style="width: 230px;right: 10px;">
-                        <caption>当月机构销售额排行</caption>
-                        <thead>
-                        <tr>
-                            <th>机构名</th>
-                            <th>地点</th>
-                            <th>销售额</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            List topMoneyMonth=(List)request.getAttribute("tm");
-                            for(int i=0;i<topMoneyMonth.size();i++){
-                                String[] s1=topMoneyMonth.get(i).toString().split("-");
-                        %>
-                        <tr>
-                            <td><%=s1[0]%></td>
-                            <td><%=s1[1]%></td>
-                            <td><%=s1[2]%></td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <table class="table table-bordered table-striped" style="width: 180px;">
-                        <caption>当月机构学员数排行</caption>
-                        <thead>
-                        <tr>
-                            <th>机构名</th>
-                            <th>学员总数</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            List topNumMonth=(List)request.getAttribute("tn");
-                            for(int i=0;i<topNumMonth.size();i++){
-                                String[] s2=topNumMonth.get(i).toString().split("-");
-                        %>
-                        <tr>
-                            <td><%=s2[0]%></td>
-                            <td><%=s2[1]%></td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <table class="table table-bordered table-striped" style="width: 230px;">
-                        <caption>机构销售额排行</caption>
-                        <thead>
-                        <tr>
-                            <th>机构名</th>
-                            <th>地点</th>
-                            <th>销售额</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            List topMoneyAll=(List)request.getAttribute("tma");
-                            for(int i=0;i<topMoneyAll.size();i++){
-                                String[] s3=topMoneyAll.get(i).toString().split("-");
-                        %>
-                        <tr>
-                            <td><%=s3[0]%></td>
-                            <td><%=s3[1]%></td>
-                            <td><%=s3[2]%></td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <table class="table table-bordered table-striped" style="width: 180px;">
-                        <caption>机构学员数排行</caption>
-                        <thead>
-                        <tr>
-                            <th>机构名</th>
-                            <th>学员总数</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            List topNumAll=(List)request.getAttribute("tna");
-                            for(int i=0;i<topNumAll.size();i++){
-                                String[] s4=topNumAll.get(i).toString().split("-");
-                        %>
-                        <tr>
-                            <td><%=s4[0]%></td>
-                            <td><%=s4[1]%></td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <div id="ph1" style="margin-top:0px;margin-left:20px;top:120px;width: 800px;height:500px;"></div>
+            <div id="ph2" style="margin-top:0px;margin-left:20px;top:150px;width: 800px;height:500px;"></div>
+                <%--<div class="col-md-3">--%>
+                    <%--<table class="table table-bordered table-striped" style="width: 230px;right: 10px;">--%>
+                        <%--<caption>当月机构销售额排行</caption>--%>
+                        <%--<thead>--%>
+                        <%--<tr>--%>
+                            <%--<th>机构名</th>--%>
+                            <%--<th>地点</th>--%>
+                            <%--<th>销售额</th>--%>
+                        <%--</tr>--%>
+                        <%--</thead>--%>
+                        <%--<tbody>--%>
+                        <%--<%--%>
+                            <%--List topMoneyMonth=(List)request.getAttribute("tm");--%>
+                            <%--for(int i=0;i<topMoneyMonth.size();i++){--%>
+                                <%--String[] s1=topMoneyMonth.get(i).toString().split("-");--%>
+                        <%--%>--%>
+                        <%--<tr>--%>
+                            <%--<td><%=s1[0]%></td>--%>
+                            <%--<td><%=s1[1]%></td>--%>
+                            <%--<td><%=s1[2]%></td>--%>
+                        <%--</tr>--%>
+                        <%--<%--%>
+                            <%--}--%>
+                        <%--%>--%>
+                        <%--</tbody>--%>
+                    <%--</table>--%>
+                <%--</div>--%>
+                <%--<div class="col-md-3">--%>
+                    <%--<table class="table table-bordered table-striped" style="width: 180px;">--%>
+                        <%--<caption>当月机构学员数排行</caption>--%>
+                        <%--<thead>--%>
+                        <%--<tr>--%>
+                            <%--<th>机构名</th>--%>
+                            <%--<th>学员总数</th>--%>
+                        <%--</tr>--%>
+                        <%--</thead>--%>
+                        <%--<tbody>--%>
+                        <%--<%--%>
+                            <%--List topNumMonth=(List)request.getAttribute("tn");--%>
+                            <%--for(int i=0;i<topNumMonth.size();i++){--%>
+                                <%--String[] s2=topNumMonth.get(i).toString().split("-");--%>
+                        <%--%>--%>
+                        <%--<tr>--%>
+                            <%--<td><%=s2[0]%></td>--%>
+                            <%--<td><%=s2[1]%></td>--%>
+                        <%--</tr>--%>
+                        <%--<%--%>
+                            <%--}--%>
+                        <%--%>--%>
+                        <%--</tbody>--%>
+                    <%--</table>--%>
+                <%--</div>--%>
+                <%--<div class="col-md-3">--%>
+                    <%--<table class="table table-bordered table-striped" style="width: 230px;">--%>
+                        <%--<caption>机构销售额排行</caption>--%>
+                        <%--<thead>--%>
+                        <%--<tr>--%>
+                            <%--<th>机构名</th>--%>
+                            <%--<th>地点</th>--%>
+                            <%--<th>销售额</th>--%>
+                        <%--</tr>--%>
+                        <%--</thead>--%>
+                        <%--<tbody>--%>
+                        <%--<%--%>
+                            <%--List topMoneyAll=(List)request.getAttribute("tma");--%>
+                            <%--for(int i=0;i<topMoneyAll.size();i++){--%>
+                                <%--String[] s3=topMoneyAll.get(i).toString().split("-");--%>
+                        <%--%>--%>
+                        <%--<tr>--%>
+                            <%--<td><%=s3[0]%></td>--%>
+                            <%--<td><%=s3[1]%></td>--%>
+                            <%--<td><%=s3[2]%></td>--%>
+                        <%--</tr>--%>
+                        <%--<%--%>
+                            <%--}--%>
+                        <%--%>--%>
+                        <%--</tbody>--%>
+                    <%--</table>--%>
+                <%--</div>--%>
+                <%--<div class="col-md-3">--%>
+                    <%--<table class="table table-bordered table-striped" style="width: 180px;">--%>
+                        <%--<caption>机构学员数排行</caption>--%>
+                        <%--<thead>--%>
+                        <%--<tr>--%>
+                            <%--<th>机构名</th>--%>
+                            <%--<th>学员总数</th>--%>
+                        <%--</tr>--%>
+                        <%--</thead>--%>
+                        <%--<tbody>--%>
+                        <%--<%--%>
+                            <%--List topNumAll=(List)request.getAttribute("tna");--%>
+                            <%--for(int i=0;i<topNumAll.size();i++){--%>
+                                <%--String[] s4=topNumAll.get(i).toString().split("-");--%>
+                        <%--%>--%>
+                        <%--<tr>--%>
+                            <%--<td><%=s4[0]%></td>--%>
+                            <%--<td><%=s4[1]%></td>--%>
+                        <%--</tr>--%>
+                        <%--<%--%>
+                            <%--}--%>
+                        <%--%>--%>
+                        <%--</tbody>--%>
+                    <%--</table>--%>
+                <%--</div>--%>
+
         </div>
     </div>
 </fieldset>
@@ -305,6 +306,155 @@
 <script src="../js/echarts.js"></script>
 <script src="../js/china.js"></script>
 <script>
+    var ph1data=[];
+    var ph2data=[];
+    var ph3data=[];
+    var ph4data=[];
+    <%List topMoneyMonth=(List)request.getAttribute("tm");
+    for(int i=0;i<topMoneyMonth.size();i++){
+        String[] s1=topMoneyMonth.get(i).toString().split("-");
+    %>
+    ph1data.push({"name":<%="\""+s1[0]+"-"+s1[1]+"\""%>,"value":<%=s1[2]%>});
+    <%
+    }
+     List topNumMonth=(List)request.getAttribute("tn");
+        for(int i=0;i<topNumMonth.size();i++){
+        String[] s2=topNumMonth.get(i).toString().split("-");
+    %>
+    ph2data.push({"name":<%="\""+s2[0]+"\""%>,"value":<%=s2[1]%>});
+    <%
+    }
+    List topMoneyAll=(List)request.getAttribute("tma");
+        for(int i=0;i<topMoneyAll.size();i++){
+        String[] s3=topMoneyAll.get(i).toString().split("-");
+    %>
+    ph3data.push({"name":<%="\""+s3[0]+"-"+s3[1]+"\""%>,"value":<%=s3[2]%>});
+    <%
+    }
+    List topNumAll=(List)request.getAttribute("tna");
+        for(int i=0;i<topNumAll.size();i++){
+        String[] s4=topNumAll.get(i).toString().split("-");
+    %>
+    ph4data.push({"name":<%="\""+s4[0]+"\""%>,"value":<%=s4[1]%>});
+    <%
+    }
+    %>
+    var ph1=echarts.init(document.getElementById("ph1"));
+    optionph1 = {
+        title: {
+            text: '当月机构销售额与学员数排行',
+            x: 'center',
+            //x: 'left',//'center',
+            y:50
+
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'center',
+            y: 'bottom',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {
+                    show: true
+                },
+                /*dataView: {
+                 show: true,
+                 readOnly: false
+                 },*/
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                /*restore: {
+                 show: true
+                 },*/
+//                saveAsImage: {
+//                    show: true
+//                }
+            }
+        },
+        calculable: true,
+        series: [{
+            name: '销售额',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['30%', '50%'],
+            roseType: 'radius',
+            data: ph1data
+        }, {
+            name: '学员数',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['76%', '50%'],
+            roseType: 'radius',
+            data: ph2data
+        }]
+    };
+    ph1.setOption(optionph1);
+
+    var ph2=echarts.init(document.getElementById("ph2"));
+    optionph2 = {
+        title: {
+            text: '机构销售额与学员数排行',
+            x: 'center',
+            //x: 'left',//'center',
+            y:50
+
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'center',
+            y: 'bottom',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {
+                    show: true
+                },
+                /*dataView: {
+                 show: true,
+                 readOnly: false
+                 },*/
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                /*restore: {
+                 show: true
+                 },*/
+//                saveAsImage: {
+//                    show: true
+//                }
+            }
+        },
+        calculable: true,
+        series: [{
+            name: '销售额',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['30%', '50%'],
+            roseType: 'radius',
+            data: ph3data
+        }, {
+            name: '学员数',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['76%', '50%'],
+            roseType: 'radius',
+            data: ph4data
+        }]
+    };
+    ph2.setOption(optionph2);
+
     var line1=echarts.init(document.getElementById("line1"));
     line1.clear();
     option1 = {
@@ -357,9 +507,6 @@
                 name:'平均售价',
                 type:'line',
                 animation: false,
-                areaStyle: {
-                    normal: {}
-                },
                 lineStyle: {
                     normal: {
                         width: 1
@@ -373,9 +520,6 @@
                 type:'line',
                 yAxisIndex:1,
                 animation: false,
-                areaStyle: {
-                    normal: {}
-                },
                 lineStyle: {
                     normal: {
                         width: 1
@@ -596,6 +740,7 @@
         legend: {
             orient: 'vertical',
             left: 'left',
+//            padding: [0, 450, 0, 0],
             data: key
         },
         series : [

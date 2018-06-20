@@ -89,6 +89,10 @@ public class VIPStaAction extends BaseAction {
         request.setAttribute("g3",grades.get(2));
         request.setAttribute("g4",grades.get(3));
 
+        List<Integer> pays=vipService.getOrderOnOffline(vipId);
+        request.setAttribute("pon",pays.get(0));
+        request.setAttribute("poff",pays.get(1));
+        request.setAttribute("pto",pays.get(2));
 
         return "vipSta";
     }

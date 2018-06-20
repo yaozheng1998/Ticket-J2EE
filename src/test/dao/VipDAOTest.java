@@ -33,17 +33,18 @@ public class VipDAOTest extends TestCase{
 
     @Test
     public void testOrderNum(){
-        System.out.println(vipDaoImpl.getLatestNum("yz").get(""));
+//        vipDaoImpl.getLatestNum("yz");
+//        vipDaoImpl.getLatestMoney("yz");
 //        vipDaoImpl.getOrderType("yz");
 //        vipDaoImpl.getOrderLocation("yz");
 //        vipDaoImpl.getOrderOnOffline("yz");
-//        vipDaoImpl.getOKrate("yz");
-        Map<String,Integer> courseType=vipDaoImpl.getOrderType("yz");
-        List<String> courses=new ArrayList<String>(courseType.keySet());
-        List<Integer> courseNum=new ArrayList<Integer>(courseType.values());
-        System.out.println(courseType);
-        System.out.println(courses);
-        System.out.println(courseNum);
+        vipDaoImpl.getOKrate("yz");
+//        Map<String,Integer> courseType=vipDaoImpl.getOrderType("yz");
+//        List<String> courses=new ArrayList<String>(courseType.keySet());
+//        List<Integer> courseNum=new ArrayList<Integer>(courseType.values());
+//        System.out.println(courseType);
+//        System.out.println(courses);
+//        System.out.println(courseNum);
     }
 
 }

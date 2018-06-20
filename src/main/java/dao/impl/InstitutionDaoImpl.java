@@ -184,7 +184,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
                 map.put(time,"0");
             }
             else {
-                map.put(time, d.format(1-(float)ok/all));
+                map.put(time, d.format((float)ok/all));
             }
         }
         System.out.println(map);
@@ -246,7 +246,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
         List<String> list=new ArrayList<String>();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
-            list.add(String.valueOf(object[0]));
+            list.add(String.valueOf(object[0])+"-"+String.valueOf(object[1]));
         }
         return list;
     }
@@ -256,7 +256,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
         List<String> list=new ArrayList<String>();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
-            list.add(String.valueOf(object[0]));
+            list.add(String.valueOf(object[0])+"-"+String.valueOf(object[1]));
         }
         return list;
     }
@@ -266,7 +266,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
         List<String> list=new ArrayList<String>();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
-            list.add(String.valueOf(object[0]));
+            list.add(String.valueOf(object[0])+"-"+String.valueOf(object[1]));
         }
         return list;
     }
@@ -276,7 +276,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
         List<String> list=new ArrayList<String>();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
-            list.add(String.valueOf(object[0]));
+            list.add(String.valueOf(object[0])+"-"+String.valueOf(object[1]));
         }
         return list;
     }

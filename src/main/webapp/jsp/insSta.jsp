@@ -56,7 +56,7 @@
     </div>
 </nav>
 
-<div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 2280px;top: 50px">
+<div class="navbar navbar-default navbar-fixed" style="width: 135px;height: 3080px;top: 50px">
     <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;">
         <li role="presentation"><a href="showInsBasicInfo"><h5 style="padding-left: 15px">基本信息</h5></a></li>
         <li role="presentation"><a href="showAllClasses"><h5 style="padding-left: 15px">机构计划</h5></a></li>
@@ -127,80 +127,80 @@
     <legend>热门分析</legend>
     <div style="position: absolute;top:80px;left:70px;width: 900px;height: 450px;">
         <div class="row" style="top: 100px;margin-left: 50px;">
-            <div class="col-md-3">
-                <table class="table table-bordered table-striped" style="width: 180px;">
-                    <caption>当月热门课程</caption>
-                    <tbody>
-                    <%
-                        List topCourseMonth=(List)request.getAttribute("cm");
-                        for(int i=0;i<topCourseMonth.size();i++){
-                    %>
-                    <tr>
-                        <td><%=topCourseMonth.get(i)%></td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-3">
-                <table class="table table-bordered table-striped" style="width: 180px;">
-                    <caption>当月热门班级</caption>
-                    <tbody>
-                    <%
-                        List topClassMonth=(List)request.getAttribute("tc");
-                        for(int i=0;i<topClassMonth.size();i++){
-                    %>
-                    <tr>
-                        <td><%=topClassMonth.get(i)%></td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-3">
-                <table class="table table-bordered table-striped" style="width: 180px;">
-                    <caption>热门课程</caption>
-                    <tbody>
-                    <%
-                        List topCourse=(List)request.getAttribute("ca");
-                        for(int i=0;i<topCourse.size();i++){
-                    %>
-                    <tr>
-                        <td><%=topCourse.get(i)%></td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-3">
-                <table class="table table-bordered table-striped" style="width: 180px;">
-                    <caption>热门班级</caption>
-                    <tbody>
-                    <%
-                        List topClass=(List)request.getAttribute("tca");
-                        for(int i=0;i<topClass.size();i++){
-                    %>
-                    <tr>
-                        <td><%=topClass.get(i)%></td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="mapChart" style="margin-left:600px;top:-360px;width: 600px;height:400px;"></div>
+            <%--<div class="col-md-3">--%>
+                <%--<table class="table table-bordered table-striped" style="width: 180px;">--%>
+                    <%--<caption>当月热门课程类型</caption>--%>
+                    <%--<tbody>--%>
+                    <%--<%--%>
+                        <%--List topCourseMonth=(List)request.getAttribute("cm");--%>
+                        <%--for(int i=0;i<topCourseMonth.size();i++){--%>
+                    <%--%>--%>
+                    <%--<tr>--%>
+                        <%--<td><%=topCourseMonth.get(i)%></td>--%>
+                    <%--</tr>--%>
+                    <%--<%--%>
+                        <%--}--%>
+                    <%--%>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-3">--%>
+                <%--<table class="table table-bordered table-striped" style="width: 180px;">--%>
+                    <%--<caption>当月热门班级</caption>--%>
+                    <%--<tbody>--%>
+                    <%--<%--%>
+                        <%--List topClassMonth=(List)request.getAttribute("tc");--%>
+                        <%--for(int i=0;i<topClassMonth.size();i++){--%>
+                    <%--%>--%>
+                    <%--<tr>--%>
+                        <%--<td><%=topClassMonth.get(i)%></td>--%>
+                    <%--</tr>--%>
+                    <%--<%--%>
+                        <%--}--%>
+                    <%--%>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-3">--%>
+                <%--<table class="table table-bordered table-striped" style="width: 180px;">--%>
+                    <%--<caption>热门课程类型</caption>--%>
+                    <%--<tbody>--%>
+                    <%--<%--%>
+                        <%--List topCourse=(List)request.getAttribute("ca");--%>
+                        <%--for(int i=0;i<topCourse.size();i++){--%>
+                    <%--%>--%>
+                    <%--<tr>--%>
+                        <%--<td><%=topCourse.get(i)%></td>--%>
+                    <%--</tr>--%>
+                    <%--<%--%>
+                        <%--}--%>
+                    <%--%>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-3">--%>
+                <%--<table class="table table-bordered table-striped" style="width: 180px;">--%>
+                    <%--<caption>热门班级</caption>--%>
+                    <%--<tbody>--%>
+                    <%--<%--%>
+                        <%--List topClass=(List)request.getAttribute("tca");--%>
+                        <%--for(int i=0;i<topClass.size();i++){--%>
+                    <%--%>--%>
+                    <%--<tr>--%>
+                        <%--<td><%=topClass.get(i)%></td>--%>
+                    <%--</tr>--%>
+                    <%--<%--%>
+                        <%--}--%>
+                    <%--%>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+                <div id="ph1" style="margin-top:0px;margin-left:0px;top:-20px;width: 800px;height:500px;"></div>
+                <div id="ph2" style="margin-top:0px;margin-left:0px;top:50px;width: 800px;height:500px;"></div>
         </div>
     </div>
 </fieldset>
-<fieldset style="position:absolute;top:1340px;left:200px;width: 900px;">
+<fieldset style="position:absolute;top:2040px;left:200px;width: 900px;">
     <legend>活跃学员</legend>
     <div style="position: absolute;top:80px;left:70px;width: 900px;height: 400px;">
         <div class="row" style="top: 100px;">
@@ -243,6 +243,155 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script>
+    var ph1data=[];
+    var ph2data=[];
+    var ph3data=[];
+    var ph4data=[];
+    <%List topCourseMonth=(List)request.getAttribute("cm");
+        for(int i=0;i<topCourseMonth.size();i++){
+        String[] s1=topCourseMonth.get(i).toString().split("-");
+    %>
+    ph1data.push({"name":<%="\""+s1[0]+"\""%>,"value":<%=s1[1]%>});
+    <%
+    }
+     List topClassMonth=(List)request.getAttribute("tc");
+        for(int i=0;i<topClassMonth.size();i++){
+        String[] s2=topClassMonth.get(i).toString().split("-");
+    %>
+    ph2data.push({"name":<%="\""+s2[0]+"\""%>,"value":<%=s2[1]%>});
+    <%
+    }
+     List topCourse=(List)request.getAttribute("ca");
+        for(int i=0;i<topCourse.size();i++){
+        String[] s3=topCourse.get(i).toString().split("-");
+    %>
+    ph3data.push({"name":<%="\""+s3[0]+"\""%>,"value":<%=s3[1]%>});
+    <%
+    }
+    List topClass=(List)request.getAttribute("tca");
+        for(int i=0;i<topClass.size();i++){
+        String[] s4=topClass.get(i).toString().split("-");
+    %>
+    ph4data.push({"name":<%="\""+s4[0]+"\""%>,"value":<%=s4[1]%>});
+    <%
+    }
+    %>
+    var ph1=echarts.init(document.getElementById("ph1"));
+    optionph1 = {
+        title: {
+            text: '当月热门课程类型与班级',
+            x: 'center',
+            //x: 'left',//'center',
+            y:50
+
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'center',
+            y: 'bottom',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {
+                    show: true
+                },
+                /*dataView: {
+                 show: true,
+                 readOnly: false
+                 },*/
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                /*restore: {
+                 show: true
+                 },*/
+//                saveAsImage: {
+//                    show: true
+//                }
+            }
+        },
+        calculable: true,
+        series: [{
+            name: '课程类型',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['30%', '50%'],
+            roseType: 'radius',
+            data: ph1data
+        }, {
+            name: '班级',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['76%', '50%'],
+            roseType: 'radius',
+            data: ph2data
+        }]
+    };
+    ph1.setOption(optionph1);
+
+    var ph2=echarts.init(document.getElementById("ph2"));
+    optionph2 = {
+        title: {
+            text: '热门课程类型与班级',
+            x: 'center',
+            //x: 'left',//'center',
+            y:50
+
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'center',
+            y: 'bottom',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {
+                    show: true
+                },
+                /*dataView: {
+                 show: true,
+                 readOnly: false
+                 },*/
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                /*restore: {
+                 show: true
+                 },*/
+//                saveAsImage: {
+//                    show: true
+//                }
+            }
+        },
+        calculable: true,
+        series: [{
+            name: '课程类型',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['30%', '50%'],
+            roseType: 'radius',
+            data: ph3data
+        }, {
+            name: '班级',
+            type: 'pie',
+            radius: [30, 105],
+            center: ['76%', '50%'],
+            roseType: 'radius',
+            data: ph4data
+        }]
+    };
+    ph2.setOption(optionph2);
+
     var courseTypeChart=echarts.init(document.getElementById("courseTypeChart"));
     var mydata = [];
     var key=[];

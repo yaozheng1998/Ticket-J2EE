@@ -140,4 +140,6 @@ public interface VipDao {
      * @return
      */
     public List<Integer> getOrderOnOffline(String vipName);
+
+
 }

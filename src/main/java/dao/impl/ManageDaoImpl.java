@@ -254,11 +254,12 @@ public class ManageDaoImpl implements ManageDao{
         for(int i=1;i<=12;i++){
             c.add(month,-1);
             String time=df.format(c.getTime());
-            String nosql="select count(*) from order_classes oc, orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and oc.state='已退订';";
-            String allsql="select count(*) from order_classes oc, orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"';";
+            String nosql="select count(*) from order_classes oc, orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and oc.state='已退订' and oc.itorder_id=o.order_id;";
+            String allsql="select count(*) from order_classes oc, orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and oc.itorder_id=o.order_id;";
             DecimalFormat d=new DecimalFormat("0.00");
             int no=Integer.parseInt(String.valueOf(baseDao.querySQL(nosql).get(0)));
             int all=Integer.parseInt(String.valueOf(baseDao.querySQL(allsql).get(0)));
+            System.out.println(time+"-"+no+"-"+all);
             if(all==0){
                 map.put(time,"0");
             }
