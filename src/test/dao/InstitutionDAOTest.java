@@ -24,7 +24,8 @@ public class InstitutionDAOTest extends TestCase{
 //        institutionDaoImpl.getOrderNumChange(8000001);
 //        institutionDaoImpl.getTop5(8000001);
 //        institutionDaoImpl.getStudentNumChange(8000001);
-//        institutionDaoImpl.getOKRateChange(8000001);
+        institutionDaoImpl.getOKRateChange(8000001);
         institutionDaoImpl.getBuyMethod(8000001);
+        institutionDaoImpl.getAveragePrice(8000001);
     }
 }

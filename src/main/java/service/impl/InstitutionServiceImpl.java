@@ -11,6 +11,7 @@ import service.InstitutionService;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author YZ
@@ -97,5 +98,61 @@ public class InstitutionServiceImpl implements InstitutionService{
 
     public HashMap getNumByTeacher(int ins_id) {
         return institutionDao.getNumByTeacher(ins_id);
+    }
+
+    public Map<String, Integer> getOrderNumChange(int ins_id) {
+        return institutionDao.getOrderNumChange(ins_id);
+    }
+
+    public Map<String, Double> getOrderMoneyChange(int ins_id) {
+        return institutionDao.getOrderMoneyChange(ins_id);
+    }
+
+    public Map<String, Integer> getStudentNumChange(int ins_id) {
+        return institutionDao.getStudentNumChange(ins_id);
+    }
+
+    public Map<String, String> getOKRateChange(int ins_id) {
+        return institutionDao.getOKRateChange(ins_id);
+    }
+
+    public Map<String, String> getAveragePrice(int ins_id) {
+        return institutionDao.getAveragePrice(ins_id);
+    }
+
+    public Map<String, String> getBuyMethod(int ins_id) {
+        return institutionDao.getBuyMethod(ins_id);
+    }
+
+    public List getTopCourseMonth(int ins_id) {
+        return institutionDao.getTopCourseMonth(ins_id);
+    }
+
+    public List getTopCourseAll(int ins_id) {
+        return institutionDao.getTopCourseAll(ins_id);
+    }
+
+    public List getTopClassMonth(int ins_id) {
+        return institutionDao.getTopClassMonth(ins_id);
+    }
+
+    public List getTopClassAll(int ins_id) {
+        return institutionDao.getTopClassAll(ins_id);
+    }
+
+    public Map<String, Integer> getClassType(int ins_id) {
+        return institutionDao.getClassType(ins_id);
+    }
+
+    public Map<String, Integer> getClassStatus(int ins_id) {
+        return institutionDao.getClassStatus(ins_id);
+    }
+
+    public Map<String, Integer> getClassGrades(int ins_id) {
+        return institutionDao.getClassGrades(ins_id);
+    }
+
+    public List getTop5(int ins_id) {
+        return institutionDao.getTop5(ins_id);
     }
 }

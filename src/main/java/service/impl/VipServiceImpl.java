@@ -9,6 +9,8 @@ import service.VipService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author YZ
@@ -98,5 +100,37 @@ public class VipServiceImpl implements VipService{
 
     public int getNumByState(String vipName, String state) {
         return vipDao.getNumByState(vipName, state);
+    }
+
+    public Map<String, Integer> getLatestNum(String vipName) {
+        return vipDao.getLatestNum(vipName);
+    }
+
+    public Map<String, Double> getLatestMoney(String vipName) {
+        return vipDao.getLatestMoney(vipName);
+    }
+
+    public Map<String, Integer> getOrderType(String vipName) {
+        return vipDao.getOrderType(vipName);
+    }
+
+    public Map<String, Integer> getOrderLocation(String vipName) {
+        return vipDao.getOrderLocation(vipName);
+    }
+
+    public Map<String, Integer> getOrderStatus(String vipName) {
+        return vipDao.getOrderStatus(vipName);
+    }
+
+    public String getOKrate(String vipName) {
+        return vipDao.getOKrate(vipName);
+    }
+
+    public List<Integer> getGrades(String vipName) {
+        return vipDao.getGrades(vipName);
+    }
+
+    public List<Integer> getOrderOnOffline(String vipName) {
+        return vipDao.getOrderOnOffline(vipName);
     }
 }

@@ -184,10 +184,10 @@ public class InstitutionDaoImpl implements InstitutionDao {
                 map.put(time,"0");
             }
             else {
-                map.put(time, d.format((float)ok/all));
+                map.put(time, d.format(1-(float)ok/all));
             }
         }
-//        System.out.println(map);
+        System.out.println(map);
         return map;
     }
 
@@ -200,15 +200,21 @@ public class InstitutionDaoImpl implements InstitutionDao {
             String time=f.format(c.getTime());
             String sql="select count(*),sum(basic_price) from course co where co.institution_id="+ins_id+" and DATE_FORMAT(co.start_time,'%Y-%m-%d')<='"+time+"' and DATE_FORMAT(co.end_time,'%Y-%m-%d')>='"+time+"';";
             DecimalFormat d=new DecimalFormat("0.00");
-            int count=Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
-            int money=Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(1)));
+
+            Object[] object= (Object[]) baseDao.querySQL(sql).get(0);
+            int count=Integer.parseInt(String.valueOf(object[0]));
+            int money=0;
+            if(object[1]!=null) {
+                money = Integer.parseInt(String.valueOf(object[1]));
+            }
             if(count==0){
-                map.put(time,"0");
+                map.put(time.substring(0,7),"0");
             }
             else {
                 map.put(time.substring(0,7), d.format((float)money/count));
             }
         }
+        System.out.println(map);
         return map;
     }
 
@@ -218,7 +224,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
         int month=nowMonth;
         for(int i=1;i<=12;i++){
             c.add(month,-1);
-            String time=f.format(c.getTime());
+            String time=df.format(c.getTime());
             String onlinesql="select count(*) from orders o where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and o.pay_type='线上';";
             String allsql="select count(*) from orders o where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"';";
             DecimalFormat d=new DecimalFormat("0.00");
@@ -236,7 +242,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
     }
 
     public List getTopCourseMonth(int ins_id) {
-        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')=DATE_FORMAT(curdate(),'%Y-%m') and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc limit 6;";
+        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and DATE_FORMAT(o.order_time,'%Y-%m')=DATE_FORMAT(curdate(),'%Y-%m') and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc limit 10;";
         List<String> list=new ArrayList<String>();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
@@ -246,7 +252,7 @@ public class InstitutionDaoImpl implements InstitutionDao {
     }
 
     public List getTopCourseAll(int ins_id) {
-        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc limit 6;";
+        String sql="select co.type,count(*) from orders o, course co, order_classes oc, class cl where o.ins_id="+ins_id+" and o.order_id=oc.itorder_id and oc.class_id=cl.class_id and cl.course_id=co.course_id group by co.type order by count(*) desc limit 10;";
         List<String> list=new ArrayList<String>();
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){

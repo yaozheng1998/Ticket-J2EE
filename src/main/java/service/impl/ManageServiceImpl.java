@@ -12,6 +12,7 @@ import util.SumPayVO;
 import util.VIPStaVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author YZ
@@ -106,5 +107,53 @@ public class ManageServiceImpl implements ManageService {
 
     public List getInsMoneyList() {
         return manageDao.getInsMoneyList();
+    }
+
+    public Map<String, String> averagePrice() {
+        return manageDao.averagePrice();
+    }
+
+    public Map<String, String> getAboutLocation() {
+        return manageDao.getAboutLocation();
+    }
+
+    public Map<String, String> getOkRateChange() {
+        return manageDao.getOkRateChange();
+    }
+
+    public Map<String, String> getAboutClassType() {
+        return manageDao.getAboutClassType();
+    }
+
+    public Map<String, Double> getMoneyChange() {
+        return manageDao.getMoneyChange();
+    }
+
+    public List getTop10Money() {
+        return manageDao.getTop10Money();
+    }
+
+    public List getTop10Num() {
+        return manageDao.getTop10Num();
+    }
+
+    public Map<String, Integer> getStudentsChange() {
+        return manageDao.getStudentsChange();
+    }
+
+    public Map<String, Integer> getInsChange() {
+        return manageDao.getInsChange();
+    }
+
+    public Map<String, Integer> getInsLocation() {
+        return manageDao.getInsLocation();
+    }
+
+    public List getTop10MoneyAll() {
+        return manageDao.getTop10MoneyAll();
+    }
+
+    public List getTop10NumAll() {
+        return manageDao.getTop10NumAll();
     }
 }

@@ -48,7 +48,7 @@
 </div>
 
 <fieldset style="position:absolute;top:100px;left:200px;width: 900px;height: 620px">
-    <legend>机构统计</legend>
+    <legend>销售状况</legend>
     <div style="position: absolute;top:80px;left:-20px;width: 900px;height: 600px;">
         <div class="row" style="top: 100px;">
             <div class="col-md-3 col-md-offset-2">
@@ -86,8 +86,77 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div id="pie" style="margin-left:50px;top:100px;width: 500px;height:400px;"></div>
-            <div id="bar" style="margin-left:600px;margin-top:-200px;width: 500px;height: 400px;"></div>
+            <div id="line1" style="margin-left:50px;top:100px;width: 460px;height:400px;"></div>
+            <div id="line2" style="margin-left:600px;margin-top:-195px;width: 500px;height: 400px;"></div>
+        </div>
+    </div>
+</fieldset>
+<fieldset style="position:absolute;top:800px;left:200px;width: 900px;">
+    <legend>热门分析</legend>
+    <div style="position: absolute;top:80px;left:-20px;width: 900px;height: 450px;">
+        <div class="row" style="top: 100px;margin-left: 50px;">
+            <div class="col-md-3">
+                <table class="table table-bordered" style="width: 180px;">
+                    <caption>当月热门课程</caption>
+                    <tbody>
+                    <tr>
+                        <td>Uma</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table class="table table-bordered" style="width: 180px;">
+                    <caption>当月热门班级</caption>
+                    <tbody>
+                    <tr>
+                        <td>Uma</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table class="table table-bordered" style="width: 180px;">
+                    <caption>热门课程</caption>
+                    <tbody>
+                    <tr>
+                        <td>Uma</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table class="table table-bordered" style="width: 180px;">
+                    <caption>热门班级</caption>
+                    <tbody>
+                    <tr>
+                        <td>Uma</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="mapChart" style="margin-left:600px;top:-360px;width: 600px;height:400px;"></div>
+        </div>
+    </div>
+</fieldset>
+<fieldset style="position:absolute;top:1340px;left:200px;width: 900px;">
+    <legend>活跃学员</legend>
+    <div style="position: absolute;top:80px;left:-20px;width: 900px;height: 600px;">
+        <div class="row" style="top: 100px;">
+            <div id="courseTypeChart" style="margin-left:30px;top:20px;width: 400px;height:400px;"></div>
+            <div id="courseStatusChart" style="margin-left:480px;top:-380px;width: 400px;height:400px;"></div>
+            <div id="gradesChart" style="margin-left:30px;top:-350px;width: 400px;height:400px;"></div>
+            <div class="col-md-3" style="margin-top: -700px;margin-left: 560px;">
+                <table class="table table-bordered" style="width: 180px;">
+                    <caption>消费前五名</caption>
+                    <tbody>
+                    <tr>
+                        <td>Uma</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </fieldset>
@@ -96,10 +165,261 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script>
+    var courseTypeChart=echarts.init(document.getElementById("courseTypeChart"));
+    option1 = {
+        title : {
+            text: '学员购买课程类型',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['待分配','待开班','进行中','已结束','已退订','待支付']
+        },
+        series : [
+            {
+                name: '订单',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:335, name:'待分配'},
+                    {value:310, name:'待开班'},
+                    {value:234, name:'进行中'},
+                    {value:135, name:'已结束'},
+                    {value:1548, name:'已退订'},
+                    {value:1548, name:'待支付'},
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    courseTypeChart.setOption(option1);
+
+
+    var courseStatusChart=echarts.init(document.getElementById("courseStatusChart"));
+    option2 = {
+        title : {
+            text: '学员购买课程类型',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['待分配','待开班','进行中','已结束','已退订','待支付']
+        },
+        series : [
+            {
+                name: '订单',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:335, name:'待分配'},
+                    {value:310, name:'待开班'},
+                    {value:234, name:'进行中'},
+                    {value:135, name:'已结束'},
+                    {value:1548, name:'已退订'},
+                    {value:1548, name:'待支付'},
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    courseStatusChart.setOption(option2);
+
+    var gradesChart=echarts.init(document.getElementById("gradesChart"));
+    option3 = {
+        title : {
+            text: '学员购买课程类型',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['待分配','待开班','进行中','已结束','已退订','待支付']
+        },
+        series : [
+            {
+                name: '订单',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:335, name:'待分配'},
+                    {value:310, name:'待开班'},
+                    {value:234, name:'进行中'},
+                    {value:135, name:'已结束'},
+                    {value:1548, name:'已退订'},
+                    {value:1548, name:'待支付'},
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    gradesChart.setOption(option3);
+
+
+    var line1 = echarts.init(document.getElementById("line1"));
+    option = {
+        title: {
+            text: '折线图堆叠'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一','周二','周三','周四','周五','周六','周日']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name:'联盟广告',
+                type:'line',
+                stack: '总量',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'视频广告',
+                type:'line',
+                stack: '总量',
+                data:[150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name:'直接访问',
+                type:'line',
+                stack: '总量',
+                data:[320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name:'搜索引擎',
+                type:'line',
+                stack: '总量',
+                data:[820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+    if (option && typeof option === "object") {
+        line1.setOption(option, true);
+    }
+
+    var line2 = echarts.init(document.getElementById("line2"));
+    option2 = {
+        title: {
+            text: '折线图堆叠'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一','周二','周三','周四','周五','周六','周日']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name:'联盟广告',
+                type:'line',
+                stack: '总量',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'视频广告',
+                type:'line',
+                stack: '总量',
+                data:[150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name:'直接访问',
+                type:'line',
+                stack: '总量',
+                data:[320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name:'搜索引擎',
+                type:'line',
+                stack: '总量',
+                data:[820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+    if (option2 && typeof option2 === "object") {
+        line2.setOption(option2, true);
+    }
+
     var myChart=echarts.init(document.getElementById("pie"));
     option = {
         title : {
-            text: '订单状态',
+            text: '课程状态',
             x:'center'
         },
         tooltip : {
@@ -118,12 +438,6 @@
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:<%=request.getAttribute("DI")%>, name:'待分配'},
-    {value:<%=request.getAttribute("OP")%>, name:'待开班'},
-    {value:<%=request.getAttribute("GO")%>, name:'进行中'},
-    {value:<%=request.getAttribute("EN")%>, name:'已结束'},
-    {value:<%=request.getAttribute("RE")%>, name:'已退订'},
-    {value:<%=request.getAttribute("TP")%>, name:'待支付'},
                 ],
                 itemStyle: {
                     emphasis: {

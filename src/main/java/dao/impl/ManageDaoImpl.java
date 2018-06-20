@@ -125,7 +125,7 @@ public class ManageDaoImpl implements ManageDao{
     }
 
     public List<VIPStaVO> getVIPSta() {
-        String sql="select v.vipName,v.vipLevel,count(*),sum(money) from `orders` o,`vip` v where v.vipName=o.vip_name group by v.vipName,v.vipLevel order by sum(money) desc";
+        String sql="select v.vipName,v.vipLevel,count(*),sum(money) from `orders` o,`vip` v where v.vipName=o.vip_name and v.vipName<>'非会员' group by v.vipName,v.vipLevel order by sum(money) desc";
         return this.getVIPSta(baseDao.querySQL(sql));
     }
 
@@ -208,8 +208,12 @@ public class ManageDaoImpl implements ManageDao{
             String time=f.format(c.getTime());
             String sql="select count(*),sum(basic_price) from course co where DATE_FORMAT(co.start_time,'%Y-%m-%d')<='"+time+"' and DATE_FORMAT(co.end_time,'%Y-%m-%d')>='"+time+"';";
             DecimalFormat d=new DecimalFormat("0.00");
-            int count=Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(0)));
-            int money=Integer.parseInt(String.valueOf(baseDao.querySQL(sql).get(1)));
+            Object[] object= (Object[]) baseDao.querySQL(sql).get(0);
+            int count=Integer.parseInt(String.valueOf(object[0]));
+            int money=0;
+            if(object[1]!=null) {
+                money = Integer.parseInt(String.valueOf(object[1]));
+            }
             if(count==0){
                 map.put(time,"0");
             }
@@ -249,12 +253,12 @@ public class ManageDaoImpl implements ManageDao{
         int month=nowMonth;
         for(int i=1;i<=12;i++){
             c.add(month,-1);
-            String time=f.format(c.getTime());
+            String time=df.format(c.getTime());
             String nosql="select count(*) from order_classes oc, orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"' and oc.state='已退订';";
             String allsql="select count(*) from order_classes oc, orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"';";
             DecimalFormat d=new DecimalFormat("0.00");
             int no=Integer.parseInt(String.valueOf(baseDao.querySQL(nosql).get(0)));
-            int all=Integer.parseInt(String.valueOf(baseDao.querySQL(allsql).get(1)));
+            int all=Integer.parseInt(String.valueOf(baseDao.querySQL(allsql).get(0)));
             if(all==0){
                 map.put(time,"0");
             }
@@ -262,6 +266,7 @@ public class ManageDaoImpl implements ManageDao{
                 map.put(time.substring(0,7), d.format((float)(all-no)/all));
             }
         }
+        System.out.println(map);
         return map;
     }
 
@@ -281,10 +286,15 @@ public class ManageDaoImpl implements ManageDao{
         int month=nowMonth;
         for(int i=1;i<=12;i++){
             c.add(month,-1);
-            String time=f.format(c.getTime());
+            String time=df.format(c.getTime());
             String sql="select sum(money) from orders o where DATE_FORMAT(o.order_time,'%Y-%m')='"+time+"';";
-            map.put(time.substring(0,7),Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0))));
+            if(baseDao.querySQL(sql).get(0)!=null) {
+                map.put(time.substring(0, 7), Double.parseDouble(String.valueOf(baseDao.querySQL(sql).get(0))));
+            }else{
+                map.put(time.substring(0, 7), 0.00);
+            }
         }
+        System.out.println(map);
         return map;
     }
 
@@ -318,7 +328,7 @@ public class ManageDaoImpl implements ManageDao{
 
     public List getTop10NumAll() {
         List<String> result=new ArrayList<String>();
-        String sql="select i.ins_name, count(*) from order_classes oc, class cl, course co, institution i where oc.class_id=cl.class_id and cl.course_id=co.course_id and co.institution_id=i.ins_id and oc.state<>'已退订' group by i.ins_name order by count(*) desc limit 10;";
+        String sql="select i.ins_name, count(*) from order_classes oc, class cl, course co, institution i where oc.class_id=cl.class_id and cl.course_id=co.course_id and co.institution_id=i.ins_id and oc.state<>'已退订' group by i.ins_name order by count(*) desc;";
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
             result.add(String.valueOf(object[0])+'-'+String.valueOf(object[1]));
@@ -364,7 +374,7 @@ public class ManageDaoImpl implements ManageDao{
 
     public List getTop10MoneyAll() {
         List<String> result=new ArrayList<String>();
-        String sql="select i.ins_name,i.location,sum(o.money) from institution i, orders o where o.ins_id=i.ins_id group by i.ins_name,i.location order by sum(o.money) desc limit 10;";
+        String sql="select i.ins_name,i.location,sum(o.money) from institution i, orders o where o.ins_id=i.ins_id group by i.ins_name,i.location order by sum(o.money) desc;";
         List<Object[]> objects=baseDao.querySQL(sql);
         for(Object[] object:objects){
             result.add(String.valueOf(object[0])+'-'+String.valueOf(object[1])+'-'+String.valueOf(object[2]));

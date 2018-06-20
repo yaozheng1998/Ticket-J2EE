@@ -1,8 +1,8 @@
 .tab-wrapper{
     margin-top: 100px;
-    margin-left: 3%;
+    margin-left: 37%;
     position: relative;
-    width: 560px;
+    width: 280px;
     height: 40px;
     background-color: #33344a;
 }
@@ -37,7 +37,7 @@
     position: absolute;
     top: 60px;
     left: 0;
-    width: 980px;
+    /*width: 280px;*/
     height:600px;
     padding: 30px;
     color: #999;

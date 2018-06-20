@@ -109,6 +109,7 @@ public class VipDaoImpl implements VipDao {
             Object[] o=(Object[])result.get(i);
             map.put(String.valueOf(o[0]),Integer.valueOf(o[1].toString()));
         }
+        System.out.println(map);
         return map;
     }
 
@@ -173,7 +174,7 @@ public class VipDaoImpl implements VipDao {
         int ok=Integer.parseInt(baseDao.querySQL(ok_sql).get(0).toString());
         DecimalFormat df=new DecimalFormat("0.00");
 //        System.out.println(df.format((float)ok/all));
-        return df.format((float)ok/all);
+        return df.format((float)ok/all*100);
     }
 
     public List<Integer> getGrades(String vipName) {
